@@ -193,26 +193,24 @@
     flex-direction: column;
   }
 
-  /* Grid Spans */
+  /* Grid Spans - Removed span 2 from vertical images to shrink them */
   .phd-box-theme { grid-column: span 2; }
-  .phd-box-report-img { grid-column: span 1; grid-row: span 2; }
-  .phd-box-vanity-img { grid-column: span 1; grid-row: span 2; }
+  .phd-box-report-img { grid-column: span 1; }
+  .phd-box-vanity-img { grid-column: span 1; }
   .phd-box-sm { grid-column: span 1; }
 
-  /* Image Placeholders with Contain & Frame Logic */
+  /* Image Placeholders */
   .phd-img-placeholder {
     width: 100%;
-    background-color: #f8fafc;
+    background-color: transparent;
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #64748b;
-    font-weight: 600;
-    margin-top: 1rem;
+    margin-top: 0; /* Text removed, no margin needed */
     flex-grow: 1;
     overflow: hidden;
-    padding: 1rem;
+    padding: 0;
     box-sizing: border-box;
   }
 
@@ -225,19 +223,16 @@
   }
 
   /* Banner specific overrides */
-  .phd-box-theme .phd-img-placeholder { 
-    padding: 0; 
-  }
   .phd-box-theme .phd-img-placeholder img { 
     width: 100%;
     height: auto; 
     border-radius: 12px;
   }
 
-  /* Portrait screenshots height baselines */
+  /* Portrait screenshots height baselines - Reduced height */
   .phd-box-report-img .phd-img-placeholder,
   .phd-box-vanity-img .phd-img-placeholder {
-    min-height: 380px;
+    min-height: 260px;
   }
 
   /* Icon Container Styling */
@@ -399,7 +394,7 @@
   /* DARK MODE THEME */
   @media (prefers-color-scheme: dark) {
     .phd-promo-wrapper {
-      background-color: #0f172a; /* Deep slate background */
+      background-color: #0f172a; 
       color: #e2e8f0;
     }
     .phd-header {
@@ -427,7 +422,7 @@
       color: #cbd5e1;
     }
     .phd-bento-box, .phd-faq-item {
-      background: #1e293b; /* Charcoal bento boxes */
+      background: #1e293b; 
       border-color: #334155;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     }
@@ -437,11 +432,8 @@
     .phd-bento-text, .phd-faq-a, .phd-footer-subtitle, .phd-footer-bottom {
       color: #94a3b8;
     }
-    .phd-img-placeholder {
-      background-color: #0f172a; /* Dark inset frame for images */
-    }
     .phd-icon-container {
-      background-color: #4c1d95; /* Deep purple icon box */
+      background-color: #4c1d95; 
     }
     .phd-icon-container svg {
       stroke: #e9d5ff;
@@ -500,10 +492,8 @@
     <section class="phd-bento-section">
       <div class="phd-bento-grid">
         
-        <!-- 1. Adjusted Horizontal Banner (Span 2) -->
+        <!-- 1. Adjusted Horizontal Banner (Span 2) - Text Removed -->
         <div class="phd-bento-box phd-box-theme">
-          <h3 class="phd-bento-title">Ultimate Inventory Tracking</h3>
-          <p class="phd-bento-text">Custom profiles, expense tracking, and local-first digital organization in one place.</p>
           <div class="phd-img-placeholder"><img src="images/beauty-vanity-app-theme-banner.webp" alt="Profile Hub Dossier app showing custom beauty profiles, visual analysis, and local-first privacy features" loading="lazy"></div>
         </div>
 
@@ -516,10 +506,8 @@
           <p class="phd-bento-text">phd is NOT for only makeup.</p>
         </div>
 
-        <!-- 3. Vertical Image Block 1: Reports -->
+        <!-- 3. Vertical Image Block 1: Reports - Text Removed -->
         <div class="phd-bento-box phd-box-report-img">
-          <h3 class="phd-bento-title">Summary & Reports</h3>
-          <p class="phd-bento-text">View itemized costs paired with visual pie charts.</p>
           <div class="phd-img-placeholder"><img src="images/beauty-expense-report-chart.webp" alt="PHD Cosmetic Report screen showing an itemized cost breakdown and pie chart" loading="lazy"></div>
         </div>
 
@@ -577,10 +565,8 @@
           <p class="phd-bento-text">Declutter counters. Know what you own and what expires.</p>
         </div>
 
-        <!-- 10. Vertical Image Block 2: Digital Organizer (Bottom Right) -->
+        <!-- 10. Vertical Image Block 2: Digital Organizer (Bottom Right) - Text Removed -->
         <div class="phd-bento-box phd-box-vanity-img">
-          <h3 class="phd-bento-title">Digital Organizer</h3>
-          <p class="phd-bento-text">Log shades, items, and routine profiles easily.</p>
           <div class="phd-img-placeholder"><img src="images/beauty-add-cosmetic-profile.webp" alt="PHD Add Cosmetic screen showing a custom style profile with item, cost, and quantity fields" loading="lazy"></div>
         </div>
 
