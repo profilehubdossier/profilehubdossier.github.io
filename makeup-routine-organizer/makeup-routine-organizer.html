@@ -179,7 +179,7 @@
   .phd-bento-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: minmax(165px, auto); 
+    grid-auto-rows: minmax(180px, auto); 
     gap: 1.5rem;
     grid-auto-flow: dense;
   }
@@ -192,6 +192,7 @@
     border: 1px solid #f1f5f9;
     display: flex;
     flex-direction: column;
+    position: relative; /* Enables full-box clickable link covering */
     transition: border-color 0.3s, box-shadow 0.3s;
   }
 
@@ -227,14 +228,14 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
   }
 
   .phd-icon-container {
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     background-color: #fce7f3;
-    border-radius: 10px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -243,10 +244,12 @@
 
   .phd-icon-container svg {
     stroke: #be185d;
+    width: 24px;
+    height: 24px;
   }
 
   .phd-bento-title {
-    font-size: 1.15rem;
+    font-size: 1.25rem; /* Larger font size */
     font-weight: 700;
     margin: 0;
     color: #0f172a;
@@ -254,42 +257,53 @@
   }
 
   .phd-bento-text {
-    font-size: 0.875rem;
+    font-size: 1rem; /* Larger descriptive text font */
     color: #64748b;
     margin: 0 0 1rem 0;
     line-height: 1.5;
   }
 
-  /* Action Link */
+  /* Action Link styled to cover the full box */
   .phd-action-link {
     margin-top: auto;
     align-self: flex-end;
     color: #6b21a8;
     text-decoration: none;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 1rem; /* Larger link text */
     display: flex;
     align-items: center;
-    gap: 0.35rem;
-    transition: color 0.2s;
+    gap: 0.4rem;
+    z-index: 2;
+  }
+
+  /* Full-box click pseudo-element overlay */
+  .phd-bento-box.phd-box-sm::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    z-index: 1;
   }
 
   .phd-arrow {
     display: inline-block;
     transition: transform 0.3s ease;
+    font-size: 1.1rem; /* Larger arrow */
   }
 
   /* Only play hover animation on non-touch devices */
   @media (hover: hover) {
-    .phd-action-link:hover {
-      color: #581c87;
+    .phd-bento-box.phd-box-sm:hover .phd-arrow {
+      transform: translateX(6px);
     }
-    .phd-bento-box:hover .phd-arrow {
-      transform: translateX(5px);
-    }
-    .phd-bento-box:hover {
-      border-color: #e2e8f0;
-      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+    .phd-bento-box.phd-box-sm:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+      cursor: pointer;
     }
   }
 
@@ -357,7 +371,15 @@
     padding: 1.5rem;
     margin-bottom: 1.5rem;
     border: 1px solid #e2e8f0;
-    scroll-margin-top: 2rem; /* Adds breathing room when anchor linked */
+    scroll-margin-top: 2rem;
+    transition: background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+  }
+
+  /* Option B: Temporary JavaScript Highlight Class */
+  .phd-faq-item.faq-highlight {
+    background-color: #f3e8ff !important;
+    border-color: #c084fc !important;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
   }
 
   .phd-faq-q {
@@ -506,12 +528,14 @@
       color: #d8b4fe;
     }
     @media (hover: hover) {
-      .phd-action-link:hover {
-        color: #e9d5ff;
-      }
-      .phd-bento-box:hover {
+      .phd-bento-box.phd-box-sm:hover {
         border-color: #475569;
       }
+    }
+    .phd-faq-item.faq-highlight {
+      background-color: #3b0764 !important;
+      border-color: #9333ea !important;
+      box-shadow: 0 0 25px rgba(147, 51, 234, 0.4);
     }
     .phd-grid-cta-row {
       background: #3b0764;
@@ -818,6 +842,34 @@
     }
   }]
 }
+</script>
+
+<!-- Option B JavaScript: Smooth scroll & temporary highlight without URL hash changes -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const actionLinks = document.querySelectorAll(".phd-action-link");
+
+    actionLinks.forEach(link => {
+      link.addEventListener("click", function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute("href");
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+          // Smooth scroll to the target FAQ item
+          targetElement.scrollIntoView({ behavior: "smooth", block: "center" });
+
+          // Temporarily add highlight class
+          targetElement.classList.add("faq-highlight");
+
+          // Remove highlight class after 3 seconds
+          setTimeout(() => {
+            targetElement.classList.remove("faq-highlight");
+          }, 3000);
+        }
+      });
+    });
+  });
 </script>
 <!-- END PROFILE HUB DOSSIER PROMO PAGE -->
 </body>
