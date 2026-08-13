@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Makeup Routine Organizer & Beauty Vanity App | Profile Hub Dossier</title>
+<title>Makeup Routine Organizer & Beauty Inventory Tracking App | Profile Hub Dossier</title>
 <meta name="description" content="Organize your makeup routine, track your beauty stash, and stop buying duplicates. See how Profile Hub Dossier keeps your cosmetic collection organized in one private app.">
 <link rel="canonical" href="https://profilehubdossier.github.io/makeup-routine-organizer/makeup-routine-organizer.html">
 
 <meta property="og:type" content="article">
-<meta property="og:title" content="Makeup Routine Organizer & Beauty Vanity App | Profile Hub Dossier">
+<meta property="og:title" content="Makeup Routine Organizer & Beauty Inventory Tracking App | Profile Hub Dossier">
 <meta property="og:description" content="Organize your makeup routine, track your beauty stash, and stop buying duplicates with Profile Hub Dossier's private, local-first cosmetic organizer.">
 <meta property="og:url" content="https://profilehubdossier.github.io/makeup-routine-organizer/makeup-routine-organizer.html">
 <meta property="og:site_name" content="Profile Hub Dossier">
@@ -19,7 +19,7 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Makeup Routine Organizer & Beauty Vanity App",
+  "headline": "Makeup Routine Organizer & Beauty Inventory Tracking App",
   "description": "Organize your makeup routine, track your beauty stash, and stop buying duplicates with Profile Hub Dossier's private, local-first cosmetic organizer.",
   "author": { "@type": "Organization", "name": "Fryinocean" },
   "publisher": { "@type": "Organization", "name": "Fryinocean" },
@@ -59,6 +59,7 @@
     margin: 0;
     padding: 0;
     line-height: 1.5;
+    transition: background-color 0.3s, color 0.3s;
   }
 
   .phd-container {
@@ -198,38 +199,45 @@
   .phd-box-vanity-img { grid-column: span 1; grid-row: span 2; }
   .phd-box-sm { grid-column: span 1; }
 
-  /* Image Placeholders */
+  /* Image Placeholders with Contain & Frame Logic */
   .phd-img-placeholder {
     width: 100%;
     background-color: #f8fafc;
     border-radius: 12px;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #64748b;
     font-weight: 600;
     margin-top: 1rem;
     flex-grow: 1;
     overflow: hidden;
+    padding: 1rem;
+    box-sizing: border-box;
   }
 
   .phd-img-placeholder img {
     display: block;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 8px;
+    object-fit: contain;
+  }
+
+  /* Banner specific overrides */
+  .phd-box-theme .phd-img-placeholder { 
+    padding: 0; 
+  }
+  .phd-box-theme .phd-img-placeholder img { 
     width: 100%;
+    height: auto; 
     border-radius: 12px;
   }
 
-  /* Banner: scales by width, height follows naturally — never cropped */
-  .phd-box-theme .phd-img-placeholder img { height: auto; }
-
-  /* Portrait screenshots: box ratio matches the screenshot's real ratio
-     (640x1384) so object-fit:cover only scales, never crops content */
+  /* Portrait screenshots height baselines */
   .phd-box-report-img .phd-img-placeholder,
   .phd-box-vanity-img .phd-img-placeholder {
-    aspect-ratio: 640 / 1384;
-  }
-  .phd-box-report-img .phd-img-placeholder img,
-  .phd-box-vanity-img .phd-img-placeholder img {
-    height: 100%;
-    object-fit: cover;
+    min-height: 380px;
   }
 
   /* Icon Container Styling */
@@ -282,7 +290,6 @@
   /* 4. FAQ Section */
   .phd-faq-section {
     padding: 4rem 0;
-    
   }
 
   .phd-faq-heading {
@@ -320,7 +327,6 @@
     color: #1e293b;
     padding: 4rem 0 2rem 0;
     margin-top: 4rem;
-    
   }
 
   .phd-footer-cta-block {
@@ -328,7 +334,6 @@
     justify-content: space-between;
     align-items: center;
     padding-bottom: 3rem;
-    
   }
 
   .phd-footer-title {
@@ -390,6 +395,74 @@
       text-align: center;
     }
   }
+
+  /* DARK MODE THEME */
+  @media (prefers-color-scheme: dark) {
+    .phd-promo-wrapper {
+      background-color: #0f172a; /* Deep slate background */
+      color: #e2e8f0;
+    }
+    .phd-header {
+      border-bottom-color: #1e293b;
+    }
+    .phd-logo {
+      color: #d8b4fe;
+    }
+    .phd-nav-link {
+      color: #c084fc;
+    }
+    .phd-nav-link:hover {
+      color: #e9d5ff;
+    }
+    .phd-hero-title, .phd-faq-heading, .phd-footer-title {
+      color: #f8fafc;
+    }
+    .phd-hero-subtitle {
+      color: #d8b4fe;
+    }
+    .phd-hero-summary, .phd-hero-list {
+      color: #94a3b8;
+    }
+    .phd-hero-list {
+      color: #cbd5e1;
+    }
+    .phd-bento-box, .phd-faq-item {
+      background: #1e293b; /* Charcoal bento boxes */
+      border-color: #334155;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+    .phd-bento-title, .phd-faq-q {
+      color: #f1f5f9;
+    }
+    .phd-bento-text, .phd-faq-a, .phd-footer-subtitle, .phd-footer-bottom {
+      color: #94a3b8;
+    }
+    .phd-img-placeholder {
+      background-color: #0f172a; /* Dark inset frame for images */
+    }
+    .phd-icon-container {
+      background-color: #4c1d95; /* Deep purple icon box */
+    }
+    .phd-icon-container svg {
+      stroke: #e9d5ff;
+    }
+    .phd-grid-cta-row {
+      background: #3b0764;
+      border-color: #581c87;
+    }
+    .phd-grid-cta-text {
+      color: #e9d5ff;
+    }
+    .phd-btn-apple {
+      background-color: #7e22ce;
+    }
+    .phd-btn-apple:hover {
+      background-color: #9333ea;
+    }
+    .phd-footer {
+      background-color: #0f172a;
+    }
+  }
 </style>
 </head>
 <body>
@@ -405,7 +478,7 @@
 
     <!-- Top Hero Section -->
     <section class="phd-hero">
-      <h1 class="phd-hero-title">Makeup Routine Organizer & Personal Beauty Vanity App</h1>
+      <h1 class="phd-hero-title">Makeup Routine Organizer & Beauty Inventory Tracking App</h1>
       <div class="phd-hero-subtitle">Master your cosmetic stash, custom routine profiles, makeup spending, and viral beauty looks — all in one local-first place.</div>
       
       <p class="phd-hero-summary">
@@ -429,7 +502,7 @@
         
         <!-- 1. Adjusted Horizontal Banner (Span 2) -->
         <div class="phd-bento-box phd-box-theme">
-          <h3 class="phd-bento-title">Ultimate Management Vanity</h3>
+          <h3 class="phd-bento-title">Ultimate Inventory Tracking</h3>
           <p class="phd-bento-text">Custom profiles, expense tracking, and local-first digital organization in one place.</p>
           <div class="phd-img-placeholder"><img src="images/beauty-vanity-app-theme-banner.webp" alt="Profile Hub Dossier app showing custom beauty profiles, visual analysis, and local-first privacy features" loading="lazy"></div>
         </div>
@@ -450,7 +523,7 @@
           <div class="phd-img-placeholder"><img src="images/beauty-expense-report-chart.webp" alt="PHD Cosmetic Report screen showing an itemized cost breakdown and pie chart" loading="lazy"></div>
         </div>
 
-        <!-- 4. Local-First Privacy (Swapped from 5) -->
+        <!-- 4. Local-First Privacy -->
         <div class="phd-bento-box phd-box-sm">
           <div class="phd-icon-container">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
@@ -459,7 +532,7 @@
           <p class="phd-bento-text">Your beauty data remains completely stored on your device.</p>
         </div>
 
-        <!-- 5. Visual Analysis (Swapped from 4) -->
+        <!-- 5. Visual Analysis -->
         <div class="phd-bento-box phd-box-sm">
           <div class="phd-icon-container">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
@@ -468,7 +541,7 @@
           <p class="phd-bento-text">Clear pie charts break down exact category spending.</p>
         </div>
 
-        <!-- 6. Custom Profiles (Swapped from 7) -->
+        <!-- 6. Custom Profiles -->
         <div class="phd-bento-box phd-box-sm">
           <div class="phd-icon-container">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
@@ -477,7 +550,7 @@
           <p class="phd-bento-text">Tailor profiles for any topic or style.</p>
         </div>
 
-        <!-- 7. Stop Buying Dupes (Swapped from 6) -->
+        <!-- 7. Stop Buying Dupes -->
         <div class="phd-bento-box phd-box-sm">
           <div class="phd-icon-container">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
@@ -504,9 +577,9 @@
           <p class="phd-bento-text">Declutter counters. Know what you own and what expires.</p>
         </div>
 
-        <!-- 10. Vertical Image Block 2: Digital Vanity (Bottom Right) -->
+        <!-- 10. Vertical Image Block 2: Digital Organizer (Bottom Right) -->
         <div class="phd-bento-box phd-box-vanity-img">
-          <h3 class="phd-bento-title">Digital Vanity</h3>
+          <h3 class="phd-bento-title">Digital Organizer</h3>
           <p class="phd-bento-text">Log shades, items, and routine profiles easily.</p>
           <div class="phd-img-placeholder"><img src="images/beauty-add-cosmetic-profile.webp" alt="PHD Add Cosmetic screen showing a custom style profile with item, cost, and quantity fields" loading="lazy"></div>
         </div>
@@ -533,7 +606,7 @@
 
       <!-- Grid Bottom Download Row -->
       <div class="phd-grid-cta-row">
-        <div class="phd-grid-cta-text">Ready to transform your makeup vanity?</div>
+        <div class="phd-grid-cta-text">Ready to transform your makeup routine?</div>
         <a href="#" class="phd-btn-apple">
           <svg viewBox="0 0 170 170"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.8.13-9.67-1.92-14.62-6.14-3.26-2.72-7.13-7.39-11.62-14-6.31-9.24-11.27-19.86-14.88-31.86-3.61-12-5.42-23.47-5.42-34.41 0-14.24 3.58-25.79 10.74-34.65 7.16-8.86 16.03-13.36 26.61-13.5 4.8 0 10.12 1.25 15.96 3.75 5.84 2.5 9.77 3.82 11.79 3.96 1.63 0 5.76-1.42 12.39-4.25 6.63-2.83 12.28-4.07 16.95-3.73 12.61 1.09 22.48 5.82 29.6 14.19-11.3 6.85-16.82 16.38-16.55 28.58.27 9.68 3.92 17.68 10.95 24 7.03 6.32 15.48 9.8 25.35 10.45-2.28 6.85-5.22 13.7-8.82 20.55zm-29.28-105.92c0 7.07-2.61 13.88-7.83 20.43-5.22 6.55-11.63 10.63-19.23 12.24-.22-1.3-.33-2.39-.33-3.26 0-7.28 2.72-14.35 8.16-21.2 5.44-6.85 11.96-10.87 19.56-12.07.22 1.3.33 2.59.33 3.86z"/></svg>
           Get Profile Hub Dossier
@@ -549,10 +622,10 @@
         <div class="phd-faq-q">Privacy? Privacy! And again, Privacy! Privacy is the main concern—how does Profile Hub Dossier manage it?</div>
         <div class="phd-faq-a">
           Profile Hub Dossier is a local-first app. All client profiles, item details, and business information are saved securely on your local device.<br><br>
-          • Profile Hub Dossier does <span style="font-weight: 900; color: #000000;">NOT</span> collect your name, location, or phone number.<br>
-          • Profile Hub Dossier does <span style="font-weight: 900; color: #000000;">NOT</span> sell, rent, or trade your data to any third party.<br>
-          • Profile Hub Dossier does <span style="font-weight: 900; color: #000000;">NOT</span> access your camera, microphone, or photo library without your explicit permission requested through your device's operating system.<br>
-          • Profile Hub Dossier does <span style="font-weight: 900; color: #000000;">NOT</span> use our own analytics SDKs to track your behavior. Subscription providers may collect limited interaction data (like paywall views) solely to manage services, which is <span style="font-weight: 900; color: #000000;">NOT</span> linked to your identity for advertising.<br>
+          • Profile Hub Dossier does <span style="font-weight: 900; color: inherit;">NOT</span> collect your name, location, or phone number.<br>
+          • Profile Hub Dossier does <span style="font-weight: 900; color: inherit;">NOT</span> sell, rent, or trade your data to any third party.<br>
+          • Profile Hub Dossier does <span style="font-weight: 900; color: inherit;">NOT</span> access your camera, microphone, or photo library without your explicit permission requested through your device's operating system.<br>
+          • Profile Hub Dossier does <span style="font-weight: 900; color: inherit;">NOT</span> use our own analytics SDKs to track your behavior. Subscription providers may collect limited interaction data (like paywall views) solely to manage services, which is <span style="font-weight: 900; color: inherit;">NOT</span> linked to your identity for advertising.<br>
           <a href="https://phd323.github.io/phd-privacy/" style="color: #6b21a8; font-weight: 600; text-decoration: none;">Full privacy policy link →</a>
         </div>
       </div>
@@ -612,7 +685,7 @@
         <div>© 2026 Fryinocean · Profile Hub Dossier</div>
         <a href="https://phd323.github.io/phd-privacy/" class="phd-footer-link">Privacy Policy</a>
       </div>
-      <div style="margin-top: 1.5rem; font-size: 0.85rem; color: #475569; border-top: 1px solid #e2e8f0; padding-top: 1.5rem; text-align: center;">
+      <div style="margin-top: 1.5rem; font-size: 0.85rem; color: inherit; opacity: 0.7; border-top: 1px solid #e2e8f0; padding-top: 1.5rem; text-align: center;">
         <strong>Disclaimer:</strong> All information on this page, including pricing and features, is subject to change without notice. As a small team, we assume no liability for outdated content. Please refer to the Apple App Store for the most current details.
       </div>
     </div>
