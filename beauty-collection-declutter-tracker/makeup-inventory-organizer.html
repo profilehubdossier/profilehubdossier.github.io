@@ -236,9 +236,9 @@
   .hero-copy h1{
     /* fallback for browsers without container-query support */
     font-size:clamp(1.5rem, 4.6vw, 2.35rem);
-    line-height:1.15;
+    line-height:1.2;
     letter-spacing:-.01em;
-    white-space:nowrap;
+    white-space:normal;
   }
   @supports (container-type: inline-size){
     .hero-copy h1{
@@ -276,6 +276,10 @@
   .block-insight{ padding:8px 0 64px; }
   .insight-inner{ max-width:74ch; margin:0 auto; }
   .insight-inner p{ margin:0 0 1.3em; color:var(--ink); }
+  .insight-inner h2.dropcap{
+    font-family:var(--font-body); font-weight:400; margin:0 0 1.3em;
+    color:var(--ink); font-size:1.08rem; line-height:1.65;
+  }
   .insight-inner .dropcap:first-letter{
     font-family:var(--font-display); font-size:3.6rem; float:left;
     line-height:.82; padding:.06em .08em 0 0; color:var(--burgundy);
@@ -283,7 +287,7 @@
   }
   .insight-callout{
     border-left:3px solid var(--burgundy); padding:4px 0 4px 20px;
-    font-family:var(--font-display); font-size:1.3rem; font-style:italic;
+    font-family:var(--font-display); font-weight:400; font-size:1.1rem; font-style:italic;
     color:var(--ink); margin:1.6em 0;
   }
 
