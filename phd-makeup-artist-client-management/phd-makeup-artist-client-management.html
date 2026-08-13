@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Makeup Artist CRM & Client Tracker App | Profile Hub Dossier</title>
+<meta name="description" content="The beauty industry never stops changing. See how Profile Hub Dossier helps makeup artists manage custom profiles, kit inventory, expenses, and seasonal trends in one place.">
+<link rel="canonical" href="https://phd323.github.io/profilehubdossier/phd-pro-makeup-artist-client-management/phd-pro-makeup-artist-client-management.html">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Makeup Artist CRM & Client Tracker App | Profile Hub Dossier">
+<meta property="og:description" content="The essential makeup artist CRM and kit management tool. Track client profiles, cosmetic spend, seasonal trends, and inventory in one place.">
+<meta property="og:url" content="https://phd323.github.io/profilehubdossier/phd-pro-makeup-artist-client-management/phd-pro-makeup-artist-client-management.html">
+<meta property="og:site_name" content="Profile Hub Dossier">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index, follow">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The ultimate makeup business management & tracking app.",
+  "description": "The beauty industry is growing fast. Profile Hub Dossier helps makeup artists manage custom profiles, kit inventory, makeup expenses, and trends in one place.",
+  "author": { "@type": "Organization", "name": "Fryinocean" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Fryinocean",
+    "logo": { "@type": "ImageObject", "url": "https://phd323.github.io/profilehubdossier/assets/logo.png" }
+  },
+  "mainEntityOfPage": "https://phd323.github.io/profilehubdossier/phd-pro-makeup-artist-client-management/phd-pro-makeup-artist-client-management.html",
+  "datePublished": "2026-08-03"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Profile Hub Dossier",
+  "alternateName": "PHD",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "iOS, Android",
+  "offers": {
+    "@type": "Offer",
+    "price": "29.99",
+    "priceCurrency": "USD",
+    "priceValidUntil": "2026-12-31"
+  },
+  "publisher": { "@type": "Organization", "name": "Fryinocean" }
+}
+</script>
+
+<style>
+  /* ============================================================
+     DESIGN TOKENS
+  ============================================================= */
+  :root{
+    --board:      #17171A;   /* near-black board background */
+    --board-deep: #101012;
+    --panel:      #201F23;   /* raised panel */
+    --ivory:      #EDE8DC;   /* primary text on dark */
+    --ivory-soft: #A6A29A;   /* secondary text on dark */
+    --amber:      #E2A93A;   /* grease-pencil highlight accent */
+    --amber-deep: #C08A22;
+    --teal:       #4E8C82;   /* secondary accent, kit-tag color */
+    --rule:       #35333A;   /* hairline on dark */
+    --tag-ink:    #0F0F10;   /* text on amber tags */
+
+    --font-display: 'Space Grotesk', 'Arial Narrow', sans-serif;
+    --font-body:    'Inter', -apple-system, sans-serif;
+    --font-label:   'JetBrains Mono', 'Courier New', monospace;
+
+    --radius: 2px;
+    --max: 1080px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--board);
+    color:var(--ivory);
+    font-family:var(--font-body);
+    font-size:16.5px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; }
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 24px; }
+
+  h1,h2,h3{ font-family:var(--font-display); font-weight:700; margin:0 0 .5em; color:var(--ivory); letter-spacing:-.01em; }
+
+  .tag{
+    font-family:var(--font-label); font-size:.68rem; letter-spacing:.1em;
+    text-transform:uppercase; background:var(--amber); color:var(--tag-ink);
+    padding:4px 9px; border-radius:2px; display:inline-block;
+  }
+  .idx{
+    font-family:var(--font-label); font-size:.72rem; color:var(--amber);
+    letter-spacing:.08em;
+  }
+
+  .skip-link{
+    position:absolute; left:-999px; top:0; background:var(--amber); color:var(--tag-ink);
+    padding:10px 16px; z-index:100;
+  }
+  .skip-link:focus{ left:16px; top:16px; }
+  :focus-visible{ outline:3px solid var(--amber); outline-offset:2px; }
+
+  /* ---------- HEADER + ROSTER TICKER ---------- */
+  .site-header{
+    border-bottom:1px solid var(--rule);
+    background:var(--board-deep);
+    position:sticky; top:0; z-index:20;
+  }
+  .site-header .wrap{
+    display:grid; grid-template-columns: 1fr auto 1fr; align-items:center;
+    padding-top:15px; padding-bottom:15px;
+  }
+  .header-left { justify-self: start; }
+  .header-center { justify-self: center; }
+  .header-right { justify-self: end; }
+  
+  .brand{
+    font-family:var(--font-label); font-weight:600; letter-spacing:.03em;
+    text-decoration:none; font-size:.86rem; color:var(--ivory);
+  }
+  .brand span{ color:var(--amber); }
+  .header-cta{
+    font-family:var(--font-label); font-size:.74rem; letter-spacing:.05em;
+    text-decoration:none; border:1px solid var(--amber); color:var(--amber);
+    padding:7px 13px; border-radius:var(--radius); text-transform:uppercase;
+    transition:background .15s ease, color .15s ease;
+  }
+  .header-cta:hover{ background:var(--amber); color:var(--tag-ink); }
+  
+  /* ---------- HERO ---------- */
+  .block-hero{ padding:68px 0 60px; }
+  .hero-inner{ max-width:74ch; margin:0 auto; text-align:center; }
+  .hero-inner h1{
+    font-size:clamp(1.8rem, 3.5vw, 2.8rem);
+    line-height:1.18;
+    margin-bottom: 0.2em;
+  }
+  .hero-sub {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    font-weight: 600;
+    color: var(--amber);
+    margin: 0 auto 1em;
+    line-height: 1.3;
+    max-width: 65ch;
+  }
+  .hero-lede{
+    font-size:1.06rem; 
+    color:var(--ivory-soft); 
+    max-width:66ch; 
+    margin:1.2em auto 1.4em;
+    text-align: left;
+  }
+  .hero-lede ul {
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 24px;
+    color: var(--ivory);
+  }
+  .hero-lede li {
+    margin-bottom: 0.3em;
+  }
+
+  /* BUTTONS */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    font-family:var(--font-label); font-size:.78rem; letter-spacing:.04em;
+    text-decoration:none; text-transform:uppercase; text-align:center;
+    padding:13px 20px; border-radius:var(--radius); border:1px solid transparent;
+    transition:transform .12s ease;
+  }
+  .btn:hover{ transform:translateY(-1px); }
+  .btn-primary{ background:var(--amber); color:var(--tag-ink); }
+  .btn-primary:hover{ background:var(--amber-deep); }
+  .btn-apple svg{ width:16px; height:16px; }
+  
+  .btn-header-small { padding: 8px 14px; font-size: .7rem; }
+  .btn-large { font-size: .9rem; padding: 18px 32px; }
+  .btn-large svg { width: 20px; height: 20px; }
+
+  /* ---------- PROOF ---------- */
+  .block-proof{ padding:28px 0 54px; border-top:1px solid var(--rule); }
+  .proof-inner{
+    display:grid; grid-template-columns:.95fr 1.05fr; gap:44px; align-items:center;
+  }
+  .proof-inner.is-reversed .proof-copy{ order:2; }
+  .proof-inner.is-reversed .kitcase{ order:1; }
+  .proof-copy h2{ font-size:1.4rem; margin:.5em 0 .6em; }
+  .proof-list{ list-style:none; margin:0; padding:0; max-width:48ch; }
+  .proof-list li{
+    display:grid; grid-template-columns:16px 1fr; gap:10px;
+    padding:11px 0; border-top:1px solid var(--rule); color:var(--ivory-soft); font-size:.96rem;
+  }
+  .proof-list li:first-child{ border-top:none; }
+  .proof-list li::before{ content:"—"; color:var(--amber); font-family:var(--font-label); }
+  .kitcase{
+    background:var(--panel); border:1px solid var(--rule); border-radius:8px;
+    padding:16px; position:relative;
+  }
+  .kitcase::before{
+    content:attr(data-tab); position:absolute; top:-11px; left:16px;
+    background:var(--amber); color:var(--tag-ink); font-family:var(--font-label);
+    font-size:.64rem; letter-spacing:.08em; text-transform:uppercase;
+    padding:4px 9px; border-radius:2px;
+  }
+  .kitcase img{ border-radius:4px; margin-top:6px; }
+
+  /* ---------- MID CTA ---------- */
+  .block-mid-cta {
+    padding: 60px 0;
+    text-align: center;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ---------- FAQ ---------- */
+  .block-faq{ padding:60px 0; border-top: 1px solid var(--rule); }
+  .faq-head{ max-width:56ch; margin-bottom:30px; }
+  .faq-list{ max-width:74ch; }
+  .faq-item{ padding:20px 0; border-top:1px solid var(--rule); }
+  .faq-item:last-child{ border-bottom:1px solid var(--rule); }
+  .faq-q{
+    margin:0 0 .5em; font-family:var(--font-display); font-weight:600;
+    font-size:1.06rem; color:var(--amber);
+  }
+  .faq-a{ color:var(--ivory-soft); max-width:66ch; margin:0; }
+  .faq-a + .faq-a{ margin-top:.8em; }
+  .faq-a a{ color:var(--ivory); text-decoration:underline; }
+  .faq-bullets { list-style: square; padding-left: 20px; color: var(--ivory-soft); margin-top: 10px; margin-bottom: 15px; }
+  .faq-bullets li { margin-bottom: 5px; }
+  .faq-bullets strong { color: var(--ivory); }
+
+  /* ---------- CTA ---------- */
+  .block-cta{
+    background:var(--panel); border-top:1px solid var(--rule);
+    padding:56px 0; text-align:left;
+  }
+  .cta-inner{ display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:24px; }
+  .block-cta h2{ font-size:clamp(1.4rem,2.6vw,1.9rem); margin:0 0 .3em; }
+  .block-cta p{ color:var(--ivory-soft); margin:0; max-width:44ch; }
+
+  .site-footer{ padding:32px 0; border-top:1px solid var(--rule); }
+  .site-footer .wrap{
+    display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px;
+    font-family:var(--font-label); font-size:.72rem; color:var(--ivory-soft);
+  }
+  .site-footer a{ text-decoration:none; }
+  .site-footer a:hover{ color:var(--amber); }
+
+  @media (max-width:860px){
+    .proof-inner{ grid-template-columns:1fr; gap:26px; }
+    
+    /* Ensuring images stack ABOVE text for all feature blocks on mobile */
+    .proof-inner .proof-copy{ order:2; }
+    .proof-inner .kitcase{ order:1; }
+    
+    .proof-inner.is-reversed .proof-copy{ order:2; }
+    .proof-inner.is-reversed .kitcase{ order:1; }
+    
+    .cta-inner{ flex-direction:column; align-items:flex-start; }
+  }
+  @media (max-width:620px){
+    .btn{ width:100%; }
+    .hero-actions{ flex-direction:column; align-items:stretch; }
+    .site-header .wrap { 
+      display: flex; flex-direction: column; gap: 12px; justify-content: center; 
+    }
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{ scroll-behavior:auto; }
+    .btn:hover{ transform:none; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="header-left">
+      <a class="brand" href="https://phd323.github.io/profilehubdossier/">FOR <span>MAKEUP ARTISTS</span></a>
+    </div>
+    <div class="header-center">
+      <a class="btn btn-primary btn-apple btn-header-small" href="https://apps.apple.com/app/profile-hub-dossier/id6761083776" target="_blank" rel="noopener">
+        <svg viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141 4 184.8 4 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 37.3 59 128.8 107.2 127.3 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-84 102.6-121.4-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27-32.1 24.5-61.3 23.7-71.8-23.8 1.4-51.3 16.4-67 34.9-17.3 19.8-27.5 44.3-25.4 71.4 25.9 2 49.4-11.4 68.7-34.5z"/></svg>
+        Profile Hub Dossier download
+      </a>
+    </div>
+    <div class="header-right">
+      <a class="header-cta" href="#faq">Skip to FAQ</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============================================================
+       HERO
+  ============================================================= -->
+  <section class="block-hero">
+    <div class="wrap hero-inner">
+      <h1>The ultimate makeup business management & tracking app.</h1>
+      <p class="hero-sub">Master the CRM, custom client profiles, kit inventory, makeup expenses, new cosmetic styles and more — all in one place.</p>
+      
+      <div class="hero-lede">
+        The beauty industry is growing fast and widely. As a professional makeup artist, you know that means huge business opportunities—and challenges. The key to success is having a powerful tool to:
+        <ul>
+          <li>Effectively manage every client's preferred makeup items, styles, and seasonal trends.</li>
+          <li>Precisely track kit inventory, makeup expenses, and trend timelines.</li>
+        </ul>
+        Profile Hub Dossier is the perfect app to handle all of this and improve your CRM. Keep everything fully under your control to avoid any big mess or chaos, because Profile Hub Dossier handles all of these:
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROOF #1
+  ============================================================= -->
+  <section class="block-proof">
+    <div class="wrap">
+      <div class="proof-inner">
+        <div class="proof-copy">
+          <span class="idx">01 — CLIENT PROFILES</span>
+          <h2>Custom profiles for a client's diverse needs.</h2>
+          <ul class="proof-list">
+            <li>Create unlimited, case-specific client profiles with custom style names—like a "2026 July Summer Vibe" or "2026 September Bridal Prep"—to easily meet your clients' varying demands.</li>
+            <li>Digitize your makeup item inventory. Log specific details like item name, cost, and quantity directly to a client's profile. This guarantees your business thrives through effective kit management and seamless makeup expense tracking.</li>
+            <li>Intelligently organize and categorize profile details by season, event, price, quantity, or new style, ensuring a clear view of the whole picture to stay ahead of the latest trends without the mess.</li>
+          </ul>
+        </div>
+        <div class="kitcase" data-tab="Add Cosmetic">
+          <img src="assets/screenshot-add-client-profile.png" alt="PHD Add Cosmetic screen showing a client contact, a named style profile, item, cost and quantity fields" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROOF #2
+  ============================================================= -->
+  <section class="block-proof">
+    <div class="wrap">
+      <div class="proof-inner is-reversed">
+        <div class="proof-copy">
+          <span class="idx">02 — BUSINESS REPORT</span>
+          <h2>Visual makeup expense reports, filtered by client and date.</h2>
+          <ul class="proof-list">
+            <li>Custom date ranges. Ensure you only see the most important, updated info, saving the most valuable asset in all aspects: TIME.</li>
+            <li>Detailed expense reports. Check an itemized tracking table alongside a visual pie chart for a clear overview, instantly highlighting the most important kit inventory and expense data for your beauty business.</li>
+            <li>Secure profile sharing. Import and export detailed cosmetic profiles—automatically hiding the client's private name—to safely exchange kit data with business partners and unlock new industry opportunities.</li>
+          </ul>
+        </div>
+        <div class="kitcase" data-tab="Cosmetic Report">
+          <img src="assets/screenshot-cost-report.png" alt="PHD Cosmetic Report screen showing a dated cost breakdown and pie chart for a client's products" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MID CTA
+  ============================================================= -->
+  <section class="block-mid-cta">
+    <div class="wrap">
+        <a class="btn btn-primary btn-apple btn-large" href="https://apps.apple.com/app/profile-hub-dossier/id6761083776" target="_blank" rel="noopener">
+          <svg viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141 4 184.8 4 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 37.3 59 128.8 107.2 127.3 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-84 102.6-121.4-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27-32.1 24.5-61.3 23.7-71.8-23.8 1.4-51.3 16.4-67 34.9-17.3 19.8-27.5 44.3-25.4 71.4 25.9 2 49.4-11.4 68.7-34.5z"/></svg>
+          Profile Hub Dossier download
+        </a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FAQ
+  ============================================================= -->
+  <section class="block-faq" id="faq">
+    <div class="wrap">
+      <div class="faq-head">
+        <span class="idx">03 &mdash; FAQ SECTION</span>
+        <h2>Still have questions?</h2>
+      </div>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <h3 class="faq-q">Privacy? Privacy! And again, Privacy! Privacy is the main concern—how does Profile Hub Dossier manage it?</h3>
+          <p class="faq-a">Profile Hub Dossier is a local-first app. All client profiles, item details, and business information are saved securely on your local device.</p>
+          <ul class="faq-bullets">
+            <li>Profile Hub Dossier does <strong>NOT</strong> collect your name, location, or phone number.</li>
+            <li>Profile Hub Dossier does <strong>NOT</strong> sell, rent, or trade your data to any third party.</li>
+            <li>Profile Hub Dossier does <strong>NOT</strong> access your camera, microphone, or photo library without your explicit permission requested through your device's operating system.</li>
+            <li>Profile Hub Dossier does <strong>NOT</strong> use our own analytics SDKs to track your behavior. Subscription providers may collect limited interaction data (like paywall views) solely to manage services, which is not linked to your identity for advertising.</li>
+            
+          </ul>
+          <p class="faq-a"><a href="https://phd323.github.io/phd-privacy/">Full privacy policy →</a></p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">How does Profile Hub Dossier improve my CRM and benefit my clients?</h3>
+          <p class="faq-a">To deliver flawless service, you need to know your clients first. Profile Hub Dossier helps you digitize your clients' information and create custom profiles tailored to their specific trends and styles. By making all this detailed info easy to manage and track, you build a solid foundation to grow your beauty business while ensuring every client gets a perfectly personalized experience.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">How does Profile Hub Dossier actually help my makeup business, not just my kit?</h3>
+          <p class="faq-a">Every makeup item logged against a client carries a specific cost, which rolls into a detailed business report with a visual expense breakdown. This tracks the exact record most professional artists never keep—what a client actually costs you, tracked accurately instead of guessed.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">Can I share makeup profiles or collaborate with other professional artists?</h3>
+          <p class="faq-a">Yes, client profiles export and import seamlessly. Profile Hub Dossier automatically hides the client's private name during this process, so you can safely trade a cosmetic history or compare notes on kit items with business partners you trust without ever violating client privacy.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-q">What is the cost of the Profile Hub Dossier?</h3>
+          <p class="faq-a">$29.99/year with a 14-day free trial. You get unlimited access to cosmetic, education, and moneyflow profiles, plus every future profile, new features and app update at no extra cost.</p>
+          <p class="faq-a">Use promo code <strong>G1</strong> for a limited-time discount on your subscription.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA
+  ============================================================= -->
+  <section class="block-cta">
+    <div class="wrap cta-inner">
+      <div>
+        <h2>Thrive with peace of mind.</h2>
+        <p>14-day free trial. No account required to start.</p>
+      </div>
+      <a class="btn btn-primary btn-apple" href="https://apps.apple.com/app/profile-hub-dossier/id6761083776" target="_blank" rel="noopener">
+        <svg viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141 4 184.8 4 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 37.3 59 128.8 107.2 127.3 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-84 102.6-121.4-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27-32.1 24.5-61.3 23.7-71.8-23.8 1.4-51.3 16.4-67 34.9-17.3 19.8-27.5 44.3-25.4 71.4 25.9 2 49.4-11.4 68.7-34.5z"/></svg>
+        Profile Hub Dossier download
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 Fryinocean · Profile Hub Dossier</span>
+    <nav>
+      <a href="https://phd323.github.io/phd-privacy/">Privacy Policy</a>
+    </nav>
+    <p style="flex-basis: 100%; margin: 16px 0 0; font-size: 0.85em; opacity: 0.8;"><strong>Disclaimer:</strong> All information on this page, including pricing and features, is subject to change without notice. As a small team, we assume no liability for outdated content. Please refer to the Apple App Store for the most current details.</p>
+  </div>
+</footer>
+
+</body>
+</html>
