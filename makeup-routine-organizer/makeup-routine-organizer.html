@@ -179,10 +179,8 @@
   .phd-bento-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* Forces strict equal height for all small unit rows */
     grid-auto-rows: minmax(165px, auto); 
     gap: 1.5rem;
-    /* Auto-flow dense packs the small rectangles tightly around our fixed images */
     grid-auto-flow: dense;
   }
 
@@ -194,26 +192,29 @@
     border: 1px solid #f1f5f9;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    transition: border-color 0.3s, box-shadow 0.3s;
   }
 
   /* Hardcoded Fixed Coordinates */
   .phd-box-theme { 
     grid-column: 1 / 3; 
     grid-row: 1 / 3; 
-    padding: 1rem; /* Less padding for big image container */
+    padding: 1rem;
+    justify-content: center;
   }
 
   .phd-box-report-img { 
     grid-column: 1 / 2; 
     grid-row: 3 / 6; 
     padding: 1rem;
+    justify-content: center;
   }
 
   .phd-box-vanity-img { 
     grid-column: 3 / 4; 
     grid-row: 4 / 7; 
     padding: 1rem;
+    justify-content: center;
   }
 
   .phd-box-sm { 
@@ -221,7 +222,78 @@
     grid-row: span 1; 
   }
 
-  /* Image Placeholders (Fills entire container) */
+  /* Internal Box Architecture */
+  .phd-box-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .phd-icon-container {
+    width: 44px;
+    height: 44px;
+    background-color: #fce7f3;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .phd-icon-container svg {
+    stroke: #be185d;
+  }
+
+  .phd-bento-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0;
+    color: #0f172a;
+    line-height: 1.2;
+  }
+
+  .phd-bento-text {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin: 0 0 1rem 0;
+    line-height: 1.5;
+  }
+
+  /* Action Link */
+  .phd-action-link {
+    margin-top: auto;
+    align-self: flex-end;
+    color: #6b21a8;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: color 0.2s;
+  }
+
+  .phd-arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+
+  /* Only play hover animation on non-touch devices */
+  @media (hover: hover) {
+    .phd-action-link:hover {
+      color: #581c87;
+    }
+    .phd-bento-box:hover .phd-arrow {
+      transform: translateX(5px);
+    }
+    .phd-bento-box:hover {
+      border-color: #e2e8f0;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+    }
+  }
+
+  /* Image Placeholders */
   .phd-img-placeholder {
     width: 100%;
     height: 100%;
@@ -243,34 +315,10 @@
     object-fit: contain;
   }
 
-  /* Icon Container Styling */
-  .phd-icon-container {
-    width: 44px;
-    height: 44px;
-    background-color: #fce7f3;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 0.75rem;
-  }
-
-  .phd-icon-container svg {
-    stroke: #be185d;
-  }
-
-  .phd-bento-title {
-    font-size: 1.15rem;
-    font-weight: 700;
-    margin: 0.25rem 0 0.5rem 0;
-    color: #0f172a;
-  }
-
-  .phd-bento-text {
-    font-size: 0.875rem;
-    color: #64748b;
-    margin: 0;
-    line-height: 1.5;
+  /* Banner specific overrides */
+  .phd-box-theme .phd-img-placeholder img { 
+    height: auto; 
+    border-radius: 12px;
   }
 
   /* Grid Download Banner Row */
@@ -309,6 +357,7 @@
     padding: 1.5rem;
     margin-bottom: 1.5rem;
     border: 1px solid #e2e8f0;
+    scroll-margin-top: 2rem; /* Adds breathing room when anchor linked */
   }
 
   .phd-faq-q {
@@ -384,7 +433,7 @@
     .phd-box-report-img, .phd-box-vanity-img { 
       grid-column: span 1; 
       grid-row: auto; 
-      min-height: 380px; /* Restoring height for normal stacking */
+      min-height: 380px;
     }
   }
 
@@ -452,6 +501,17 @@
     }
     .phd-icon-container svg {
       stroke: #e9d5ff;
+    }
+    .phd-action-link {
+      color: #d8b4fe;
+    }
+    @media (hover: hover) {
+      .phd-action-link:hover {
+        color: #e9d5ff;
+      }
+      .phd-bento-box:hover {
+        border-color: #475569;
+      }
     }
     .phd-grid-cta-row {
       background: #3b0764;
@@ -522,69 +582,100 @@
           <div class="phd-img-placeholder"><img src="images/beauty-add-cosmetic-profile.webp" alt="PHD Add Cosmetic screen showing a custom style profile with item, cost, and quantity fields" loading="lazy"></div>
         </div>
 
-        <!-- The 8 small boxes (Perfectly auto-placed by CSS Grid Dense Flow) -->
+        <!-- Small Box: Live App (Links to Q6) -->
         <div class="phd-bento-box phd-box-sm">
-          <div class="phd-icon-container">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"/></svg>
+          <div class="phd-box-header">
+            <div class="phd-icon-container">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"/></svg>
+            </div>
+            <h3 class="phd-bento-title">Live App</h3>
           </div>
-          <h3 class="phd-bento-title">Live App</h3>
           <p class="phd-bento-text">phd is NOT for only makeup.</p>
+          <a href="#faq-unique" class="phd-action-link">Learn more <span class="phd-arrow">→</span></a>
         </div>
 
+        <!-- Small Box: Local-First Privacy (Links to Q1) -->
         <div class="phd-bento-box phd-box-sm">
-          <div class="phd-icon-container">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <div class="phd-box-header">
+            <div class="phd-icon-container">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <h3 class="phd-bento-title">Local-First Privacy</h3>
           </div>
-          <h3 class="phd-bento-title">Local-First Privacy</h3>
           <p class="phd-bento-text">Your beauty data remains completely stored on your device.</p>
+          <a href="#faq-privacy" class="phd-action-link">Learn more <span class="phd-arrow">→</span></a>
         </div>
 
+        <!-- Small Box: Custom Profiles (Links to Q2) -->
         <div class="phd-bento-box phd-box-sm">
-          <div class="phd-icon-container">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <div class="phd-box-header">
+            <div class="phd-icon-container">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <h3 class="phd-bento-title">Custom Profiles</h3>
           </div>
-          <h3 class="phd-bento-title">Custom Profiles</h3>
           <p class="phd-bento-text">Tailor profiles for any topic or style.</p>
+          <a href="#faq-challenge" class="phd-action-link">Learn more <span class="phd-arrow">→</span></a>
         </div>
 
+        <!-- Small Box: Stop Buying Dupes (Links to Q3) -->
         <div class="phd-bento-box phd-box-sm">
-          <div class="phd-icon-container">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          <div class="phd-box-header">
+            <div class="phd-icon-container">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            </div>
+            <h3 class="phd-bento-title">Stop Buying Dupes</h3>
           </div>
-          <h3 class="phd-bento-title">Stop Buying Dupes</h3>
           <p class="phd-bento-text">Never buy identical shades twice. Save your stash cash.</p>
+          <a href="#faq-dupes" class="phd-action-link">Learn more <span class="phd-arrow">→</span></a>
         </div>
 
+        <!-- Small Box: Items Inventory (Links to Q3) -->
         <div class="phd-bento-box phd-box-sm">
-          <div class="phd-icon-container">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/></svg>
+          <div class="phd-box-header">
+            <div class="phd-icon-container">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/></svg>
+            </div>
+            <h3 class="phd-bento-title">Items Inventory</h3>
           </div>
-          <h3 class="phd-bento-title">Items Inventory</h3>
           <p class="phd-bento-text">Keep structured records for every cosmetic item.</p>
+          <a href="#faq-dupes" class="phd-action-link">Learn more <span class="phd-arrow">→</span></a>
         </div>
 
+        <!-- Small Box: Reduce the Mess (Links to Q3) -->
         <div class="phd-bento-box phd-box-sm">
-          <div class="phd-icon-container">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+          <div class="phd-box-header">
+            <div class="phd-icon-container">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+            </div>
+            <h3 class="phd-bento-title">Reduce the Mess</h3>
           </div>
-          <h3 class="phd-bento-title">Reduce the Mess</h3>
           <p class="phd-bento-text">Declutter counters. Know what you own and what expires.</p>
+          <a href="#faq-dupes" class="phd-action-link">Learn more <span class="phd-arrow">→</span></a>
         </div>
 
+        <!-- Small Box: Summary and Report (Links to Q4) -->
         <div class="phd-bento-box phd-box-sm">
-          <div class="phd-icon-container">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <div class="phd-box-header">
+            <div class="phd-icon-container">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <h3 class="phd-bento-title">Summary & Report</h3>
           </div>
-          <h3 class="phd-bento-title">Summary and Report</h3>
           <p class="phd-bento-text">[Please provide description for Summary and Report]</p>
+          <a href="#faq-budget" class="phd-action-link">Learn more <span class="phd-arrow">→</span></a>
         </div>
 
+        <!-- Small Box: Share with Besties (Links to Q5) -->
         <div class="phd-bento-box phd-box-sm">
-          <div class="phd-icon-container">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          <div class="phd-box-header">
+            <div class="phd-icon-container">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </div>
+            <h3 class="phd-bento-title">Share with Besties</h3>
           </div>
-          <h3 class="phd-bento-title">Share with Besties</h3>
           <p class="phd-bento-text">ex/import profiles with trusted friends</p>
+          <a href="#faq-reviews" class="phd-action-link">Learn more <span class="phd-arrow">→</span></a>
         </div>
 
       </div>
@@ -603,7 +694,7 @@
     <section id="faq" class="phd-faq-section">
       <h2 class="phd-faq-heading">Frequently Asked Questions</h2>
       
-      <div class="phd-faq-item">
+      <div class="phd-faq-item" id="faq-privacy">
         <div class="phd-faq-q">Privacy? Privacy! And again, Privacy! Privacy is the main concern—how does Profile Hub Dossier manage it?</div>
         <div class="phd-faq-a">
           Profile Hub Dossier is a local-first app. All client profiles, item details, and business information are saved securely on your local device.<br><br>
@@ -615,7 +706,7 @@
         </div>
       </div>
 
-      <div class="phd-faq-item">
+      <div class="phd-faq-item" id="faq-challenge">
         <div class="phd-faq-q">Q: It’s way too easy to find makeup tutorials, hyper-specific cosmetic products, and complex routines, but managing them is NOT easy. How does Profile Hub Dossier (PHD) handle this challenge?</div>
         <div class="phd-faq-a">A: PHD manages this challenge through digital profiles. You can create custom profiles for specific events, topics, and themes, or match what you discover online to catch up with the hottest trends. Then, you can categorize and log specific items exactly where you need them. For example, you can create and save in PHD:<br><br>
           "2026 Spring K-Pop" Profile: The viral TIRTIR Mask Fit Red Cushion foundation and the Prada Beauty Touch Cream-to-Powder Blush.<br>
@@ -624,27 +715,27 @@
         </div>
       </div>
 
-      <div class="phd-faq-item">
+      <div class="phd-faq-item" id="faq-dupes">
         <div class="phd-faq-q">Q: Love experimenting with new makeup tutorials and trends, but hate when it leads to double buying, expired products, and overflowing makeup clutter? Regular makeup boxes don't help here. So, PHD...?</div>
         <div class="phd-faq-a">A: PHD is an excellent app that acts as your complete digital organizer by digitizing your entire cosmetic inventory. By logging purchase dates, quantities, prices, and categories, you can easily track exactly what you own via PHD. This is the key to significantly reducing physical storage nightmares, preventing expensive products from spoiling, and helping you cut down on overconsumption and clutter.</div>
       </div>
 
-      <div class="phd-faq-item">
+      <div class="phd-faq-item" id="faq-budget">
         <div class="phd-faq-q">Q: Constantly buying new products makes you lose track of your beauty budget. Sometimes, you don't even know where your money went, and have no idea how to plan your next makeup budget. Well, does PHD know?</div>
         <div class="phd-faq-a">A: Yes, PHD knows exactly where and how! Just set a CUSTOM DATE RANGE, and PHD will generate a summary report, an itemized sheet, and a clear pie chart for that specific period. You get to review your most current and relevant cosmetic spending to effortlessly track your makeup expenses, manage your beauty budget, and see exactly where your money is going.</div>
       </div>
 
-      <div class="phd-faq-item">
+      <div class="phd-faq-item" id="faq-reviews">
         <div class="phd-faq-q">Q: Tired of too much sponsored content, fake reviews. Where and how can you find honest, unsponsored makeup reviews and routines? uh, can phd...?</div>
         <div class="phd-faq-a">A: let's see, PHD comes with an export and import feature that lets you share custom cosmetic profiles completely anonymously. Instead of second-guessing sponsored content, you can privately share and exchange makeup routines, product lists, and authentic experiences directly with your real friends and trusted sources.</div>
       </div>
 
-      <div class="phd-faq-item">
+      <div class="phd-faq-item" id="faq-unique">
         <div class="phd-faq-q">Q: Profile Hub Dossier looks good, what is the most important unique feature for phd?</div>
         <div class="phd-faq-a">A: PHD is a life app, and it isn't only for your cosmetic, moneyflow and education profiles.find out more in apple app store</div>
       </div>
 
-      <div class="phd-faq-item">
+      <div class="phd-faq-item" id="faq-cost">
         <div class="phd-faq-q">Q: How much does Profile Hub Dossier cost?</div>
         <div class="phd-faq-a">A: PHD is $29.99/year and includes a 14-day free trial. Your subscription grants unlimited access to Education, Cosmetic, and Moneyflow profiles, plus all future profiles, features, and app updates at no extra cost.<br><br>Use promo code <strong>G1</strong> for a limited-time discount!</div>
       </div>
