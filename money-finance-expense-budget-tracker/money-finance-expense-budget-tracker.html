@@ -49,56 +49,43 @@
             </div>
         </div>
 
-        <!-- The 5-Image Swipe/Drag Interactive Container -->
-        <div class="relative mt-20 w-full max-w-6xl mx-auto component-fade-in delay-100">
-            <div class="swipe-scroll-container flex items-center gap-6 overflow-x-auto snap-x snap-mandatory px-4 pb-6 pt-2 cursor-grab active:cursor-grabbing no-scrollbar">
-                <!-- Far Left -->
-                <div class="flex-shrink-0 snap-center">
-                    <img 
-                        src="images/money-finance-costco-detail-report.webp" 
-                        alt="Costco Detail Report" 
-                        class="w-[240px] sm:w-[280px] rounded-[2rem] shadow-2xl border-4 border-white opacity-60 filter blur-[1px]"
-                        loading="lazy"
-                    >
-                </div>
-                <!-- Mid Left -->
-                <div class="flex-shrink-0 snap-center">
-                    <img 
-                        src="images/money-finance-macys-detail-report.webp" 
-                        alt="Macy's Detail Report" 
-                        class="w-[260px] sm:w-[300px] rounded-[2.5rem] shadow-2xl border-4 border-white opacity-90"
-                        loading="lazy"
-                    >
-                </div>
-                <!-- Center (Focal Point) -->
-                <div class="flex-shrink-0 snap-center">
-                    <img 
-                        src="images/money-finance-add-money-macy.webp" 
-                        alt="Add Money UI Input Form" 
-                        class="w-[280px] sm:w-[320px] rounded-[2.5rem] shadow-2xl shadow-emerald-900/20 border-[6px] border-white scale-105"
-                        loading="lazy"
-                    >
-                </div>
-                <!-- Mid Right -->
-                <div class="flex-shrink-0 snap-center">
-                    <img 
-                        src="images/money-finance-summary-report.webp" 
-                        alt="Moneyflow Summary Report" 
-                        class="w-[260px] sm:w-[300px] rounded-[2.5rem] shadow-2xl border-4 border-white opacity-90"
-                        loading="lazy"
-                    >
-                </div>
-                <!-- Far Right -->
-                <div class="flex-shrink-0 snap-center">
-                    <img 
-                        src="images/money-finance-add-money-costco.webp" 
-                        alt="Single Store Record Report" 
-                        class="w-[240px] sm:w-[280px] rounded-[2rem] shadow-2xl border-4 border-white opacity-60 filter blur-[1px]"
-                        loading="lazy"
-                    >
-                </div>
-            </div>
-            <p class="text-xs text-slate-400 mt-2 text-center uppercase tracking-wider font-semibold">Swipe or drag horizontally to view mockups &rarr;</p>
+        <!-- The Fanned Spread with Peeking Layers -->
+        <div class="relative mt-20 flex justify-center items-center h-[500px] sm:h-[650px] w-full max-w-6xl mx-auto delay-100 component-fade-in">
+            <!-- Far Left (Blurred Backdrop) -->
+            <img 
+                src="images/money-finance-costco-detail-report.webp" 
+                alt="Costco Detail Report" 
+                class="absolute z-10 w-[240px] sm:w-[280px] rounded-[2rem] shadow-2xl border-4 border-white transform -translate-x-[115%] scale-75 opacity-40 hidden lg:block filter blur-[2px]"
+                loading="lazy"
+            >
+            <!-- Mid Left (Peeking ~70% behind center) -->
+            <img 
+                src="images/money-finance-macys-detail-report.webp" 
+                alt="Macy's Detail Report" 
+                class="absolute z-20 w-[260px] sm:w-[300px] rounded-[2.5rem] shadow-2xl border-4 border-white transform -translate-x-[65%] scale-[0.85] opacity-80 hidden md:block"
+                loading="lazy"
+            >
+            <!-- Center (Focal Point in Front) -->
+            <img 
+                src="images/money-finance-add-money-macy.webp" 
+                alt="Add Money UI Input Form" 
+                class="absolute z-30 w-[280px] sm:w-[320px] rounded-[2.5rem] shadow-2xl shadow-emerald-900/20 border-[6px] border-white transform scale-100"
+                loading="lazy"
+            >
+            <!-- Mid Right (Peeking ~70% behind center) -->
+            <img 
+                src="images/money-finance-summary-report.webp" 
+                alt="Moneyflow Summary Report" 
+                class="absolute z-20 w-[260px] sm:w-[300px] rounded-[2.5rem] shadow-2xl border-4 border-white transform translate-x-[65%] scale-[0.85] opacity-80 hidden md:block"
+                loading="lazy"
+            >
+            <!-- Far Right (Blurred Backdrop) -->
+            <img 
+                src="images/money-finance-add-money-costco.webp" 
+                alt="Single Store Record Report" 
+                class="absolute z-10 w-[240px] sm:w-[280px] rounded-[2rem] shadow-2xl border-4 border-white transform translate-x-[115%] scale-75 opacity-40 hidden lg:block filter blur-[2px]"
+                loading="lazy"
+            >
             
             <!-- Emerald Glow Behind Center Image -->
             <div class="absolute z-0 w-[300px] h-[300px] bg-emerald-400 rounded-full mix-blend-multiply filter blur-[120px] opacity-40 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
@@ -261,24 +248,8 @@
                     </dd>
                 </div>
 
-                <!-- Q3 (Accounts - 1 Unit) -->
+                <!-- Q3 (Pricing - 1 Unit) -->
                 <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100">
-                    <dt class="font-bold text-xl text-emerald-700">Do I need to create an account to track expenses?</dt>
-                    <dd class="mt-4 text-lg text-slate-600 leading-relaxed">
-                        No. Start tracking immediately. We have removed the friction of user accounts to keep the experience fast and private.
-                    </dd>
-                </div>
-
-                <!-- Q4 (Android - 1 Unit) -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100">
-                    <dt class="font-bold text-xl text-emerald-700">Is Profile Hub Dossier available on Android?</dt>
-                    <dd class="mt-4 text-lg text-slate-600 leading-relaxed">
-                        The fryinocean team is currently conducting public testing for the Android release. The Android version will be officially launched once this testing phase is complete.
-                    </dd>
-                </div>
-
-                <!-- Q5 (Pricing - 1 Unit) -->
-                <div class="md:col-span-2 bg-white p-8 rounded-2xl shadow-lg border border-slate-100">
                     <dt class="font-bold text-xl text-emerald-700">How much does Profile Hub Dossier cost?</dt>
                     <dd class="mt-4 text-lg text-slate-600 leading-relaxed">
                         $29.99/year after a 14-day free trial. Includes unlimited access to all current profiles (Education, Cosmetic, Moneyflow), plus all future features and updates.
@@ -328,42 +299,12 @@
         </div>
     </footer>
 
-    <!-- Minimal Animation & Mouse Drag Script -->
+    <!-- Minimal Animation Styles -->
     <style>
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .component-fade-in { animation: fadeIn 0.6s ease-out forwards; }
         .delay-100 { animation-delay: 0.1s; }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
-    <script>
-        const slider = document.querySelector('.swipe-scroll-container');
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-
-        slider.addEventListener('mousedown', (e) => {
-            isDown = true;
-            slider.classList.add('active');
-            startX = e.pageX - slider.offsetLeft;
-            scrollLeft = slider.scrollLeft;
-        });
-        slider.addEventListener('mouseleave', () => {
-            isDown = false;
-            slider.classList.remove('active');
-        });
-        slider.addEventListener('mouseup', () => {
-            isDown = false;
-            slider.classList.remove('active');
-        });
-        slider.addEventListener('mousemove', (e) => {
-            if(!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - slider.offsetLeft;
-            const walk = (x - startX) * 2; //scroll-fast
-            slider.scrollLeft = scrollLeft - walk;
-        });
-    </script>
 
 </body>
 </html>
