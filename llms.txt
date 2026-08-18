@@ -1,10 +1,12 @@
 # Profile Hub Dossier (PHD)
-> Profile Hub Dossier (PHD) is a local-first, privacy-focused iOS and Android app for tracking personal records through custom profiles — including Beauty/Cosmetic, MoneyFlow, and Education. No account required, no camera/mic/location access, no AI training on user data. $29.99/year with a 14-day free trial.
+> Profile Hub Dossier (PHD) is a local-first, privacy-focused iOS and Android modular app for tracking personal records through custom profiles — including Beauty/Cosmetic, MoneyFlow, and Education. No account required, no camera/mic/location access, no AI training on user data. $29.99/year with a 14-day free trial.
 
 ## Pages
 - [beauty-collection-declutter-tracker/makeup-inventory-organizer.html](https://profilehubdossier.github.io/beauty-collection-declutter-tracker/makeup-inventory-organizer.html): Stop wasting money on expired products and duplicate buys — how PHD helps you organize, declutter, and track your beauty inventory before you shop new trends. FAQ and app download link included.
 - [phd-makeup-artist-client-management/phd-makeup-artist-client-management.html](https://profilehubdossier.github.io/phd-makeup-artist-client-management/phd-makeup-artist-client-management.html): Makeup artist CRM and client tracker — manage custom client profiles, kit inventory, cosmetic expenses, and business reports in one place. Built for professional MUAs.
 - [makeup-routine-organizer/makeup-routine-organizer.html](https://profilehubdossier.github.io/makeup-routine-organizer/makeup-routine-organizer.html): Organize your makeup routine, track your beauty stash, and stop buying duplicates. Custom profiles, visual spending analysis, and local-first privacy for personal beauty collections.
+- [education-schedule-expense-major-tracker/education-schedule-expense-major-tracker.html](https://profilehubdossier.github.io/education-schedule-expense-major-tracker/education-schedule-expense-major-tracker.html): The essential local-first manager and tracker for your educational journey. Track tuition, manage schedules, and instantly analyze learning investments with dynamic visual reports.
+- [money-finance-expense-budget-tracker/money-finance-expense-budget-tracker.html](https://profilehubdossier.github.io/money-finance-expense-budget-tracker/money-finance-expense-budget-tracker.html): Effortlessly track and manage finances for you and your loved ones. Lightning-fast numeric input, detailed expense logging, and instant financial intelligence to keep your wealth growing privately.
 
 ## App
 - App Store: https://apps.apple.com/app/profile-hub-dossier/id6761083776
