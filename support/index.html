@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Hub Dossier — Support & Privacy</title>
+    <style>
+        :root {
+            --primary: #7E57C2;
+            --accent: #FF6F61;
+            --background: #FDFBFE;
+            --surface: #FFFFFF;
+            --text-primary: #1C1B1F;
+            --text-secondary: #757575;
+            --border: #E0E0E0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--background);
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header { text-align: center; margin: 40px 0; }
+        header h1 { color: var(--primary); font-size: 2.2em; margin-bottom: 5px; }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 30px;
+            overflow-x: auto;
+        }
+        nav button {
+            background: none;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--text-secondary);
+            border-bottom: 3px solid transparent;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+        nav button.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .section { display: none; background: var(--surface); padding: 35px; border-radius: 24px; box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
+        .section.active { display: block; }
+
+        .manual-step { margin-bottom: 35px; }
+        .manual-step h3 { color: var(--primary); border-bottom: 1px solid #f4f2f8; padding-bottom: 8px; margin-bottom: 15px; }
+        .manual-step ul, .manual-step ol { padding-left: 20px; }
+        .manual-step li { margin-bottom: 10px; }
+        
+        .tip-box { background: #f4f2f8; padding: 15px; border-radius: 12px; font-size: 14px; border-left: 4px solid var(--accent); margin-top: 10px; }
+
+        .warning-card {
+            background-color: #F8F9FA;
+            border: 1px solid #EAEAEA;
+            border-radius: 12px;
+            padding: 18px 20px;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            margin-bottom: 35px;
+        }
+        .warning-icon { font-size: 22px; line-height: 1.2; }
+        .warning-text { color: var(--text-primary); }
+        .warning-text strong { display: block; font-size: 16px; margin-bottom: 8px; color: var(--text-primary); }
+        .warning-text p { margin: 0 0 10px 0; font-size: 15px; }
+        .warning-text p:last-child { margin: 0; }
+
+        .support-container { text-align: center; }
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            margin: 20px 0;
+            transition: transform 0.2s;
+        }
+        .btn-primary:active { transform: scale(0.98); }
+        .email-display {
+            font-family: monospace; font-size: 16px; font-weight: bold; color: var(--primary);
+            cursor: pointer; padding: 12px; background: #f4f2f8; border-radius: 8px; display: inline-block;
+            margin-top: 10px;
+        }
+
+        h2 { color: var(--text-primary); margin-top: 1.5em; border-left: 4px solid var(--accent); padding-left: 15px; }
+        .highlight { background: #F4F2F8; padding: 20px; border-radius: 12px; border-left: 4px solid var(--primary); margin: 20px 0; }
+        footer { text-align: center; margin-top: 60px; color: var(--text-secondary); font-size: 12px; padding-bottom: 40px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Profile Hub Dossier</h1>
+    <p>Official Manual, Support & Privacy Center</p>
+</header>
+
+<nav>
+    <button onclick="showTab('manual')" id="tab-manual">User Manual</button>
+    <button onclick="showTab('support')" id="tab-support">Contact Support</button>
+    <button onclick="showTab('privacy')" id="tab-privacy" class="active">Privacy Policy</button>
+</nav>
+
+<!-- ===================== USER MANUAL ===================== -->
+<div id="manual" class="section">
+
+    <div class="manual-step">
+        <h3>Welcome to Profile Hub Dossier</h3>
+        <p>Dear Profile Hub Dossier user,</p>
+        <p>Thank you so much for choosing Profile Hub Dossier! The PHD team is here to provide the details you need to understand and use this app effectively.</p>
+        <p>On your first launch, you will be greeted by the welcome page. Simply input your email address and tap <strong>Start Your Free Trial</strong> to open the paywall screen. From there, tap the button displaying the price and <strong>14-Day Free Trial</strong> to start exploring the app with full access to all features from day one. The PHD team does NOT charge you during this free 14-day trial period. More details can be found in the notice below.</p>
+    </div>
+
+    <div class="warning-card">
+        <div class="warning-icon">⚠️</div>
+        <div class="warning-text">
+            <strong>Purchase and Free Trial</strong>
+            <p>The PHD app itself does NOT ask for your credit card or payment information. Furthermore, you will not be charged if you cancel your subscription within the 14-day free trial window. Because subscriptions are managed securely through your app store, please contact Apple or RevenueCat for specific billing details and inquiries.</p>
+            <p>If you have subscribed before, just tap <strong>Restore Previous Purchase</strong>. If you have any app-related questions, feel free to contact us at ProfileHubDossier@gmail.com.</p>
+        </div>
+    </div>
+
+    <div class="manual-step">
+        <h3>Basic Access vs. Active Subscribers</h3>
+        <p>If your 14-day free trial or app subscription ends and is not renewed, your account will transition to Basic Access. Under Basic Access, you retain permanent access to view the <strong>Dynamic Reports</strong> for Moneyflow and Cosmetic profiles.</p>
+        <p>The following features are exclusively for <strong>active subscribers</strong>:</p>
+        <ul>
+            <li>Add, Edit, and Manage functions for all profiles.</li>
+            <li>Import and Export functionalities.</li>
+            <li>The Education Profile.</li>
+        </ul>
+    </div>
+
+    <div class="manual-step">
+        <h3>Initial Step: Set Up Contacts</h3>
+        <p>The app requires a Contact profile to function. Tap the <strong>Person Icon</strong> in the <strong>bottom right of the home page</strong> to open the menu:</p>
+        <ul>
+            <li><strong>Access Contacts:</strong> Tap the <strong>Contact Icon</strong> within that sub-menu to open your contact options (Add, Edit, Import, Manage).</li>
+            <li><strong>Manual Entry:</strong> Tap <strong>Add Contact</strong> to enter details manually.</li>
+            <li><strong>Import:</strong> Tap <strong>Import</strong> to securely pull existing contacts directly from your phone's local contact list.</li>
+        </ul>
+        <div class="tip-box"><strong>Tip:</strong> In the Add or Edit screens, tap the <strong>(i) Info Icon</strong> in the <strong>bottom right</strong> to see which fields are required to enable the Save button.</div>
+    </div>
+
+    <div class="manual-step">
+        <h3>General Workflow</h3>
+        <ol>
+            <li>Tap the <strong>+New</strong> button at the bottom of the home page.</li>
+            <li>Select an Action (Add, Edit, Report, or Manage) and a Profile (Moneyflow, Cosmetic, or Edu).</li>
+            <li>Select your Contact and tap the <strong>Date &rarr;</strong> button.</li>
+        </ol>
+    </div>
+
+    <div class="manual-step">
+        <h3>Single Day Vs Date Range</h3>
+        <ul>
+            <li><strong>Add:</strong> Pick a single date from the calendar. This date can represent the purchase day, the record day, or simply the current input date.</li>
+            <li><strong>Edit/Manage/Report:</strong> Pick a date range. The system will use this range to find and display all records that fall within it. Ensure the date range you select covers the original purchase or input date of the record you want to manage.</li>
+            <li><strong>The Selection Page:</strong> If there is more than one result, you will be prompted to <strong>tap and select</strong> the specific entry in the selection page to proceed.</li>
+        </ul>
+    </div>
+
+    <div class="manual-step">
+        <h3>Profile Specifics</h3>
+        <p><strong>Moneyflow Profile</strong></p>
+        <p>You can now track exactly how much and what you spend on the people you love—such as your kids, partner, parents, or friends.</p>
+        
+        <br>
+        <p><strong>Cosmetic Profile</strong></p>
+        <p>When using the Add action, pick the date you purchased the item or the current input date. For Edit/Manage/Report actions, make sure your selected date range covers that purchase or input date.</p>
+        <p>For your styles, we recommend using a descriptive naming format combining the Year, Month, and a specific trend. Here are a few popular examples:</p>
+        <ul>
+            <li><em>2026 March Spring Break Beach Style</em></li>
+            <li><em>2026 May Summer Oily Skin Fix</em></li>
+            <li><em>2026 June Dewy Glass Skin Routine</em></li>
+            <li><em>2026 September Wedding Glam Trend</em></li>
+            <li><em>2026 November Winter Dry Skin Rescue</em></li>
+            <li><em>2026 December K-Pop Holiday Trend</em></li>
+        </ul>
+        
+        <br>
+        <p><strong>Education Profile</strong></p>
+<p>This profile utilizes two distinct types of dates:</p>
+<ul>
+    <li><strong>The Single Date (Add Action):</strong> This is the date you record the information into the app.</li>
+    <li><strong>Searching:</strong> When searching for an Education record, the date range queries the class times (Date 1 and Date 2), NOT the single input date.</li>
+    <li><strong>Date 1 and Date 2:</strong> These represent the class start date/time and end date/time. Because these fields define a <em>single class section</em>, you must input the <strong>exact same calendar day</strong> for both Date 1 and Date 2.</li>
+    <li><strong>Export to Calendar (3-Dot Menu):</strong> After inputting Date 1 or Date 2, a 3-dot icon will appear. Tap this icon to export the class schedule directly to your device's native calendar. If a class lasts for multiple days, you can easily extend or adjust the dates within your local system calendar after exporting.</li>
+</ul>
+    </div>
+
+    <div class="manual-step">
+        <h3>System Feedback</h3>
+        <ul>
+            <li>Messages without a "Yes," "No," "OK," or "Confirm" button will be <strong>automatically dismissed after 3 seconds</strong>. Simply wait for the screen to clear.</li>
+        </ul>
+    </div>
+
+    <div class="manual-step">
+        <h3>Export / Import</h3>
+        <p>Protecting and transferring your data is simple. You have two backup options:</p>
+        
+        <p><strong>1. Full Backup</strong></p>
+        <ul>
+            <li><strong>Export:</strong> Select "Full Backup" to save all data inside PHD. Create a password to secure the file (for example, a password like <code>y123456Y</code>) and tap Export. Pick a location on your device to save it. The file name will be automatically generated based on the exact date and time. For example, a backup created on August 28, 2026, at 9:28:32 AM will be named <code>08282026092832.phd</code>.</li>
+            <li><strong>Import:</strong> To restore a full backup, tap "Select File" and choose your <code>.phd</code> file. Enter the password you created during the export to import the data.</li>
+        </ul>
+
+        <br>
+        <p><strong>2. Cosmetic</strong></p>
+        <ul>
+            <li><strong>Export:</strong> First, pick a contact from the "From" drop-down list, then select the style name from the style drop-down. Create a password (for example, <code>y654321Y</code>) and tap Export. The file name format is identical to a full backup, but the extension will be <code>.phdcos</code> (e.g., <code>03182026083823.phdcos</code>).</li>
+            <li><strong>Import:</strong> Ensure you have tapped "Cosmetic" first. Tap Import, pick your <code>.phdcos</code> file, and then select the contact you want to apply this style to from the "To" drop-down list. Enter your password to complete the import.</li>
+        </ul>
+    </div>
+
+    <div class="manual-step">
+        <h3>Restore & Reset</h3>
+        <p>To restore a previous purchase or reset your data, visit the <strong>Admin Section</strong> in the app.</p>
+    </div>
+
+    <div class="manual-step">
+        <h3>Disclaimer & Updates</h3>
+        <p>Profile Hub Dossier is continuously evolving. Features, interfaces, and subscription terms are subject to change without prior notice. This manual is provided 'as is' for informational purposes, and in the event of any discrepancies between this document and the live app, the app's current functionality prevails.</p>
+    </div>
+
+</div>
+
+<!-- ===================== SUPPORT ===================== -->
+<div id="support" class="section support-container">
+    <h2>Contact Us</h2>
+    <p>Have a question or feedback? Reach out directly via your email app:</p>
+    <a href="mailto:ProfileHubDossier@gmail.com?subject=PHD%20Support%20Request" class="btn-primary">Open Email App</a>
+
+    <div style="margin: 10px 0; color: var(--text-secondary);">— or —</div>
+
+    <p style="font-size: 14px; color: var(--text-secondary);">PC user? Tap below to copy our support address:</p>
+    <div id="email-box" class="email-display" onclick="revealAndCopy()">[ Tap to Reveal Email ]</div>
+</div>
+
+<!-- ===================== PRIVACY POLICY ===================== -->
+<div id="privacy" class="section active">
+    <h2>Privacy Policy</h2>
+    <p><strong>Last updated: June 5, 2026</strong></p>
+
+    <div class="highlight">
+        <strong>Our Core Commitment:</strong> Profile Hub Dossier is built on a local-first philosophy.
+        Profile data and personal records you create are designed to be stored locally on your device. The PHD team itself does not upload, sell, or share this local data. We rely on trusted third-party services (like Firebase and RevenueCat) for core operations, which handle data independently under their own privacy policies (see Section 4).
+    </div>
+
+    <br>
+
+    <div class="manual-step">
+        <h3>1. Who We Are</h3>
+        <p>Profile Hub Dossier ("PHD", "we", "our") is an independent app development team.
+        You can reach us at <strong>ProfileHubDossier@gmail.com</strong> for any privacy-related questions.</p>
+    </div>
+
+    <div class="manual-step">
+        <h3>2. What Data We Collect</h3>
+        <p>We collect only the data necessary to operate your account and the app's features:</p>
+        <ul>
+            <li><strong>Email Address:</strong> Your email is used to ID your account and link it to your subscription and purchase history. It allows our team to verify your account status, restore access if needed, and provide support. We do not use your email for marketing or spam.</li>
+            <li><strong>Purchase & Subscription Status:</strong> Managed through RevenueCat to validate your subscription and restore purchases. No full payment or credit card details are stored by our team.</li>
+        </ul>
+        <div class="tip-box"><strong>Important:</strong> Profile content and personal records you enter into PHD are stored locally on your device. The PHD team does not see, access, or retrieve this local data.</div>
+    </div>
+
+    <div class="manual-step">
+        <h3>3. What We Do NOT Collect</h3>
+        <ul>
+            <li>We do <strong>NOT</strong> collect your name, location, or phone number.</li>
+            <li>We do <strong>NOT</strong> sell, rent, or trade your data to any third party.</li>
+            <li>We do <strong>NOT</strong> access your camera, microphone, or photo library without your explicit permission requested through your device's operating system.</li>
+            <li>We do <strong>NOT</strong> use our own analytics SDKs to track your behavior. Subscription providers may collect limited interaction data (like paywall views) solely to manage services, which is not linked to your identity for advertising.</li>
+        </ul>
+    </div>
+
+    <div class="manual-step">
+        <h3>4. Third-Party Services</h3>
+        <p>We utilize trusted third-party services for app functionality. While we do not code our app to share your local data with them, these services may collect certain device or diagnostic data as part of their standard operation. The PHD team does not control these third parties, and their practices are governed by their own policies:</p>
+        <ul>
+            <li>
+                <strong>Google Firebase</strong> — Used to securely store your account credentials (email) for login and account recovery.
+                <a href="https://firebase.google.com/support/privacy" target="_blank">View Firebase Privacy Policy &rarr;</a>
+            </li>
+            <li>
+                <strong>RevenueCat</strong> — Used to manage subscriptions and restore purchases. They securely process your email and anonymized device identifiers to maintain your subscription.
+                <a href="https://www.revenuecat.com/privacy" target="_blank">View RevenueCat Privacy Policy &rarr;</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="manual-step">
+        <h3>5. Contact Permissions (Optional)</h3>
+        <p>With your explicit permission, PHD can import contacts from your phone's local address book to help you set up profiles.
+        This is entirely optional. Any contact data pulled into the app is processed locally, and the PHD team does not transmit, upload, or share this data with our servers or third parties.</p>
+    </div>
+
+    <div class="manual-step">
+        <h3>6. Data Security</h3>
+        <p>We take the security of your account seriously:</p>
+        <ul>
+            <li>Account credentials are handled by <strong>Google Firebase</strong> using industry-standard encryption.</li>
+            <li>Profile data lives on your local device, safeguarded by your device's native security (Face ID, passcode, etc.).</li>
+            <li><strong>Disclaimer:</strong> While we strive to use commercially acceptable means to protect your information, no method of electronic storage or internet transmission is 100% secure. Therefore, we cannot guarantee absolute security against unauthorized access or device compromise.</li>
+        </ul>
+    </div>
+
+    <div class="manual-step">
+        <h3>7. Your Rights</h3>
+        <p>You are in control of your data:</p>
+        <ul>
+            <li><strong>Delete your account:</strong> Contact us at ProfileHubDossier@gmail.com and we will delete your account data (email and UID) from our active database.</li>
+            <li><strong>Delete your local data:</strong> Use the in-app Reset button to wipe local data instantly, or simply uninstall the app. Either action permanently removes the profile data stored on your device.</li>
+        </ul>
+    </div>
+
+    <div class="manual-step">
+        <h3>8. Children's Privacy</h3>
+        <p>PHD is not directed at children under the age of 13. We do not knowingly collect personal information from children.
+        If you believe a child has provided us with personal data, please contact us immediately and we will take steps to remove it.</p>
+    </div>
+
+    <div class="manual-step">
+        <h3>9. Modifications & "As-Is" Disclaimer</h3>
+        <p>We reserve the right to update this policy and app features at any time without prior notice. The app and this documentation are provided strictly on an 'as is' basis. We will revise the 'Last updated' date as soon as reasonably possible when policy changes occur. Profile Hub Dossier reserves the right of final interpretation, and your continued use constitutes acceptance of any updates.</p>
+    </div>
+
+    <div class="manual-step">
+        <h3>10. Contact Us</h3>
+        <p>For any privacy questions, data deletion requests, or concerns, please reach out:</p>
+        <p>&#128231; <strong>ProfileHubDossier@gmail.com</strong></p>
+    </div>
+</div>
+
+<footer>
+    &copy; 2026 Profile Hub Dossier. All rights reserved.
+</footer>
+
+<script>
+    function showTab(tabId) {
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        document.getElementById('tab-' + tabId).classList.add('active');
+    }
+
+    function revealAndCopy() {
+        const email = "ProfileHubDossier" + "@" + "gmail.com";
+        const box = document.getElementById('email-box');
+        box.innerText = email;
+        navigator.clipboard.writeText(email).then(() => {
+            box.innerText = "Copied to Clipboard!";
+            box.style.color = "#4CAF50";
+            setTimeout(() => {
+                box.innerText = email;
+                box.style.color = "var(--primary)";
+            }, 2000);
+        });
+    }
+</script>
+
+</body>
+</html>
