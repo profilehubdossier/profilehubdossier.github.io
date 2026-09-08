@@ -60,7 +60,7 @@
         .manual-step h3 { color: var(--primary); border-bottom: 1px solid #f4f2f8; padding-bottom: 8px; margin-bottom: 15px; }
         .manual-step ul, .manual-step ol { padding-left: 20px; }
         .manual-step li { margin-bottom: 10px; }
-        
+
         .tip-box { background: #f4f2f8; padding: 15px; border-radius: 12px; font-size: 14px; border-left: 4px solid var(--accent); margin-top: 10px; }
 
         .warning-card {
@@ -102,6 +102,47 @@
         h2 { color: var(--text-primary); margin-top: 1.5em; border-left: 4px solid var(--accent); padding-left: 15px; }
         .highlight { background: #F4F2F8; padding: 20px; border-radius: 12px; border-left: 4px solid var(--primary); margin: 20px 0; }
         footer { text-align: center; margin-top: 60px; color: var(--text-secondary); font-size: 12px; padding-bottom: 40px; }
+
+        /* Numbered chip headers — used for Profile Specifics and Import/Export items */
+        .numbered-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 0 0 12px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #f4f2f8;
+        }
+        .numbered-header .chip {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .numbered-header .label {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .sub-block { margin: 18px 0 24px 40px; }
+        .sub-block:last-child { margin-bottom: 0; }
+        .sub-block .sub-label {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            color: var(--accent);
+            background: #fff2f0;
+            padding: 3px 10px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
     </style>
 </head>
 <body>
@@ -132,7 +173,7 @@
         <div class="warning-text">
             <strong>Purchase and Free Trial</strong>
             <p>The PHD app itself does NOT ask for your credit card or payment information. Furthermore, you will not be charged if you cancel your subscription within the 14-day free trial window. Because subscriptions are managed securely through your app store, please contact Apple or RevenueCat for specific billing details and inquiries.</p>
-            <p>If you have subscribed before, just tap <strong>Restore Previous Purchase</strong>If you have any app-related questions, feel free to contact us at ProfileHubDossier@gmail.com.</p>
+            <p>If you have subscribed before, just tap <strong>Restore Previous Purchase</strong>. If you have any app-related questions, feel free to contact us at ProfileHubDossier@gmail.com.</p>
         </div>
     </div>
 
@@ -178,11 +219,8 @@
 
     <div class="manual-step">
         <h3>Profile Specifics</h3>
-        <p><strong>Moneyflow Profile</strong></p>
-        <p>You can now track exactly how much and what you spend on the people you love—such as your kids, partner, parents, or friends.</p>
-        
-        <br>
-        <p><strong>Cosmetic Profile</strong></p>
+
+        <div class="numbered-header"><span class="chip">1</span><span class="label">Cosmetic Profile</span></div>
         <p>When using the Add action, pick the date you purchased the item or the current input date. For Edit/Manage/Report actions, make sure your selected date range covers that purchase or input date.</p>
         <p>For your styles, we recommend using a descriptive naming format combining the Year, Month, and a specific trend. Here are a few popular examples:</p>
         <ul>
@@ -193,15 +231,17 @@
             <li><em>2026 November Winter Dry Skin Rescue</em></li>
             <li><em>2026 December K-Pop Holiday Trend</em></li>
         </ul>
-        
-        <br>
-        <p><strong>Education Profile</strong></p>
-<p>This profile utilizes two distinct types of dates:</p>
-<ul>
-    <li><strong>The Single Date (Add Action):</strong> This is the date you record the information into the app.</li>
-    <li><strong>Searching:</strong> When searching for an Education record, the date range queries the class times (Date 1 and Date 2), NOT the single input date.</li>
-    <li><strong>Date 1 and Date 2:</strong> These represent the class start date/time and end date/time. Because these fields define a <em>single class section</em>, you must input the <strong>exact same calendar day</strong> for both Date 1 and Date 2.</li>
-    </ul>
+
+        <div class="numbered-header" style="margin-top:28px;"><span class="chip">2</span><span class="label">Moneyflow Profile</span></div>
+        <p>You can now track exactly how much and what you spend on the people you love—such as your kids, partner, parents, or friends.</p>
+
+        <div class="numbered-header" style="margin-top:28px;"><span class="chip">3</span><span class="label">Education Profile</span></div>
+        <p>This profile utilizes two distinct types of dates:</p>
+        <ul>
+            <li><strong>The Single Date (Add Action):</strong> This is the date you record the information into the app.</li>
+            <li><strong>Searching:</strong> When searching for an Education record, the date range queries the class times (Date 1 and Date 2), NOT the single input date.</li>
+            <li><strong>Date 1 and Date 2:</strong> These represent the class start date/time and end date/time. Because these fields define a <em>single class section</em>, you must input the <strong>exact same calendar day</strong> for both Date 1 and Date 2.</li>
+        </ul>
     </div>
 
     <div class="manual-step">
@@ -214,19 +254,26 @@
     <div class="manual-step">
         <h3>Export / Import</h3>
         <p>Protecting and transferring your data is simple. You have two backup options:</p>
-        
-        <p><strong>1. Full Backup</strong></p>
-        <ul>
-            <li><strong>Export:</strong> Select "Full Backup" to save all data inside PHD. Create a password to secure the file (for example, a password like <code>y123456Y</code>) and tap Export. Pick a location on your device to save it. The file name will be automatically generated based on the exact date and time. For example, a backup created on August 28, 2026, at 9:28:32 AM will be named <code>08282026092832.phd</code>.</li>
-            <li><strong>Import:</strong> To restore a full backup, tap "Select File" and choose your <code>.phd</code> file. Enter the password you created during the export to import the data.</li>
-        </ul>
 
-        <br>
-        <p><strong>2. Cosmetic</strong></p>
-        <ul>
-            <li><strong>Export:</strong> First, pick a contact from the "From" drop-down list, then select the style name from the style drop-down. Create a password (for example, <code>y654321Y</code>) and tap Export. The file name format is identical to a full backup, but the extension will be <code>.phdcos</code> (e.g., <code>03182026083823.phdcos</code>).</li>
-            <li><strong>Import:</strong> Ensure you have tapped "Cosmetic" first. Tap Import, pick your <code>.phdcos</code> file, and then select the contact you want to apply this style to from the "To" drop-down list. Enter your password to complete the import.</li>
-        </ul>
+        <div class="numbered-header"><span class="chip">1</span><span class="label">Full Backup</span></div>
+        <div class="sub-block">
+            <span class="sub-label">EXPORT</span>
+            <p>Select "Full Backup" to save all data inside PHD. Create a password to secure the file (for example, a password like <code>y123456Y</code>) and tap Export. Pick a location on your device to save it. The file name will be automatically generated based on the exact date and time. For example, a backup created on August 28, 2026, at 9:28:32 AM will be named <code>08282026092832.phd</code>.</p>
+        </div>
+        <div class="sub-block">
+            <span class="sub-label">IMPORT</span>
+            <p>To restore a full backup, tap "Select File" and choose your <code>.phd</code> file. Enter the password you created during the export to import the data.</p>
+        </div>
+
+        <div class="numbered-header" style="margin-top:28px;"><span class="chip">2</span><span class="label">Cosmetic</span></div>
+        <div class="sub-block">
+            <span class="sub-label">EXPORT</span>
+            <p>First, pick a contact from the "From" drop-down list, then select the style name from the style drop-down. Create a password (for example, <code>y654321Y</code>) and tap Export. The file name format is identical to a full backup, but the extension will be <code>.phdcos</code> (e.g., <code>03182026083823.phdcos</code>).</p>
+        </div>
+        <div class="sub-block">
+            <span class="sub-label">IMPORT</span>
+            <p>Ensure you have tapped "Cosmetic" first. Tap Import, pick your <code>.phdcos</code> file, and then select the contact you want to apply this style to from the "To" drop-down list. Enter your password to complete the import.</p>
+        </div>
     </div>
 
     <div class="manual-step">
