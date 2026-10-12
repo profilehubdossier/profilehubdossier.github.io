@@ -1,1 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Profile Hub Dossier (PHD) | Private records for cosmetics, spending and education costs</title>
+<meta name="description" content="Profile Hub Dossier (PHD) for the web: track cosmetics, Moneyflow spending and education costs in your browser, with your records kept in a file you own. Launching soon.">
+<link rel="canonical" href="https://profilehubdossier.github.io/web_phd_stripe/">
+<style>
+  :root{
+    --bg:#faf8fd; --card:#ffffff; --ink:#1f1b2e; --soft:#5b5670;
+    --accent:#7e57c2; --accent-deep:#5e3fa3; --line:#e4def0; --tint:#f1ecfa;
+  }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0; background:var(--bg); color:var(--ink); line-height:1.6; font-size:17px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  a{ color:var(--accent-deep); }
+  .wrap{ max-width:1000px; margin:0 auto; padding:0 20px; }
 
+  header{ border-bottom:1px solid var(--line); background:#fff; }
+  header .wrap{ display:flex; justify-content:space-between; align-items:center; padding-top:16px; padding-bottom:16px; }
+  .brand{ font-weight:800; color:var(--accent-deep); letter-spacing:-.01em; }
+  nav a{ margin-left:18px; color:var(--soft); text-decoration:none; font-size:.95rem; }
+  nav a:hover{ text-decoration:underline; }
+
+  .hero{ text-align:center; padding:56px 0 24px; }
+  .hero h1{ font-size:clamp(1.8rem,4.5vw,2.8rem); line-height:1.2; margin:0 0 .5em; letter-spacing:-.02em; }
+  .lede{ color:var(--soft); max-width:62ch; margin:0 auto 1.2em; font-size:1.08rem; }
+  .notice{
+    background:var(--tint); border:1px solid var(--line); border-radius:12px;
+    padding:14px 18px; max-width:62ch; margin:22px auto; font-size:.98rem;
+  }
+  .btn-soon{
+    display:inline-block; padding:13px 28px; border-radius:10px; background:var(--line);
+    color:var(--soft); font-weight:700; cursor:default;
+  }
+
+  section{ padding:36px 0; }
+  h2{ font-size:1.6rem; margin:0 0 .6em; letter-spacing:-.01em; }
+  .grid{ display:grid; gap:20px; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); }
+  .card{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:22px; }
+  .card h3{ margin:0 0 .4em; font-size:1.15rem; }
+  .card p{ margin:0; color:var(--soft); font-size:.97rem; }
+  .step-num{
+    display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px;
+    border-radius:50%; background:var(--accent); color:#fff; font-weight:700; margin-bottom:10px;
+  }
+  .tag{
+    display:inline-block; font-size:.75rem; background:var(--tint); color:var(--accent-deep);
+    border:1px solid var(--line); border-radius:999px; padding:2px 10px; margin-left:6px; vertical-align:middle;
+  }
+
+  .shots{ display:grid; gap:22px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
+  figure{ margin:0; }
+  figure img{ display:block; width:100%; height:auto; border:1px solid var(--line); border-radius:14px; background:#fff; }
+  figcaption{ margin-top:8px; font-size:.92rem; color:var(--soft); }
+
+  .plans{ display:grid; gap:20px; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); }
+  .price{ font-size:2rem; font-weight:800; margin:.2em 0 .1em; }
+  .price small{ font-size:1rem; font-weight:600; color:var(--soft); }
+  .card ul{ margin:.6em 0 0; padding-left:20px; color:var(--soft); font-size:.97rem; }
+  .card li{ margin-bottom:.35em; }
+  .fine{ font-size:.92rem; color:var(--soft); margin-top:18px; }
+
+  details{ background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px 18px; margin-bottom:12px; }
+  summary{ font-weight:600; cursor:pointer; }
+  details p{ margin:.7em 0 0; color:var(--soft); font-size:.97rem; }
+
+  footer{ border-top:1px solid var(--line); background:#fff; padding:30px 0; font-size:.92rem; color:var(--soft); }
+  footer p{ margin:0 0 .7em; }
+
+  :focus-visible{ outline:3px solid var(--accent); outline-offset:2px; }
+  @media (max-width:600px){ nav a{ margin-left:12px; } .hero{ padding-top:40px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="brand">Profile Hub Dossier</span>
+    <nav>
+      <a href="terms.html">Terms</a>
+      <a href="privacy-web.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap">
+      <h1>Organize cosmetics, spending and education costs for you and the people you care about.</h1>
+      <p class="lede">Profile Hub Dossier (PHD) is a private record keeper that runs in your browser on phone, tablet or laptop. Your records live in a file you own.</p>
+
+      <!-- TEMPORARY: remove this notice at web launch -->
+      <div class="notice">
+        The web version is launching soon. Moneyflow and Education are being brought to the web now. The <a href="https://apps.apple.com/app/profile-hub-dossier/id6761083776" target="_blank" rel="noopener">iPhone app</a> with all three profiles is available today.
+      </div>
+
+      <span class="btn-soon">Launching soon</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>How it works</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="step-num">1</div>
+          <h3>Sign in with your email</h3>
+          <p>We send you a sign-in link. No password to remember.</p>
+        </div>
+        <div class="card">
+          <div class="step-num">2</div>
+          <h3>Open your file</h3>
+          <p>Upload your PHD file, or start a new one with your first save.</p>
+        </div>
+        <div class="card">
+          <div class="step-num">3</div>
+          <h3>Add, review, download</h3>
+          <p>Add and edit your records, review your summaries, then download the updated file to your device.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Profiles</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Cosmetic</h3>
+          <p>Build style profiles for looks and trends, and log each item with store, date, cost, quantity and category.</p>
+        </div>
+        <div class="card">
+          <h3>Moneyflow <span class="tag">Coming soon on the web</span></h3><!-- TEMPORARY tag -->
+          <p>Log spending by person, store and category, then see your top stores and most expensive items in charts and summaries.</p>
+        </div>
+        <div class="card">
+          <h3>Education <span class="tag">Coming soon on the web</span></h3><!-- TEMPORARY tag -->
+          <p>Track tuition, fees, books and supplies, commute and other costs by school and by family member.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>A look inside</h2>
+      <div class="shots">
+        <figure>
+          <img src="images/webHome.png" alt="PHD home page with a month calendar and a New button" loading="lazy">
+          <figcaption>Home: your calendar and the New button.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/webHomeSub.png" alt="PHD New menu with Add, Edit, Summary and Manage actions, profile icons and contacts" loading="lazy">
+          <figcaption>New menu: choose Add, Edit, Summary or Manage, then a profile and a contact.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/webCosmeticAdd.png" alt="PHD Add Cosmetic form with store, item, cost, quantity and category fields" loading="lazy">
+          <figcaption>Add Cosmetic: log an item in a few fields.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="plans">
+    <div class="wrap">
+      <h2>Plans</h2>
+      <div class="plans">
+        <div class="card">
+          <h3>Base</h3>
+          <div class="price">$3.99 <small>USD per month</small></div>
+          <ul>
+            <li>Cosmetic, Moneyflow and Education profiles</li>
+            <li>Add, Edit, Summary and Manage</li>
+            <li>14-day free trial, card required</li>
+            <!-- TEMPORARY: remove at web launch -->
+            <li>Moneyflow and Education are coming to the web soon.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Business</h3>
+          <div class="price"><small>Coming soon</small></div>
+          <ul>
+            <li>For cosmetic professionals</li>
+            <li>Details and price will be announced here.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="fine">
+        The free trial lasts 14 days and needs a card. You are not charged during the trial; the first charge happens when it ends. Plans renew monthly until you cancel. You can cancel any time, and your plan stays active until the end of the month you already paid for. No refund for a month already paid. When a trial or subscription ends, you can still open your file and use the Summary view.
+        Prices are in US dollars and are subject to change; the price shown at checkout is the price you pay. Taxes may apply, and your bank or card company may charge currency conversion fees. Payments are processed by Stripe.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Your data</h2>
+      <div class="card">
+        <ul>
+          <li>Your records stay in a file on your own device. PHD does not store your file on its servers.</li>
+          <li>We keep your email address and subscription status to sign you in and manage your plan. Card details go to Stripe and never reach PHD.</li>
+          <li>Read the full <a href="privacy-web.html">Privacy page</a>.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <h2>Questions</h2>
+      <details>
+        <summary>What do I get with the free trial?</summary>
+        <p>14 days of the Base plan: Add, Edit, Summary and Manage across the profiles. A card is required, you are not charged during the trial, and the first charge happens when it ends unless you cancel.</p>
+      </details>
+      <details>
+        <summary>How do I cancel?</summary>
+        <p>You can cancel any time. Your plan stays active until the end of the month you already paid for. There is no refund for a month already paid. For help, email profilehubdossier@gmail.com.</p>
+      </details>
+      <details>
+        <summary>What happens to my data if I stop paying?</summary>
+        <p>Your records stay in your own file on your own device, since PHD does not hold them. After a trial or subscription ends, you can still open your file and use the Summary view.</p>
+      </details>
+      <details>
+        <summary>Is there an iPhone app?</summary>
+        <p>Yes. The <a href="https://apps.apple.com/app/profile-hub-dossier/id6761083776" target="_blank" rel="noopener">Profile Hub Dossier iPhone app</a> is available on the App Store. It is a separate product with its own subscription.</p>
+      </details>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Support: <a href="mailto:profilehubdossier@gmail.com">profilehubdossier@gmail.com</a></p>
+    <p>Also on iPhone: <a href="https://apps.apple.com/app/profile-hub-dossier/id6761083776" target="_blank" rel="noopener">Profile Hub Dossier on the App Store</a>, a separate product with its own subscription.</p>
+    <p>&copy; 2026 Fryinocean &middot; Profile Hub Dossier &middot; <a href="terms.html">Terms</a> &middot; <a href="privacy-web.html">Privacy</a></p>
+    <p>All information on this page, including pricing and features, is subject to change without notice.</p>
+  </div>
+</footer>
+
+</body>
+</html>
