@@ -1,0 +1,296 @@
+// manual.js: builds the manual from the text in en.js. No words are typed in here.
+// Everything is created with textContent, so the text is always shown as plain text.
+(function () {
+  "use strict";
+
+  var T = window.MANUAL_TEXT;
+  var app = document.getElementById("app");
+  if (!T) {
+    app.textContent = "The manual text did not load.";
+    return;
+  }
+
+  // ── Small helpers ───────────────────────────────────────────
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+
+  // icon: a Material Symbols glyph, hidden from screen readers
+  function icon(name, cls) {
+    var s = el("span", "ms" + (cls ? " " + cls : ""), name);
+    s.setAttribute("aria-hidden", "true");
+    return s;
+  }
+
+  // lets en.js write {guideSoon} to use the text of ui.guideSoon
+  function fill(text) {
+    return String(text).replace(/\{(\w+)\}/g, function (m, key) {
+      return T.ui && T.ui[key] != null ? T.ui[key] : m;
+    });
+  }
+
+  // ── Page header and the 3 sticky buttons ────────────────────
+  document.documentElement.lang = T.lang || "en";
+  document.title = T.page.docTitle;
+  document.getElementById("brand").textContent = T.page.brand;
+  document.getElementById("title").textContent = T.page.title;
+  document.getElementById("lede").textContent = T.page.lede;
+
+  var navbar = document.getElementById("navbar");
+  navbar.setAttribute("aria-label", T.nav.label);
+  var navrow = document.getElementById("navrow");
+
+  function navButton(item, href) {
+    var a = el("a", "nbtn");
+    a.href = href;
+    a.appendChild(icon(item.icon));
+    a.appendChild(el("span", null, item.text));
+    return a;
+  }
+
+  // Profiles and Features only scroll to their section. They do not open anything.
+  navrow.appendChild(navButton(T.nav.profiles, "#" + T.nav.profiles.target));
+
+  var home = navButton(T.nav.home, T.homeUrl || "#");
+  if (!T.homeUrl) {
+    // no real domain yet: the button is a placeholder and does nothing
+    home.classList.add("is-placeholder");
+    home.setAttribute("aria-disabled", "true");
+    home.title = T.ui.homeSoon;
+    home.addEventListener("click", function (e) { e.preventDefault(); });
+  }
+  navrow.appendChild(home);
+
+  navrow.appendChild(navButton(T.nav.features, "#" + T.nav.features.target));
+
+  // ── Screenshot popup (one dialog, reused by every icon) ─────
+  var lastButton = null;
+
+  var dlg = el("dialog", "shot");
+  dlg.setAttribute("aria-labelledby", "shot-title");
+  var box = el("div", "shot-box");
+  var closeBtn = el("button", "shot-close");
+  closeBtn.type = "button";
+  closeBtn.setAttribute("aria-label", T.ui.close);
+  closeBtn.appendChild(icon("close"));
+  var shotTitle = el("h2", "shot-title");
+  shotTitle.id = "shot-title";
+  var stage = el("div", "shot-stage");
+  var cap = el("p", "shot-cap");
+  var hint = el("p", "shot-hint", T.ui.tapOutside);
+  box.appendChild(closeBtn);
+  box.appendChild(shotTitle);
+  box.appendChild(stage);
+  box.appendChild(cap);
+  box.appendChild(hint);
+  dlg.appendChild(box);
+  document.body.appendChild(dlg);
+
+  function closeShot() {
+    if (typeof dlg.close === "function") dlg.close();
+    else dlg.removeAttribute("open");
+    afterClose();
+  }
+  function afterClose() {
+    document.body.classList.remove("modal");
+    stage.textContent = "";
+    if (lastButton) lastButton.focus();
+  }
+
+  closeBtn.addEventListener("click", closeShot);
+  // a tap on the dark area around the box (the backdrop) closes it
+  dlg.addEventListener("click", function (e) { if (e.target === dlg) closeShot(); });
+  // Esc key
+  dlg.addEventListener("close", afterClose);
+
+  // the gray box shown until a real screenshot exists
+  function placeholder(item) {
+    var ph = el("div", "shot-ph");
+    ph.appendChild(el("span", null, T.ui.screenshotSoon));
+    if (item.image) ph.appendChild(el("span", null, item.image));
+    return ph;
+  }
+
+  function openShot(item, button) {
+    lastButton = button;
+    shotTitle.textContent = item.title || item.label;
+    cap.textContent = item.caption || "";
+    stage.textContent = "";
+
+    var frame = el("span", "shot-frame");
+    if (item.image) {
+      var img = new Image();
+      img.alt = item.alt || "";
+      img.addEventListener("error", function () {
+        // picture not uploaded yet: swap in the gray box (the red square stays on top)
+        frame.replaceChild(placeholder(item), img);
+      });
+      img.src = item.image;
+      frame.appendChild(img);
+    } else {
+      frame.appendChild(placeholder(item));
+    }
+
+    // the red square. x, y, w, h are percentages of the picture, set in en.js
+    if (item.mark) {
+      var m = el("span", "mark");
+      m.style.left = item.mark.x + "%";
+      m.style.top = item.mark.y + "%";
+      m.style.width = item.mark.w + "%";
+      m.style.height = item.mark.h + "%";
+      frame.appendChild(m);
+    }
+    stage.appendChild(frame);
+
+    document.body.classList.add("modal");
+    if (typeof dlg.showModal === "function") dlg.showModal();
+    else dlg.setAttribute("open", "");
+  }
+
+  // ── Block builders ──────────────────────────────────────────
+  function renderBlocks(blocks, parent) {
+    blocks.forEach(function (b) {
+      var node = renderBlock(b);
+      if (node) parent.appendChild(node);
+    });
+  }
+
+  function renderBlock(b) {
+    var i;
+    switch (b.type) {
+      case "sub":
+        return el("h3", "sub", b.text);
+
+      case "p":
+        return el("p", "txt", fill(b.text));
+
+      case "steps": {
+        var ol = el("ol", "steps");
+        b.items.forEach(function (t) { ol.appendChild(el("li", null, t)); });
+        return ol;
+      }
+
+      case "list": {
+        var ul = el("ul", "list");
+        b.items.forEach(function (t) { ul.appendChild(el("li", null, t)); });
+        return ul;
+      }
+
+      case "note": {
+        var note = el("div", "note");
+        if (b.icon) note.appendChild(icon(b.icon));
+        note.appendChild(el("p", null, b.text));
+        return note;
+      }
+
+      case "pair": {
+        var pair = el("div", "pair");
+        b.items.forEach(function (it) {
+          var item = el("div", "pair-item");
+          var title = el("p", "pair-title");
+          if (it.icon) title.appendChild(icon(it.icon));
+          title.appendChild(el("span", null, it.title));
+          item.appendChild(title);
+          item.appendChild(el("p", null, it.text));
+          pair.appendChild(item);
+        });
+        return pair;
+      }
+
+      case "files": {
+        var files = el("div", "files");
+        b.items.forEach(function (it) {
+          var f = el("div", "file");
+          f.appendChild(el("code", null, it.name));
+          f.appendChild(el("p", null, it.text));
+          files.appendChild(f);
+        });
+        return files;
+      }
+
+      case "icons": {
+        var wrap = el("div", "icons");
+        wrap.appendChild(el("p", "hint", T.ui.iconHint));
+        var row = el("div", "icon-row");
+        for (i = 0; i < b.items.length; i++) {
+          row.appendChild(iconButton(b.items[i]));
+        }
+        wrap.appendChild(row);
+        return wrap;
+      }
+
+      case "accordion":
+        return accordion(b);
+    }
+    return null;
+  }
+
+  function iconButton(item) {
+    var btn = el("button", "icon-btn");
+    btn.type = "button";
+    btn.setAttribute("aria-haspopup", "dialog");
+    var tile = el("span", "icon-tile");
+    tile.appendChild(icon(item.icon));
+    btn.appendChild(tile);
+    btn.appendChild(el("span", "icon-lab", item.label));
+    btn.addEventListener("click", function () { openShot(item, btn); });
+    return btn;
+  }
+
+  // a row that opens and closes. One level only (no row inside a row inside a row).
+  function accordion(b) {
+    var d = el("details", "acc" + (b.accent ? " ac-" + b.accent : ""));
+    var s = document.createElement("summary");
+
+    if (b.icon) {
+      var tile = el("span", "tile");
+      tile.appendChild(icon(b.icon));
+      s.appendChild(tile);
+    }
+    var text = el("span", "acc-text");
+    text.appendChild(el("span", "acc-title", b.title));
+    if (b.sub) text.appendChild(el("span", "acc-sub", b.sub));
+    s.appendChild(text);
+
+    if (b.tag) s.appendChild(el("span", "tag", b.tag));
+    s.appendChild(icon("expand_more", "chev"));
+    d.appendChild(s);
+
+    var body = el("div", "acc-body");
+    renderBlocks(b.blocks || [], body);
+    d.appendChild(body);
+    return d;
+  }
+
+  // ── Sections ────────────────────────────────────────────────
+  T.sections.forEach(function (sec) {
+    var card = el("section", "card");
+    card.id = sec.id;
+
+    var head = el("div", "sec-head");
+    if (sec.icon) {
+      var tile = el("span", "tile");
+      tile.appendChild(icon(sec.icon));
+      head.appendChild(tile);
+    }
+    head.appendChild(el("h2", null, sec.title));
+    card.appendChild(head);
+    if (sec.intro) card.appendChild(el("p", "intro", sec.intro));
+
+    renderBlocks(sec.blocks || [], card);
+    app.appendChild(card);
+  });
+
+  // ── Footer ──────────────────────────────────────────────────
+  var foot = document.getElementById("foot");
+  var support = el("p");
+  support.appendChild(document.createTextNode(T.footer.support + " "));
+  var mail = el("a", null, T.footer.email);
+  mail.href = "mailto:" + T.footer.email;
+  support.appendChild(mail);
+  foot.appendChild(support);
+  foot.appendChild(el("p", null, T.footer.copy));
+})();
