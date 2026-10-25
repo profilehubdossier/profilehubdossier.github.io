@@ -1,1 +1,44 @@
-Manual coming soon
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="robots" content="noindex">
+<title>User manual | Profile Hub Dossier</title>
+
+<!-- Icons: Google Material Symbols, same names as the app. If an icon ever shows as plain text, its name is wrong in this list (names must stay in A-Z order). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=badge,close,expand_more,folder_code,gpp_maybe,home,info,lock,logout,manage_accounts,modeling,money_bag,person_add,queue_play_next,quick_reference_all,school,self_care,settings_alert,theater_comedy,tune,widgets&display=block">
+
+<!-- Relative links only: this whole folder can move to a real domain with no change -->
+<link rel="stylesheet" href="manual.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <p class="brand" id="brand"></p>
+    <h1 id="title"></h1>
+    <p class="lede" id="lede"></p>
+  </div>
+</header>
+
+<nav class="navbar" id="navbar">
+  <div class="wrap navrow" id="navrow"></div>
+</nav>
+
+<main class="wrap" id="app">
+  <noscript><p>Please turn on JavaScript to read this manual.</p></noscript>
+</main>
+
+<footer class="foot">
+  <div class="wrap" id="foot"></div>
+</footer>
+
+<!-- All the words live in en.js. A Spanish version later = a copy of en.js named es.js, translated. -->
+<script src="en.js"></script>
+<script src="manual.js"></script>
+</body>
+</html>
