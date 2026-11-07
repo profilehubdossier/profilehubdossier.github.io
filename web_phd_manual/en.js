@@ -81,7 +81,7 @@ window.MANUAL_TEXT = {
               title: "Save file & Sign out",
               image: "img/general-person-x.webp",
               alt: "The home page with the X icon above the New bar, on the left",
-              caption: "Tap "X" to save your file or to finish and sign out.",
+              caption: "Tap X to save your file or to finish and sign out.",
               mark: { x: 5.2, y: 85.9, w: 8, h: 4.9 }
             },
             
