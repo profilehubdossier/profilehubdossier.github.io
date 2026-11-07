@@ -6,6 +6,9 @@
 //   sub (small heading), p (paragraph), steps (numbered), list (bullets), note (tinted box),
 //   pair (two side by side), files (file names), icons (icon row with screenshot popups),
 //   accordion (a row that opens and closes)
+//
+// In an icons item, mark is the red square on the picture. One box: mark: { x, y, w, h }.
+// Several boxes: mark: [ { x, y, w, h }, { x, y, w, h } ]. All four numbers are percentages of the picture.
 
 window.MANUAL_TEXT = {
   lang: "en",
@@ -49,22 +52,22 @@ window.MANUAL_TEXT = {
       id: "general",
       icon: "info",
       title: "General",
-      intro: "How to start, how to finish, and what happens to your files.",
       blocks: [
+        { type: "sub", text: "First time here" },
+        {
+          type: "steps",
+          items: [
+            "Enter your email. We send you a sign-in link, so there is no password to remember.",
+            "Pick your plan.",
+            "You land on the home page.",
+            "Before anything else, add a contact (tap the person setting icon, then add contact or import). Import only accepts contact files, such as .vcf files."
+          ]
+        },
+
         {
           type: "icons",
           items: [
             {
-              id: "new",
-              icon: "queue_play_next",
-              label: "New",
-              title: "The New button",
-              image: "images/general-new.webp",
-              alt: "The home page with the New button at the bottom",
-              caption: "New is the button at the bottom of the home page. Tap it to start: Add, Edit, Summary or Manage.",
-              mark: { x: 34, y: 88, w: 32, h: 9 }
-            },
-                      {
               id: "person",
               icon: "manage_accounts",
               label: "Person setting",
@@ -75,37 +78,28 @@ window.MANUAL_TEXT = {
               mark: { x: 87.3, y: 85.9, w: 8, h: 4.9 }
             },
             {
+              id: "contact",
+              icon: "person",
+              label: "Contact",
+              title: "Contact",
+              image: "img/general-contact.webp",
+              alt: "The contact menu with the Add and Import icons",
+              caption: "Tap the person setting icon, then Contact. Pick Add to create a contact, or Import to bring in contacts from a .vcf file.",
+              mark: [
+                { x: 7.2, y: 89.4, w: 8.5, h: 5.9 },
+                { x: 31.5, y: 89.4, w: 9.5, h: 5.9 }
+              ]
+            },
+            {
               id: "close",
               icon: "close",
               label: "X",
-              title: "Save file & Sign out",
+              title: "The X icon",
               image: "img/general-person-x.webp",
               alt: "The home page with the X icon above the New bar, on the left",
-              caption: "Tap X to save your file or to finish and sign out.",
+              caption: "Tap X when you are done, then pick Confirm (download and stay) or Finish & Sign Out (download and leave).",
               mark: { x: 5.2, y: 85.9, w: 8, h: 4.9 }
-            },
-            
-            {
-              id: "addContact",
-              icon: "person_add",
-              label: "Add contact",
-              title: "Add contact",
-              image: "images/general-add-contact.webp",
-              alt: "The contact menu with the Add contact icon",
-              caption: "Tap the person setting icon, then Add contact. Or choose Import to bring in contacts from a .vcf file.",
-              mark: { x: 20, y: 40, w: 20, h: 10 }
             }
-          ]
-        },
-
-        { type: "sub", text: "First time here" },
-        {
-          type: "steps",
-          items: [
-            "Enter your email. We send you a sign-in link, so there is no password to remember.",
-            "Pick your plan.",
-            "You land on the home page.",
-            "Before anything else, add a contact (tap the person setting icon, then add contact or import). Import only accepts contact files, such as .vcf files."
           ]
         },
 
@@ -133,12 +127,12 @@ window.MANUAL_TEXT = {
             },
             {
               icon: "logout",
-              title: "Tap Finish & Sign Out",
+              title: "Tap X, then Finish & Sign Out",
               text: "Your files download and you go back to the email login page."
             }
           ]
         },
-        { type: "p", text: "Only changed files download. If nothing changed, nothing downloads." },
+        { type: "p", text: "Cancel closes the message and you stay in the app." },
 
         { type: "sub", text: "Your files" },
         {
