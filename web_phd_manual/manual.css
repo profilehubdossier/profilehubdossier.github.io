@@ -22,7 +22,7 @@
   :root {
     --bg: #1C1B1F;        /* darkPageBackground */
     --card: #3A3940;      /* darkCardSurface */
-    --ink: #E6E1E5;       /* darkTextPrimary */
+    --ink: #E6E1E5;      /* darkTextPrimary */
     --soft: #AEAAAF;      /* darkTextSecondary */
     --line: #4A4850;      /* darkBorder */
     --tint: #2C2B30;      /* darkSurface */
@@ -49,7 +49,7 @@ body {
 
 body.modal { overflow: hidden; }
 
-.wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; } /* was 820px and 16px: wider on PC, a bit more side space on phone */
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; } /* wider on PC, a bit more side space on phone */
 
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 
@@ -94,7 +94,9 @@ h1 { margin: 0 0 0.3em; font-size: clamp(1.9rem, 5vw, 2.6rem); line-height: 1.15
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
 }
-.navrow { display: flex; justify-content: center; gap: 10px; }
+/* PC and tablet: the 3 buttons keep their size and spread over the full content width.
+   The first sits at the left edge, the last at the right edge, the space goes between them. */
+.navrow { display: flex; justify-content: space-between; gap: 10px; }
 .nbtn {
   flex: 1 1 0;
   min-width: 0;
@@ -116,12 +118,19 @@ h1 { margin: 0 0 0.3em; font-size: clamp(1.9rem, 5vw, 2.6rem); line-height: 1.15
 .nbtn:hover { border-color: var(--accent); }
 .nbtn.is-placeholder { opacity: 0.6; cursor: default; }
 .nbtn.is-placeholder:hover { border-color: var(--line); }
+
+/* phones: smaller buttons, closer together */
+@media (max-width: 600px) {
+  .navrow { gap: 6px; }
+  .nbtn { gap: 4px; padding: 9px 6px; border-radius: 12px; font-size: 0.85rem; }
+  .nbtn .ms { font-size: 18px; }
+}
 @media (max-width: 380px) { .nbtn .ms { display: none; } }
 
-/* ── Sections as cards ────────────────────────────────────── */
+/* ── Sections ─────────────────────────────────────────────── */
 main.wrap { display: flex; flex-direction: column; gap: 0; padding-top: 8px; padding-bottom: 56px; }
 
-/* sections are plain page sections now: no box, just space and a thin line on top */
+/* sections are plain page sections: no box, just space and a thin line on top */
 .card {
   scroll-margin-top: 88px; /* leaves room for the sticky buttons */
   padding: 36px 0 40px;
@@ -129,11 +138,12 @@ main.wrap { display: flex; flex-direction: column; gap: 0; padding-top: 8px; pad
 }
 .card:first-of-type { border-top: 0; }
 
-/* text keeps a readable line length on wide screens; rows and boxes use the full width */
-.intro, .txt, .steps, .list, .note { max-width: 72ch; }
 .sec-head { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
 h2 { margin: 0; font-size: 1.5rem; line-height: 1.2; letter-spacing: -0.01em; }
 .intro { margin: 0 0 18px; color: var(--soft); }
+
+/* text uses the full content width. text-wrap: pretty stops a single word sitting alone on the last line */
+.intro, .txt, .steps li, .list li, .note p, .pair-item p, .file p, .acc-sub { text-wrap: pretty; }
 
 .tile {
   width: 44px;
@@ -174,18 +184,23 @@ h3.sub { margin: 28px 0 10px; font-size: 1.05rem; color: var(--accent-text); }
 .list { margin: 0 0 12px; padding-left: 20px; }
 .list li { margin-bottom: 0.5em; }
 
+/* the privacy note: a smaller card, centered, with everything centered inside.
+   92% of the width on phones, never wider than 720px. The text goes to the next line by itself. */
 .note {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  margin: 20px 0;
-  padding: 14px 16px;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: min(92%, 720px);
+  margin: 24px auto;
+  padding: 16px 20px;
+  text-align: center;
   border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
   border-radius: 16px;
   background: color-mix(in srgb, var(--accent) 10%, transparent);
 }
-.note .ms { margin-top: 2px; color: var(--accent-text); }
-.note p { margin: 0; }
+.note .ms { color: var(--accent-text); }
+.note p { margin: 0; text-wrap: balance; }
 
 .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin: 0 0 12px; }
 .pair-item { padding: 14px 16px; border: 1px solid var(--line); border-radius: 16px; background: var(--tint); }
@@ -193,8 +208,9 @@ h3.sub { margin: 28px 0 10px; font-size: 1.05rem; color: var(--accent-text); }
 .pair-title .ms { color: var(--accent-text); font-size: 22px; }
 .pair-item p { margin: 0; color: var(--soft); font-size: 0.97rem; }
 
+/* file name examples: centered in their boxes */
 .files { display: grid; gap: 10px; margin: 0 0 12px; }
-.file { padding: 12px 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--tint); }
+.file { padding: 12px 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--tint); text-align: center; }
 .file code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 0.92rem;
@@ -204,10 +220,19 @@ h3.sub { margin: 28px 0 10px; font-size: 1.05rem; color: var(--accent-text); }
 }
 .file p { margin: 0.35em 0 0; color: var(--soft); font-size: 0.95rem; }
 
-/* ── Icon row ─────────────────────────────────────────────── */
-.icons { margin: 4px 0 8px; }
-.hint { margin: 0 0 10px; color: var(--soft); font-size: 0.95rem; }
-.icon-row { display: flex; flex-wrap: wrap; gap: 12px; }
+/* ── Icon row: a small purple card, centered, just big enough for the hint and the icons ── */
+.icons {
+  width: fit-content;
+  max-width: 100%;
+  margin: 20px auto 8px;
+  padding: 16px 20px 14px;
+  text-align: center;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+.hint { margin: 0 0 10px; color: var(--soft); font-size: 0.95rem; text-wrap: balance; }
+.icon-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
 .icon-btn {
   width: 84px;
   display: flex;
@@ -352,6 +377,7 @@ dialog.shot::backdrop { background: rgba(10, 8, 16, 0.6); }
   dialog.shot { width: 82vw; }
   .shot-frame img { max-height: 46vh; }
 }
+
 /* ── Footer ───────────────────────────────────────────────── */
 .foot { padding: 24px 0 40px; border-top: 1px solid var(--line); color: var(--soft); font-size: 0.92rem; text-align: center; }
 .foot p { margin: 0 0 0.4em; }
