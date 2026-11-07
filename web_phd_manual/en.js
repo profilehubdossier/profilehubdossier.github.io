@@ -64,15 +64,25 @@ window.MANUAL_TEXT = {
               caption: "New is the button at the bottom of the home page. Tap it to start: Add, Edit, Summary or Manage.",
               mark: { x: 34, y: 88, w: 32, h: 9 }
             },
-            {
+                      {
               id: "person",
               icon: "manage_accounts",
               label: "Person setting",
-              title: "The person setting icon",
-              image: "images/general-person.webp",
+              title: "Person setting",
+              image: "img/general-person-x.webp",
               alt: "The home page with the person setting icon above the New bar, on the right",
-              caption: "The person setting icon is at the right end, just above the New bar. Tap it to add or import a contact.",
-              mark: { x: 76, y: 80, w: 15, h: 7 }
+              caption: "Person setting is the icon at the right end, just above the New bar. Tap it to add or import a contact.",
+              mark: { x: 87.3, y: 85.9, w: 8, h: 4.9 }
+            },
+            {
+              id: "close",
+              icon: "close",
+              label: "X",
+              title: "Save file & Sign out",
+              image: "img/general-person-x.webp",
+              alt: "The home page with the X icon above the New bar, on the left",
+              caption: "X is the icon at the left end, just above the New bar. Tap it to save your file or to save and sign out.",
+              mark: { x: 5.2, y: 85.9, w: 8, h: 4.9 }
             },
             {
               id: "close",
