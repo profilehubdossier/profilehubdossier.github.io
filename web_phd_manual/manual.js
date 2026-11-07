@@ -134,14 +134,18 @@
       frame.appendChild(placeholder(item));
     }
 
-    // the red square. x, y, w, h are percentages of the picture, set in en.js
+        // the red squares. x, y, w, h are percentages of the picture, set in en.js
+    // mark can be one box, or a list of boxes
     if (item.mark) {
-      var m = el("span", "mark");
-      m.style.left = item.mark.x + "%";
-      m.style.top = item.mark.y + "%";
-      m.style.width = item.mark.w + "%";
-      m.style.height = item.mark.h + "%";
-      frame.appendChild(m);
+      var marks = Array.isArray(item.mark) ? item.mark : [item.mark];
+      marks.forEach(function (mk) {
+        var m = el("span", "mark");
+        m.style.left = mk.x + "%";
+        m.style.top = mk.y + "%";
+        m.style.width = mk.w + "%";
+        m.style.height = mk.h + "%";
+        frame.appendChild(m);
+      });
     }
     stage.appendChild(frame);
 
