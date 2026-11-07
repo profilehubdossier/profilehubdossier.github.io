@@ -347,6 +347,11 @@ dialog.shot::backdrop { background: rgba(10, 8, 16, 0.6); }
 .shot-cap { margin: 14px 0 6px; text-align: left; }
 .shot-hint { margin: 0; color: var(--soft); font-size: 0.82rem; }
 
+/* phones: smaller popup, since the caption under the pic carries the words */
+@media (max-width: 600px) {
+  dialog.shot { width: 82vw; }
+  .shot-frame img { max-height: 46vh; }
+}
 /* ── Footer ───────────────────────────────────────────────── */
 .foot { padding: 24px 0 40px; border-top: 1px solid var(--line); color: var(--soft); font-size: 0.92rem; text-align: center; }
 .foot p { margin: 0 0 0.4em; }
