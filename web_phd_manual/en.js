@@ -81,19 +81,10 @@ window.MANUAL_TEXT = {
               title: "Save file & Sign out",
               image: "img/general-person-x.webp",
               alt: "The home page with the X icon above the New bar, on the left",
-              caption: "X is the icon at the left end, just above the New bar. Tap it to save your file or to save and sign out.",
+              caption: "Tap "X" to save your file or to finish and sign out.",
               mark: { x: 5.2, y: 85.9, w: 8, h: 4.9 }
             },
-            {
-              id: "close",
-              icon: "close",
-              label: "X",
-              title: "The X icon",
-              image: "images/general-close.webp",
-              alt: "The home page with the X icon above the New bar, on the left",
-              caption: "X is at the left end, just above the New bar. Tap it when you are done to save your changes.",
-              mark: { x: 9, y: 80, w: 15, h: 7 }
-            },
+            
             {
               id: "addContact",
               icon: "person_add",
