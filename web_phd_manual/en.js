@@ -392,13 +392,72 @@ window.MANUAL_TEXT = {
             }
           ]
         },
-        {
+               {
           type: "accordion",
           accent: "edu",
           icon: "school",
           title: "Education",
           sub: "Tuition, books, supplies and other school costs",
-          blocks: [{ type: "p", text: "{guideSoon}" }]
+          blocks: [
+            {
+              type: "icons",
+              hint: "Tap an icon to see the **EDUCATION** screen.",
+              items: [
+                {
+                  id: "eduAdd",
+                  icon: "create_new_folder",
+                  label: "Add",
+                  title: "Add Education",
+                  image: "img/education-add.webp",
+                  alt: "The Add Education form with the contact name and the 3 dots marked",
+                  caption: "Fill in the info, then tap Save. Tap the 3 dots in the date and time box to add the event to your calendar.",
+                  mark: [
+                    { x: 9.1, y: 5.5, w: 43, h: 6.3 },
+                    { x: 26.6, y: 44.9, w: 5.4, h: 3.6 }
+                  ]
+                },
+                {
+                  id: "eduEdit",
+                  icon: "bookmark_manager",
+                  label: "Edit",
+                  title: "Edit Education",
+                  image: "img/education-edit.webp",
+                  alt: "The selection page with a list of schools",
+                  caption: "If there is more than one result in your date range, they all show here. Tap the one you want to edit."
+                },
+                {
+                  id: "eduManage",
+                  icon: "database_search",
+                  label: "Manage",
+                  title: "Manage Education",
+                  image: "img/education-manage.webp",
+                  alt: "The Manage Education search box with school and learning objectives",
+                  caption: "Enter what you know to find your records. The more boxes you fill in, the narrower the list. Then tap Search."
+                }
+              ]
+            },
+            {
+              type: "steps",
+              items: [
+                {
+                  label: "Add Education:",
+                  text: "Fill in the info, then tap Save. To add the date and time to your calendar, fill in the date and time, then tap the 3 dots next to it. This puts the event in the device memory. When you are done with everything, tap X to download your files. If you changed records and added an event, two files download: the database file and the calendar (.ics) file. Open the .ics file to add the event to your calendar, then delete it once you see the event there."
+                },
+                {
+                  label: "Edit Education:",
+                  text: "Pick a date range on the calendar. If there is more than one result in that range, tap the one you want on the selection page. Change the info, then tap Save. When you are done, tap X to download your changes."
+                },
+                {
+                  label: "Summary:",
+                  text: "Summary shows, within the date range you pick on the home page calendar, your highest spending schools and most expensive learning objectives, plus each school with its learning objectives and a pie chart of the costs."
+                },
+                {
+                  label: "Manage Education:",
+                  text: "Pick a date range, enter what you know to find your records, such as the school or the learning objective (the more boxes you fill in, the narrower the list), then tap Search. Tap a result, change the info, then tap Save."
+                }
+              ]
+            }
+          ]
         }
       ]
     },
