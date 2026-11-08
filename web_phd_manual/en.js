@@ -274,7 +274,7 @@ window.MANUAL_TEXT = {
                   title: "Add Cosmetic",
                   image: "img/cosmetic-add.webp",
                   alt: "The Add Cosmetic form with the contact name marked at the top",
-                  caption: "Each record belongs to a contact, so it's easy to manage your loved ones, family, friends and clients. Fill in the info, then tap Save.",
+                  caption: "Each record belongs to a contact, so it's easy to manage your loved ones, family, friends and clients. Fill in the info, then tap Save. When you finish everything, tap X on the app home page to download your file(s).",
                   mark: { x: 9.1, y: 5.3, w: 40.5, h: 6.3 }
                 },
                 {
@@ -346,7 +346,7 @@ window.MANUAL_TEXT = {
                   title: "Add Moneyflow",
                   image: "img/moneyflow-add.webp",
                   alt: "The Add Moneyflow form with the contact name marked at the top",
-                  caption: "Track spending records for your loved ones, family, friends, clients, company and more. Fill in the info, then tap Save.",
+                  caption: "Track spending records for your loved ones, family, friends, clients, company and more. Fill in the info, then tap Save. When you finish everything, tap X on the app home page to download your file(s).",
                   mark: { x: 9.2, y: 5.4, w: 41, h: 6.2 }
                 },
                 {
@@ -410,7 +410,7 @@ window.MANUAL_TEXT = {
                   title: "Add Education",
                   image: "img/education-add.webp",
                   alt: "The Add Education form with the contact name and the 3 dots marked",
-                  caption: "Fill in the info, then tap Save. Tap the 3 dots in the date and time box to add the event to your calendar.",
+                  caption: "Fill in the info, then tap Save. Tap the 3 dots in the date and time box to add the event to your device memory. When you finish everything, tap X on the app home page to download your file(s).",
                   mark: [
                     { x: 9.1, y: 5.5, w: 43, h: 6.3 },
                     { x: 26.6, y: 44.9, w: 5.4, h: 3.6 }
