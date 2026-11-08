@@ -140,7 +140,7 @@ main.wrap { display: flex; flex-direction: column; gap: 0; padding-top: 8px; pad
 
 .sec-head { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
 h2 { margin: 0; font-size: 1.5rem; line-height: 1.2; letter-spacing: -0.01em; }
-.intro { margin: 0 0 18px; color: var(--soft); }
+.intro { margin: 0 0 10px; color: var(--soft); }
 
 /* text uses the full content width. text-wrap: pretty stops a single word sitting alone on the last line */
 .intro, .txt, .steps li, .list li, .note p, .pair-item p, .file p, .acc-sub { text-wrap: pretty; }
@@ -180,6 +180,8 @@ h3.sub { margin: 28px 0 10px; font-size: 1.05rem; color: var(--accent-text); }
   font-weight: 700;
   font-size: 0.9rem;
 }
+/* the action name at the start of a step, like "Add Cosmetic:" */
+.step-name { font-weight: 700; color: var(--accent-text); }
 
 .list { margin: 0 0 12px; padding-left: 20px; }
 .list li { margin-bottom: 0.5em; }
@@ -260,6 +262,26 @@ h3.sub { margin: 28px 0 10px; font-size: 1.05rem; color: var(--accent-text); }
 .icon-btn:hover .icon-tile { border-color: var(--accent); }
 .icon-btn:active .icon-tile { transform: scale(0.96); }
 .icon-lab { font-size: 0.85rem; line-height: 1.25; text-align: center; }
+
+/* a small icon button inside a sentence. The negative margin keeps the line height from growing. */
+.inline-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  margin: -4px 3px;
+  padding: 0;
+  vertical-align: middle;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--tint);
+  color: var(--accent-text);
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.inline-icon .ms { font-size: 20px; }
+.inline-icon:hover { border-color: var(--accent); }
+.inline-icon:active { transform: scale(0.94); }
 
 /* ── Open and close rows (+/-) ────────────────────────────── */
 .acc { margin-top: 12px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); }
