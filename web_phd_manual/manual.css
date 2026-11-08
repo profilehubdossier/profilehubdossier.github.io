@@ -234,9 +234,10 @@ h3.sub { margin: 28px 0 10px; font-size: 1.05rem; color: var(--accent-text); }
   background: color-mix(in srgb, var(--accent) 10%, transparent);
 }
 .hint { margin: 0 0 10px; color: var(--soft); font-size: 0.95rem; text-wrap: balance; }
+.hint strong { color: var(--ink); }
 .icon-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
 .icon-btn {
-  width: 84px;
+  width: 92px;
   display: flex;
   flex-direction: column;
   align-items: center;
