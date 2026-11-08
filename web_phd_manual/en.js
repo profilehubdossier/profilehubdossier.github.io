@@ -328,13 +328,69 @@ window.MANUAL_TEXT = {
             }
           ]
         },
-        {
+                {
           type: "accordion",
           accent: "money",
           icon: "money_bag",
           title: "Moneyflow",
           sub: "Spending by person, store and category",
-          blocks: [{ type: "p", text: "{guideSoon}" }]
+          blocks: [
+            {
+              type: "icons",
+              hint: "Tap an icon to see the **MONEYFLOW** screen.",
+              items: [
+                {
+                  id: "monAdd",
+                  icon: "create_new_folder",
+                  label: "Add",
+                  title: "Add Moneyflow",
+                  image: "img/moneyflow-add.webp",
+                  alt: "The Add Moneyflow form with the contact name marked at the top",
+                  caption: "Track spending records for your loved ones, family, friends, clients, company and more. Fill in the info, then tap Save.",
+                  mark: { x: 9.2, y: 5.4, w: 41, h: 6.2 }
+                },
+                {
+                  id: "monEdit",
+                  icon: "bookmark_manager",
+                  label: "Edit",
+                  title: "Edit Moneyflow",
+                  image: "img/moneyflow-edit.webp",
+                  alt: "The selection page with a list of stores",
+                  caption: "If there is more than one result in your date range, they all show here. Tap the one you want to edit."
+                },
+                {
+                  id: "monManage",
+                  icon: "database_search",
+                  label: "Manage",
+                  title: "Manage Moneyflow",
+                  image: "img/moneyflow-manage.webp",
+                  alt: "The Manage Moneyflow search box with a store name and a category list",
+                  caption: "Enter what you know to find your records. The more boxes you fill in, the narrower the list. Then tap Search."
+                }
+              ]
+            },
+            {
+              type: "steps",
+              items: [
+                {
+                  label: "Add Moneyflow:",
+                  text: "Track spending records for your loved ones, family, friends, clients, company and more. Fill in the info, then tap Save. When you are done, tap X to download your file."
+                },
+                {
+                  label: "Edit Moneyflow:",
+                  text: "Pick a date range on the calendar. If there is more than one result in that range, tap the one you want on the selection page. Change the info, then tap Save. When you are done, tap X to download your changes."
+                },
+                {
+                  label: "Summary:",
+                  text: "Summary shows, within the date range you pick on the home page calendar, your top 3 highest spending stores and top 3 most expensive items, plus each store with its categories and a pie chart of the costs."
+                },
+                {
+                  label: "Manage Moneyflow:",
+                  text: "Pick a date range, enter what you know to find your records, such as the store or the category (the more boxes you fill in, the narrower the list), then tap Search. Tap a result, change the info, then tap Save."
+                }
+              ]
+            }
+          ]
         },
         {
           type: "accordion",
