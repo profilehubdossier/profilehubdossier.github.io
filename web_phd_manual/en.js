@@ -97,8 +97,18 @@ window.MANUAL_TEXT = {
               title: "The X icon",
               image: "img/general-person-x.webp",
               alt: "The home page with the X icon above the New bar, on the left",
-              caption: "Tap X when you are done, then pick Confirm (download and stay) or Finish & Sign Out (download and leave).",
+                            caption: "Tap X when you are done, then pick Confirm (download and stay) or Finish & Sign Out (download and leave).",
               mark: { x: 5.2, y: 85.9, w: 8, h: 4.9 }
+            },
+            {
+              id: "new",
+              icon: "queue_play_next",
+              label: "New",
+              title: "The New button",
+              image: "img/general-new.webp",
+              alt: "The New menu with the Action, Profile and Contact rows",
+              caption: "Tap New at the bottom of the home page to open this menu. Pick an action, a profile and a contact, then tap Date.",
+              mark: { x: 13, y: 54.3, w: 73.5, h: 9.3 }
             }
           ]
         },
