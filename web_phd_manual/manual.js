@@ -32,6 +32,25 @@
     });
   }
 
+  // The small icons written inside sentences. en.js writes {icon:name} in a text and describes
+  // the icon under the section's inline list. It is set again for each section below.
+  var inlineMap = {};
+
+  // turns a text into pieces: plain words and small tappable icons
+  function richText(text) {
+    var frag = document.createDocumentFragment();
+    String(text).split(/(\{icon:\w+\})/).forEach(function (part) {
+      if (!part) return;
+      var m = part.match(/^\{icon:(\w+)\}$/);
+      if (m && inlineMap[m[1]]) {
+        frag.appendChild(inlineIcon(inlineMap[m[1]]));
+      } else {
+        frag.appendChild(document.createTextNode(fill(part)));
+      }
+    });
+    return frag;
+  }
+
   // ── Page header and the 3 sticky buttons ────────────────────
   document.documentElement.lang = T.lang || "en";
   document.title = T.page.docTitle;
@@ -134,7 +153,7 @@
       frame.appendChild(placeholder(item));
     }
 
-        // the red squares. x, y, w, h are percentages of the picture, set in en.js
+    // the red squares. x, y, w, h are percentages of the picture, set in en.js
     // mark can be one box, or a list of boxes
     if (item.mark) {
       var marks = Array.isArray(item.mark) ? item.mark : [item.mark];
@@ -168,12 +187,25 @@
       case "sub":
         return el("h3", "sub", b.text);
 
-      case "p":
-        return el("p", "txt", fill(b.text));
+      case "p": {
+        var p = el("p", "txt");
+        p.appendChild(richText(b.text));
+        return p;
+      }
 
       case "steps": {
         var ol = el("ol", "steps");
-        b.items.forEach(function (t) { ol.appendChild(el("li", null, t)); });
+        b.items.forEach(function (t) {
+          var li = el("li");
+          if (typeof t === "string") {
+            li.appendChild(richText(t));
+          } else {
+            // { label, text }: the label shows first, in purple
+            li.appendChild(el("span", "step-name", t.label + " "));
+            li.appendChild(richText(t.text));
+          }
+          ol.appendChild(li);
+        });
         return ol;
       }
 
@@ -217,7 +249,7 @@
 
       case "icons": {
         var wrap = el("div", "icons");
-        wrap.appendChild(el("p", "hint", T.ui.iconHint));
+        wrap.appendChild(el("p", "hint", b.hint || T.ui.iconHint));
         var row = el("div", "icon-row");
         for (i = 0; i < b.items.length; i++) {
           row.appendChild(iconButton(b.items[i]));
@@ -240,6 +272,17 @@
     tile.appendChild(icon(item.icon));
     btn.appendChild(tile);
     btn.appendChild(el("span", "icon-lab", item.label));
+    btn.addEventListener("click", function () { openShot(item, btn); });
+    return btn;
+  }
+
+  // a small icon button that sits inside a sentence and opens the same screenshot popup
+  function inlineIcon(item) {
+    var btn = el("button", "inline-icon");
+    btn.type = "button";
+    btn.setAttribute("aria-haspopup", "dialog");
+    btn.setAttribute("aria-label", item.label);
+    btn.appendChild(icon(item.icon));
     btn.addEventListener("click", function () { openShot(item, btn); });
     return btn;
   }
@@ -271,6 +314,8 @@
 
   // ── Sections ────────────────────────────────────────────────
   T.sections.forEach(function (sec) {
+    inlineMap = sec.inline || {};
+
     var card = el("section", "card");
     card.id = sec.id;
 
@@ -282,7 +327,16 @@
     }
     head.appendChild(el("h2", null, sec.title));
     card.appendChild(head);
-    if (sec.intro) card.appendChild(el("p", "intro", sec.intro));
+
+    // intro can be one text, or a list of texts (one line each)
+    if (sec.intro) {
+      var lines = Array.isArray(sec.intro) ? sec.intro : [sec.intro];
+      lines.forEach(function (line) {
+        var p = el("p", "intro");
+        p.appendChild(richText(line));
+        card.appendChild(p);
+      });
+    }
 
     renderBlocks(sec.blocks || [], card);
     app.appendChild(card);
