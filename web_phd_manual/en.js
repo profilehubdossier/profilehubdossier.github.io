@@ -265,7 +265,7 @@ window.MANUAL_TEXT = {
           blocks: [
             {
               type: "icons",
-              hint: "Tap an icon to see the screen.",
+              hint: "Tap an icon to see the **COSMETIC** screen.",
               items: [
                 {
                   id: "cosAdd",
@@ -289,7 +289,7 @@ window.MANUAL_TEXT = {
                 {
                   id: "cosAppt",
                   icon: "calendar_clock",
-                  label: "Appt",
+                  label: "Appointment",
                   title: "Appointment",
                   image: "img/cosmetic-appt.webp",
                   alt: "The Appointment form",
