@@ -9,6 +9,12 @@
 //
 // In an icons item, mark is the red square on the picture. One box: mark: { x, y, w, h }.
 // Several boxes: mark: [ { x, y, w, h }, { x, y, w, h } ]. All four numbers are percentages of the picture.
+//
+// A steps item can be a plain text, or { label: "Add Cosmetic:", text: "..." } (the label shows in purple).
+//
+// A section can have intro (one text, or a list of texts = one line each) and inline (small tappable icons
+// written inside the sentences). Put {icon:name} in a sentence where the icon should sit, and describe
+// that icon under inline: { name: { icon, label, title, image, alt, caption, mark } }.
 
 window.MANUAL_TEXT = {
   lang: "en",
@@ -97,7 +103,7 @@ window.MANUAL_TEXT = {
               title: "The X icon",
               image: "img/general-person-x.webp",
               alt: "The home page with the X icon above the New bar, on the left",
-                            caption: "Tap X when you are done, then pick Confirm (download and stay) or Finish & Sign Out (download and leave).",
+              caption: "Tap X when you are done, then pick Confirm (download and stay) or Finish & Sign Out (download and leave).",
               mark: { x: 5.2, y: 85.9, w: 8, h: 4.9 }
             },
             {
@@ -223,7 +229,32 @@ window.MANUAL_TEXT = {
       id: "profiles",
       icon: "badge",
       title: "Profiles",
-      intro: "Tap a profile to open its guide.",
+      // one line per text. {icon:selection} and {icon:info} are the small tappable icons, described under inline
+      intro: [
+        "Tap a profile to open its guide. Edit, Manage, Summary and Report use the records inside the date range you pick on the calendar.",
+        "Edit and Manage can find more than one result. All of them show on the selection page {icon:selection}, so tap the one you want.",
+        "Save is gray? Tap the info icon {icon:info} to see what is missing. Tap it again to hide the message."
+      ],
+      inline: {
+        selection: {
+          icon: "list_alt",
+          label: "Selection page",
+          title: "The selection page",
+          image: "img/profiles-selection.webp",
+          alt: "The selection page with a list of styles, the first one marked",
+          caption: "Edit and Manage show every match here. Tap the one you want.",
+          mark: { x: 9.4, y: 16.4, w: 81.3, h: 19 }
+        },
+        info: {
+          icon: "info",
+          label: "Info icon",
+          title: "The info icon",
+          image: "img/profiles-info.webp",
+          alt: "The gray Save button with the info icon at the top right",
+          caption: "If Save is gray, tap the info icon to see what is missing. Tap it again to hide the message.",
+          mark: { x: 89.9, y: 40.9, w: 5.3, h: 14.5 }
+        }
+      },
       blocks: [
         {
           type: "accordion",
@@ -231,7 +262,71 @@ window.MANUAL_TEXT = {
           icon: "self_care",
           title: "Cosmetic",
           sub: "Style profiles, items and appointments",
-          blocks: [{ type: "p", text: "{guideSoon}" }]
+          blocks: [
+            {
+              type: "icons",
+              hint: "Tap an icon to see the screen.",
+              items: [
+                {
+                  id: "cosAdd",
+                  icon: "create_new_folder",
+                  label: "Add",
+                  title: "Add Cosmetic",
+                  image: "img/cosmetic-add.webp",
+                  alt: "The Add Cosmetic form with the contact name marked at the top",
+                  caption: "Each record belongs to a contact, so it's easy to manage your loved ones, family, friends and clients. Fill in the info, then tap Save.",
+                  mark: { x: 9.1, y: 5.3, w: 40.5, h: 6.3 }
+                },
+                {
+                  id: "cosManage",
+                  icon: "database_search",
+                  label: "Manage",
+                  title: "Manage Cosmetic",
+                  image: "img/cosmetic-manage.webp",
+                  alt: "The Manage Cosmetic search box with item name, style name and appointment status",
+                  caption: "Enter what you know to find your records. The more boxes you fill in, the narrower the list. Then tap Search."
+                },
+                {
+                  id: "cosAppt",
+                  icon: "calendar_clock",
+                  label: "Appt",
+                  title: "Appointment",
+                  image: "img/cosmetic-appt.webp",
+                  alt: "The Appointment form",
+                  caption: "Fill in the appointment info, then tap Save. Business plan only."
+                }
+              ]
+            },
+            {
+              type: "steps",
+              items: [
+                {
+                  label: "Add Cosmetic:",
+                  text: "Each record belongs to a contact, so it's easy to manage your loved ones, family, friends and clients. Fill in the info, then tap Save. When you are done, tap X to download your file."
+                },
+                {
+                  label: "Edit Cosmetic:",
+                  text: "Pick a date range on the calendar. If there is more than one result in that range, tap the one you want on the selection page. Change the info, then tap Save. When you are done, tap X to download your changes."
+                },
+                {
+                  label: "Summary:",
+                  text: "Summary shows, within the date range you pick on the home page calendar, your top 3 most expensive styles, top 3 most frequent items and top 3 most expensive items, plus each style with its items and a pie chart of the costs."
+                },
+                {
+                  label: "Manage Cosmetic:",
+                  text: "Pick a date range, enter what you know to find your records (the more boxes you fill in, the narrower the list), then tap Search. Tap a result, change the info, then tap Save."
+                },
+                {
+                  label: "Appointment (Business plan):",
+                  text: "Pick one date on the calendar to log the record, fill in the appointment info (including the appointment's date and time), then tap Save. Tap X to download. If you changed records and added an appointment, two files download: the database file and the calendar (.ics) file. Open the .ics file to add the event to your calendar, then delete it once you see the event there."
+                },
+                {
+                  label: "Report (Business plan):",
+                  text: "Report shows, within the date range you pick on the home page calendar, your appointment activity (appointments, hours, service fees), reservation status (paid, pending, booked), fees and balance (travel fee, deposit, balance due), and a card for each appointment."
+                }
+              ]
+            }
+          ]
         },
         {
           type: "accordion",
