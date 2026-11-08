@@ -36,14 +36,17 @@
   // the icon under the section's inline list. It is set again for each section below.
   var inlineMap = {};
 
-  // turns a text into pieces: plain words and small tappable icons
+   // turns a text into pieces: plain words, **bold** words and small tappable icons
   function richText(text) {
     var frag = document.createDocumentFragment();
-    String(text).split(/(\{icon:\w+\})/).forEach(function (part) {
+    String(text).split(/(\{icon:\w+\}|\*\*[^*]+\*\*)/).forEach(function (part) {
       if (!part) return;
       var m = part.match(/^\{icon:(\w+)\}$/);
+      var bold = part.match(/^\*\*([^*]+)\*\*$/);
       if (m && inlineMap[m[1]]) {
         frag.appendChild(inlineIcon(inlineMap[m[1]]));
+      } else if (bold) {
+        frag.appendChild(el("strong", null, bold[1]));
       } else {
         frag.appendChild(document.createTextNode(fill(part)));
       }
@@ -249,7 +252,9 @@
 
       case "icons": {
         var wrap = el("div", "icons");
-        wrap.appendChild(el("p", "hint", b.hint || T.ui.iconHint));
+               var hintP = el("p", "hint");
+        hintP.appendChild(richText(b.hint || T.ui.iconHint));
+        wrap.appendChild(hintP);
         var row = el("div", "icon-row");
         for (i = 0; i < b.items.length; i++) {
           row.appendChild(iconButton(b.items[i]));
