@@ -283,6 +283,19 @@ h3.sub { margin: 28px 0 10px; font-size: 1.05rem; color: var(--accent-text); }
 .inline-icon .ms { font-size: 20px; }
 .inline-icon:hover { border-color: var(--accent); }
 .inline-icon:active { transform: scale(0.94); }
+.inline-link {
+display: inline;
+padding: 0;
+border: 0;
+background: none;
+font: inherit;
+font-weight: 700;
+color: var(--accent-text);
+text-decoration: underline;
+text-underline-offset: 3px;
+cursor: pointer;
+}
+.inline-link:hover { color: var(--accent); }
 
 /* ── Open and close rows (+/-) ────────────────────────────── */
 .acc { margin-top: 12px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); }
