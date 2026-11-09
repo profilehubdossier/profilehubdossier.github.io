@@ -359,7 +359,7 @@
     app.appendChild(card);
   });
 
-  // ── Footer ────────────────────────────────________________──
+  // ── Footer ──────────────────────────────────
   var foot = document.getElementById("foot");
   var support = el("p");
   support.appendChild(document.createTextNode(T.footer.support + " "));
