@@ -484,7 +484,7 @@ window.MANUAL_TEXT = {
           image: "img/ex-import-feature.webp",
           alt: "The person setting bar with Contact, Export / Import Data and Admin",
           caption: "Tap Export / Import Data to open the page. Business plan only.",
-          mark: { x: 40.5, y: 22, w: 20, h: 60 }
+          mark: { x: 40.5, y: 20, w: 20, h: 50 }
         },
         exportBtn: {
           label: "Export",
@@ -520,7 +520,7 @@ window.MANUAL_TEXT = {
             {
               type: "steps",
               items: [
-                "In From, pick the contact. Then pick the Style name.",
+                "In the From box, tap and type the contact name, then pick the contact from the list. Do the same in the Style box to pick the style.",
                 "Tap {link:exportBtn}, create a password, then tap Confirm.",
                 "A .phdcos file downloads. Use it to import the style on another device."
               ]
