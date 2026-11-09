@@ -40,12 +40,16 @@
   function richText(text) {
     var frag = document.createDocumentFragment();
     String(text).split(/(\{icon:\w+\}|\*\*[^*]+\*\*)/).forEach(function (part) {
-      if (!part) return;
-      var m = part.match(/^\{icon:(\w+)\}$/);
-      var bold = part.match(/^\*\*([^*]+)\*\*$/);
-      if (m && inlineMap[m[1]]) {
-        frag.appendChild(inlineIcon(inlineMap[m[1]]));
-      } else if (bold) {
+      String(text).split(/(\{icon:\w+\}|\{link:\w+\}|\*\*[^*]+\*\*)/).forEach(function (part) {
+  if (!part) return;
+  var m = part.match(/^\{icon:(\w+)\}$/);
+  var lk = part.match(/^\{link:(\w+)\}$/); // new: purple word that opens the popup
+  var bold = part.match(/^\*\*([^*]+)\*\*$/);
+  if (m && inlineMap[m[1]]) {
+    frag.appendChild(inlineIcon(inlineMap[m[1]]));
+  } else if (lk && inlineMap[lk[1]]) {
+    frag.appendChild(inlineLink(inlineMap[lk[1]]));
+  } else if (bold) {
         frag.appendChild(el("strong", null, bold[1]));
       } else {
         frag.appendChild(document.createTextNode(fill(part)));
@@ -292,6 +296,15 @@
     return btn;
   }
 
+// a purple word inside a sentence that opens the same screenshot popup
+function inlineLink(item) {
+var btn = el(“button”, “inline-link”, item.label);
+btn.type = “button”;
+btn.setAttribute(“aria-haspopup”, “dialog”);
+btn.addEventListener(“click”, function () { openShot(item, btn); });
+return btn;
+}
+    
   // a row that opens and closes. One level only (no row inside a row inside a row).
   function accordion(b) {
     var d = el("details", "acc" + (b.accent ? " ac-" + b.accent : ""));
