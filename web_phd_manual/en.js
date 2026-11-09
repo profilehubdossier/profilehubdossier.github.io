@@ -505,9 +505,42 @@ window.MANUAL_TEXT = {
           title: "Import a style",
           image: "img/import-feature.webp",
           alt: "The Import part of the page with a file picked, To and Password",
-          caption: "Pick the .phdcos file, pick the contact in To, type the password, then tap Confirm."
-        }
-      },
+                caption: "Pick the .phdcos file, pick the contact in To, type the password, then tap Confirm."
+    },
+    admin: { // new, reuses the bar picture
+      icon: "settings_alert",
+      label: "Admin",
+      title: "Admin",
+      image: "img/ex-import-feature.webp",
+      alt: "The person setting bar with Contact, Export / Import Data and Admin",
+      caption: "Tap Admin to open the account page.",
+      mark: { x: 85, y: 20, w: 8, h: 50 }
+    },
+    manageSub: { // new
+      icon: "theater_comedy",
+      label: "Manage subscription",
+      title: "Manage subscription",
+      image: "img/feature-manage-subscription.webp",
+      alt: "The Manage subscription button with the plan status under the title",
+      caption: "Tap Manage subscription to open your plan page."
+    },
+    subStatus: { // new
+      label: "subscription status",
+      title: "Subscription status",
+      image: "img/feature-manage-subscription.webp",
+      alt: "The Manage subscription button with the plan status marked",
+      caption: "Your plan status shows under the title, for example when your plan ends.",
+      mark: { x: 32, y: 52, w: 37, h: 11 }
+    },
+    cardPay: { // new
+      label: "pay with a card",
+      title: "Pay with a card",
+      image: "img/feature-stripe-pay.webp",
+      alt: "The Stripe page with the Card payment option marked",
+      caption: "Pick Card, then fill in your card details.",
+      mark: { x: 59, y: 53, w: 37, h: 7 }
+    }
+  },
       blocks: [
         {
           type: "accordion",
@@ -571,13 +604,23 @@ window.MANUAL_TEXT = {
           sub: "Reset options",
           blocks: [{ type: "p", text: "{guideSoon}" }]
         },
+           {
+      type: "accordion",
+      icon: "theater_comedy",
+      title: "Manage subscription",
+      sub: "Plan, free trial and cancel",
+      blocks: [
         {
-          type: "accordion",
-          icon: "theater_comedy",
-          title: "Manage subscription",
-          sub: "Plan, free trial and cancel",
-          blocks: [{ type: "p", text: "{guideSoon}" }]
+          type: "steps",
+          items: [
+            "Tap the person setting icon {icon:person}, then tap Admin {icon:admin}, then tap Manage subscription {icon:manageSub}.",
+            "Under the title, you can see your {link:subStatus}, such as when your plan ends.",
+            "You are taken to a Stripe page. This can take a moment, depending on your connection, so please wait.",
+            "Pick Apple Pay or Google Pay if your device offers it, or {link:cardPay}."
+          ]
         }
+      ]
+    }
       ]
     }
   ]
