@@ -3,9 +3,9 @@
 // and load es.js instead of en.js in index.html.
 //
 // Block types used below:
-//   sub (small heading), p (paragraph), steps (numbered), list (bullets), note (tinted box),
-//   pair (two side by side), files (file names), icons (icon row with screenshot popups),
-//   accordion (a row that opens and closes)
+//    sub (small heading), p (paragraph), steps (numbered), list (bullets), note (tinted box),
+//    pair (two side by side), files (file names), icons (icon row with screenshot popups),
+//    accordion (a row that opens and closes)
 //
 // In an icons item, mark is the red square on the picture. One box: mark: { x, y, w, h }.
 // Several boxes: mark: [ { x, y, w, h }, { x, y, w, h } ]. All four numbers are percentages of the picture.
@@ -229,7 +229,6 @@ window.MANUAL_TEXT = {
       id: "profiles",
       icon: "badge",
       title: "Profiles",
-      // one line per text. {icon:selection} and {icon:info} are the small tappable icons, described under inline
       intro: [
         "Tap a profile to open its guide. Edit, Manage, Summary and Report use the records inside the date range you pick on the calendar.",
         "Edit and Manage can find more than one result. All of them show on the selection page {icon:selection}, so tap the one you want.",
@@ -328,7 +327,7 @@ window.MANUAL_TEXT = {
             }
           ]
         },
-                {
+        {
           type: "accordion",
           accent: "money",
           icon: "money_bag",
@@ -392,7 +391,7 @@ window.MANUAL_TEXT = {
             }
           ]
         },
-               {
+        {
           type: "accordion",
           accent: "edu",
           icon: "school",
@@ -468,29 +467,94 @@ window.MANUAL_TEXT = {
       icon: "widgets",
       title: "Features",
       intro: "Extra tools for your file and your plan.",
+      inline: {
+        person: {
+          icon: "manage_accounts",
+          label: "Person setting",
+          title: "Person setting",
+          image: "img/general-person-x.webp",
+          alt: "The home page with the person setting icon above the New bar, on the right",
+          caption: "Person setting is the icon at the right end, just above the New bar.",
+          mark: { x: 87.3, y: 85.9, w: 8, h: 4.9 }
+        },
+        exportImport: {
+          icon: "modeling",
+          label: "Export / Import Data",
+          title: "Export / Import Data",
+          image: "img/ex-import-feature.webp",
+          alt: "The person setting bar with Contact, Export / Import Data and Admin",
+          caption: "Tap Export / Import Data to open the page. Business plan only.",
+          mark: { x: 40.5, y: 22, w: 20, h: 60 }
+        },
+        exportBtn: {
+          label: "Export",
+          title: "Export a style",
+          image: "img/export-feature.webp",
+          alt: "The Export / Import Data page with a contact and a style picked",
+          caption: "Pick the contact in From, pick the Style, then tap Export."
+        },
+        transferBtn: {
+          label: "Transfer",
+          title: "Transfer a style",
+          image: "img/transfer-feature.webp",
+          alt: "The Export / Import Data page with Transfer selected",
+          caption: "Pick the contact in From, pick the Style, then tap Transfer and pick the contact in To."
+        },
+        importBtn: {
+          label: "Select Backup File",
+          title: "Import a style",
+          image: "img/import-feature.webp",
+          alt: "The Import part of the page with a file picked, To and Password",
+          caption: "Pick the .phdcos file, pick the contact in To, type the password, then tap Confirm."
+        }
+      },
       blocks: [
         {
           type: "accordion",
           icon: "modeling",
           title: "Export and Import",
-          sub: "Move data in and out of your file",
-          tag: "Business",
-          blocks: [{ type: "p", text: "{guideSoon}" }]
-        },
-        {
-          type: "accordion",
-          icon: "folder_code",
-          title: "Style Transfer",
-          sub: "Export a style, import it, or transfer it to another contact",
-          tag: "Business",
-          blocks: [{ type: "p", text: "{guideSoon}" }]
+          sub: "Share a cosmetic style with another device or contact",
+          blocks: [
+            { type: "p", text: "Tap the person setting icon {icon:person}, then tap Export / Import Data {icon:exportImport}." },
+            { type: "sub", text: "Export" },
+            {
+              type: "steps",
+              items: [
+                "In From, pick the contact. Then pick the Style name.",
+                "Tap {link:exportBtn}, create a password, then tap Confirm.",
+                "A .phdcos file downloads. Use it to import the style on another device."
+              ]
+            },
+            { type: "sub", text: "Transfer" },
+            {
+              type: "steps",
+              items: [
+                "In From, pick the contact. Then pick the Style name.",
+                "Tap {link:transferBtn}, pick the contact who receives the style in To, then tap Confirm. No password needed.",
+                "Transfer copies the latest item details to that contact. All quantities are set to 1, so review and update the details after the transfer."
+              ]
+            },
+            { type: "sub", text: "Import" },
+            {
+              type: "steps",
+              items: [
+                "Tap {link:importBtn} and pick the .phdcos file.",
+                "In To, pick the contact who receives the style.",
+                "Type the password you made when you exported, then tap Confirm."
+              ]
+            },
+            {
+              type: "note",
+              icon: "lock",
+              text: "Your data is AES-256 encrypted before export. Keep your backup file and password safe, you need both to restore."
+            }
+          ]
         },
         {
           type: "accordion",
           icon: "quick_reference_all",
           title: "Business Report",
           sub: "Your business activity at a glance",
-          tag: "Business",
           blocks: [{ type: "p", text: "{guideSoon}" }]
         },
         {
