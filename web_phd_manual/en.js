@@ -64,8 +64,8 @@ window.MANUAL_TEXT = {
           type: "steps",
           items: [
             "Enter your email. We send you a sign-in link, so there is no password to remember.",
-            "Pick your plan.",
-            "You land on the home page.",
+            "Pick your plan and complete checkout on the next page.",
+            "Tap Start with New File if you are new to PHD. Then you land on the home page.",
             "Before anything else, add a contact (tap the person setting icon, then add contact or import). Import only accepts contact files, such as .vcf files."
           ]
         },
@@ -123,12 +123,12 @@ window.MANUAL_TEXT = {
         {
           type: "steps",
           items: [
-            "Tap New at the bottom of the home page.",
-            "Pick an action: Add, Edit, Summary or Manage.",
-            "Pick a profile, such as Cosmetic or Education.",
+            "Sign in if needed, then tap Choose file and pick your newest file.",
+            "Tap New, then pick one of these actions based on what you want to do: Add, Edit, Summary, Manage, Appointment or Report. Appointment and Report are for the Business plan only.",
+            "Pick a profile, such as Cosmetic, Education or Moneyflow.",
             "Pick a contact.",
-            "Tap the date. Add takes a single date. Edit, Summary and Manage use the date range from the calendar at the top of the home page.",
-            "Do your work, then finish as described below."
+            "Tap Date. Add and Appointment take a single date. Edit, Summary, Manage and Report use the date range from the calendar at the top of the home page.",
+            "Do your work, tap X, then finish as described below.."
           ]
         },
 
@@ -177,7 +177,7 @@ window.MANUAL_TEXT = {
         {
           type: "list",
           items: [
-            "A message that asks you to choose disappears by itself after 3 seconds.",
+            "A message that asks you to choose disappears by itself after 3 to 5 seconds.",
             "The calendar at the top of the home page sets the date range for Edit, Summary and Manage."
           ]
         },
@@ -273,7 +273,7 @@ window.MANUAL_TEXT = {
                   title: "Add Cosmetic",
                   image: "img/cosmetic-add.webp",
                   alt: "The Add Cosmetic form with the contact name marked at the top",
-                  caption: "Each record belongs to a contact, so it's easy to manage your loved ones, family, friends and clients. Fill in the info, then tap Save. When you finish everything, tap X on the app home page to download your file(s).",
+                  caption: "Each record belongs to a contact, such as yourself, a loved one, a friend or a client. Fill in the info, then tap Save. When you are done, tap X to download your file(s).",
                   mark: { x: 9.1, y: 5.3, w: 40.5, h: 6.3 }
                 },
                 {
@@ -283,7 +283,7 @@ window.MANUAL_TEXT = {
                   title: "Manage Cosmetic",
                   image: "img/cosmetic-manage.webp",
                   alt: "The Manage Cosmetic search box with item name, style name and appointment status",
-                  caption: "Enter what you know to find your records. The more boxes you fill in, the narrower the list. Then tap Search."
+                  caption: "Enter your search info to find your records. The more boxes you fill in, the narrower the list. Then tap Search."
                 },
                 {
                   id: "cosAppt",
