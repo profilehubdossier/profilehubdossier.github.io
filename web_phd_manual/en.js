@@ -364,7 +364,7 @@ window.MANUAL_TEXT = {
                   title: "Manage Moneyflow",
                   image: "img/moneyflow-manage.webp",
                   alt: "The Manage Moneyflow search box with a store name and a category list",
-                  caption: "Enter what you know to find your records. The more boxes you fill in, the narrower the list. Then tap Search."
+                  caption: "Enter your search info to find your records. The more boxes you fill in, the narrower the list. Then tap Search."
                 }
               ]
             },
@@ -385,7 +385,7 @@ window.MANUAL_TEXT = {
                 },
                 {
                   label: "Manage Moneyflow:",
-                  text: "Pick a date range, enter what you know to find your records, such as the store or the category (the more boxes you fill in, the narrower the list), then tap Search. Tap a result, change the info, then tap Save."
+                  text: "Pick a date range, enter your search info to find your records, such as the store or the category (the more boxes you fill in, the narrower the list), then tap Search. Tap a result, change the info, then tap Save."
                 }
               ]
             }
@@ -431,7 +431,7 @@ window.MANUAL_TEXT = {
                   title: "Manage Education",
                   image: "img/education-manage.webp",
                   alt: "The Manage Education search box with school and learning objectives",
-                  caption: "Enter what you know to find your records. The more boxes you fill in, the narrower the list. Then tap Search."
+                  caption: "Enter your search info to find your records. The more boxes you fill in, the narrower the list. Then tap Search."
                 }
               ]
             },
@@ -452,7 +452,7 @@ window.MANUAL_TEXT = {
                 },
                 {
                   label: "Manage Education:",
-                  text: "Pick a date range, enter what you know to find your records, such as the school or the learning objective (the more boxes you fill in, the narrower the list), then tap Search. Tap a result, change the info, then tap Save."
+                  text: "Pick a date range, enter your search info to find your records, such as the school or the learning objective (the more boxes you fill in, the narrower the list), then tap Search. Tap a result, change the info, then tap Save."
                 }
               ]
             }
