@@ -301,11 +301,11 @@ window.MANUAL_TEXT = {
               items: [
                 {
                   label: "Add Cosmetic:",
-                  text: "Each record belongs to a contact, such as yourself, a loved one, a friend or a client. Fill in the info, then tap Save. When you are done, tap X to download your file."
+                  text: "Pick a single date on the calendar at the top of the home page. This is the entry date of the purchase record for yourself, a loved one, a friend or a client, and you can see it in the top right corner of the page header. Fill in the info, then tap Save. When you are done, tap X to download your file."
                 },
                 {
                   label: "Edit Cosmetic:",
-                  text: "Pick a date range on the calendar. If there is more than one result in that range, tap the one you want on the selection page. Change the info, then tap Save. When you are done, tap X to download your changes."
+                  text: "Pick a date range on the calendar at the top of the home page. The date range must include the date you entered when you added the record. Forgot it? Pick a wide range, like the whole month. If there is more than one result in that range, tap the one you want on the selection page. Change the info, then tap Save. When you are done, tap X to download your changes."
                 },
                 {
                   label: "Summary:",
