@@ -153,7 +153,7 @@ window.MANUAL_TEXT = {
         { type: "sub", text: "Your files" },
         {
           type: "p",
-          text: "Every file name starts with the date and time it was made: year, month, day, then hour, minute and second. For example, 20261010_170833 means 2026-10-10 at 17:08:33."
+          text: "Every file name has the date and time it was made: year, month, day, then hour, minute and second. For example, 20261010_170833 means 2026-10-10 at 17:08:33."
         },
         {
           type: "files",
@@ -165,6 +165,10 @@ window.MANUAL_TEXT = {
             {
               name: "20261010_170833.ics",
               text: "Your appointments. It downloads when you add an appointment. Open it to add the events to your calendar, then delete it."
+            },
+            {
+              name: "Aisha_Jackson_20261114_221727_wedding.pdf",
+              text: "Your wedding invoice (Business plan). After you tap Confirm on the preview, it is saved on your device first, then it downloads when you tap X. The name is the contact name, then the date and time it was made, then wedding."
             },
             {
               name: "20261010_170833.phdcos",
@@ -309,19 +313,19 @@ window.MANUAL_TEXT = {
                 },
                 {
                   label: "Summary:",
-                  text: "Summary shows, within the date range you pick on the home page calendar, your top 3 most expensive styles, top 3 most frequent items and top 3 most expensive items, plus each style with its items and a pie chart of the costs."
+                  text: "Pick a date range on the calendar at the top of the home page. Summary uses every record whose entry date is inside that range. It shows your top 3 most expensive styles, top 3 most frequent items and top 3 most expensive items, plus each style with its items and a pie chart of the costs."
                 },
                 {
                   label: "Manage Cosmetic:",
-                  text: "Pick a date range, enter your search info to find your records (the more boxes you fill in, the narrower the list), then tap Search. Tap a result, change the info, then tap Save."
+                  text: "Pick a date range on the calendar at the top of the home page.\n\nTo search by item name or style name, the date range must include the entry date of the record.\n\nTo search by appointment status, the date range must include the date and time of the appointment, NOT the entry date.\n\nThen enter your search info (the more boxes you fill in, the narrower the list), tap Search, tap a result, change the info, then tap Save."
                 },
                 {
                   label: "Appointment (Business plan):",
-                  text: "Pick one date on the calendar to log the record, fill in the appointment info (including the appointment's date and time), then tap Save. Tap X to download. If you changed records and added an appointment, two files download: the database file and the calendar (.ics) file. Open the .ics file to add the event to your calendar, then delete it once you see the event there."
+                  text: "Pick one date on the calendar to log the record. This is NOT the appointment date. Fill in the appointment info, then tap the Date Time box and pick the real appointment date and time from the popup calendar. Tap Save. Want a wedding invoice? Tap the Invoice icon in the bottom sheet, pick the artist from the popup, check the preview, then tap Confirm. When you are done, tap X to download. If you changed records, added an appointment and made an invoice, three files download (see Your files in the General section)."
                 },
                 {
-                  label: "Report (Business plan):",
-                  text: "Report shows, within the date range you pick on the home page calendar, your appointment activity (appointments, hours, service fees), reservation status (paid, pending, booked), fees and balance (travel fee, deposit, balance due), and a card for each appointment."
+                  label: "Appt Report (Business plan):",
+                  text: "Pick a date range on the calendar at the top of the home page. Appt Report uses every appointment whose date and time are inside that range, NOT the entry date. It shows your appointment activity (appointments, hours, service fees), reservation status (paid, pending, booked), fees and balance (travel fee, deposit, balance due), and a card for each appointment."
                 }
               ]
             }
@@ -373,19 +377,19 @@ window.MANUAL_TEXT = {
               items: [
                 {
                   label: "Add Moneyflow:",
-                  text: "Track spending records for your loved ones, family, friends, clients, company and more. Fill in the info, then tap Save. When you are done, tap X to download your file."
+                  text: "Pick a single date on the calendar at the top of the home page. This is the entry date of the spending record, and you can see it in the top right corner of the page header. Fill in the info to track spending for yourself, your loved ones, family, friends, clients, company and more, then tap Save. When you are done, tap X to download your file."
                 },
                 {
                   label: "Edit Moneyflow:",
-                  text: "Pick a date range on the calendar. If there is more than one result in that range, tap the one you want on the selection page. Change the info, then tap Save. When you are done, tap X to download your changes."
+                  text: "Pick a date range on the calendar at the top of the home page. The date range must include the date you entered when you added the record. Forgot it? Pick a wide range, like the whole month. If there is more than one result in that range, tap the one you want on the selection page. Change the info, then tap Save. When you are done, tap X to download your changes."
                 },
                 {
                   label: "Summary:",
-                  text: "Summary shows, within the date range you pick on the home page calendar, your top 3 highest spending stores and top 3 most expensive items, plus each store with its categories and a pie chart of the costs."
+                  text: "Pick a date range on the calendar at the top of the home page. Summary uses every record whose entry date is inside that range. It shows your top 3 highest spending stores and top 3 most expensive items, plus each store with its categories and a pie chart of the costs."
                 },
                 {
                   label: "Manage Moneyflow:",
-                  text: "Pick a date range, enter your search info to find your records, such as the store or the category (the more boxes you fill in, the narrower the list), then tap Search. Tap a result, change the info, then tap Save."
+                  text: "Pick a date range on the calendar at the top of the home page. The date range must include the entry date of the record. Forgot it? Pick a wide range, like the whole month. Then enter your search info, such as the store or the category (the more boxes you fill in, the narrower the list), tap Search, tap a result, change the info, then tap Save."
                 }
               ]
             }
@@ -440,19 +444,19 @@ window.MANUAL_TEXT = {
               items: [
                 {
                   label: "Add Education:",
-                  text: "Fill in the info, then tap Save. To add the date and time to your calendar, fill in the date and time, then tap the 3 dots next to it. This puts the event in the device memory. When you are done with everything, tap X to download your files. If you changed records and added an event, two files download: the database file and the calendar (.ics) file. Open the .ics file to add the event to your calendar, then delete it once you see the event there."
+                  text: "Pick a single date on the calendar at the top of the home page. This is the entry date of the record, NOT the schedule date, and you can see it in the top right corner of the page header. Fill in the info. Tap the date and time box and pick the schedule date and time from the popup calendar (Save stays gray until you do). Then tap Save. To add the schedule to your calendar, tap the 3 dots next to the date and time. This puts the event in the device memory. When you are done with everything, tap X to download your files. If you changed records and added an event, two files download (see Your files in the General section)."
                 },
                 {
                   label: "Edit Education:",
-                  text: "Pick a date range on the calendar. If there is more than one result in that range, tap the one you want on the selection page. Change the info, then tap Save. When you are done, tap X to download your changes."
+                  text: "Pick a date range on the calendar at the top of the home page. The date range must include the schedule date and time from the date and time box, NOT the entry date. Forgot it? Pick a wide range, like the whole year. If there is more than one result in that range, tap the one you want on the selection page. Change the info, then tap Save. When you are done, tap X to download your changes."
                 },
                 {
                   label: "Summary:",
-                  text: "Summary shows, within the date range you pick on the home page calendar, your highest spending schools and most expensive learning objectives, plus each school with its learning objectives and a pie chart of the costs."
+                  text: "Pick a date range on the calendar at the top of the home page. Summary uses every record whose schedule date and time are inside that range, NOT the entry date. It shows your highest spending schools and most expensive learning objectives, plus each school with its learning objectives and a pie chart of the costs."
                 },
                 {
                   label: "Manage Education:",
-                  text: "Pick a date range, enter your search info to find your records, such as the school or the learning objective (the more boxes you fill in, the narrower the list), then tap Search. Tap a result, change the info, then tap Save."
+                  text: "Pick a date range on the calendar at the top of the home page. The date range must include the schedule date and time from the date and time box, NOT the entry date. Forgot it? Pick a wide range, like the whole year. Then enter your search info, such as the school or the learning objective (the more boxes you fill in, the narrower the list), tap Search, tap a result, change the info, then tap Save."
                 }
               ]
             }
