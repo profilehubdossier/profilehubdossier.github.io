@@ -587,31 +587,10 @@ window.MANUAL_TEXT = {
             }
           ]
         },
-        {
-          type: "accordion",
-          icon: "quick_reference_all",
-          title: "Business Report",
-          sub: "Your business activity at a glance",
-          blocks: [{ type: "p", text: "{guideSoon}" }]
-        },
-        {
-          type: "accordion",
-          icon: "settings_alert",
-          title: "Admin",
-          sub: "Account and app settings",
-          blocks: [{ type: "p", text: "{guideSoon}" }]
-        },
-        {
-          type: "accordion",
-          icon: "gpp_maybe",
-          title: "Reset",
-          sub: "Reset options",
-          blocks: [{ type: "p", text: "{guideSoon}" }]
-        },
-        {
+               {
           type: "accordion",
           icon: "theater_comedy",
-          title: "Manage subscription",
+          title: "Admin > Manage subscription",
           sub: "Plan, free trial and cancel",
           blocks: [
             {
