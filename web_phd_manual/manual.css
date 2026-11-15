@@ -164,7 +164,7 @@ h3.sub { margin: 28px 0 10px; font-size: 1.05rem; color: var(--accent-text); }
 .txt { margin: 0 0 12px; }
 
 .steps { list-style: none; margin: 0 0 12px; padding: 0; counter-reset: step; }
-.steps li { position: relative; margin: 0 0 12px; padding-left: 40px; counter-increment: step; }
+.steps li { position: relative; margin: 0 0 12px; padding-left: 40px; counter-increment: step; white-space: pre-line; } /* pre-line: a new line in the en.js text shows as a new line */
 .steps li::before {
   content: counter(step);
   position: absolute;
