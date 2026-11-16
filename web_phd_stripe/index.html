@@ -6,25 +6,6 @@
 <title>Profile Hub Dossier (PHD) | Private records for cosmetics, spending and education costs</title>
 <meta name="description" content="Profile Hub Dossier (PHD) for the web: track cosmetics, Moneyflow spending and education costs in your browser, with your records kept in a file you own. Launching soon.">
 <link rel="canonical" href="https://profilehubdossier.github.io/web_phd_stripe/">
-<link rel="alternate" hreflang="en" href="https://profilehubdossier.github.io/web_phd_stripe/">
-<link rel="alternate" hreflang="es" href="https://profilehubdossier.github.io/web_phd_stripe/es/">
-<link rel="alternate" hreflang="x-default" href="https://profilehubdossier.github.io/web_phd_stripe/">
-<script>
-// First visit: a Spanish browser goes to es/. A saved choice (phd_lang, same key as the manual) wins.
-(function () {
-  var pick = "";
-  try { pick = localStorage.getItem("phd_lang") || ""; } catch (e) {}
-  if (pick !== "es" && pick !== "en") {
-    pick = "";
-    var list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ""];
-    for (var i = 0; i < list.length; i++) {
-      var c = String(list[i]).toLowerCase().split("-")[0];
-      if (c === "es" || c === "en") { pick = c; break; }
-    }
-  }
-  if (pick === "es") location.replace("es/" + location.hash);
-})();
-</script>
 <style>
   :root{
     --bg:#faf8fd; --card:#ffffff; --ink:#1f1b2e; --soft:#5b5670;
@@ -44,17 +25,6 @@
   nav a{ margin-left:18px; color:var(--soft); text-decoration:none; font-size:.95rem; }
   nav a:hover{ text-decoration:underline; }
 
-  /* language dropdown: a details menu, no script needed to open it */
-  .lang{ position:relative; display:inline-block; margin:0 0 0 18px; padding:0; border:0; border-radius:0; background:none; }
-  .lang summary{ display:inline-flex; align-items:center; gap:4px; list-style:none; font-weight:400; font-size:.95rem; color:var(--soft); cursor:pointer; }
-  .lang summary::-webkit-details-marker{ display:none; }
-  .lang summary::after{ content:"\25BE"; }
-  .lang summary:hover{ text-decoration:underline; }
-  .lang-menu{ position:absolute; right:0; top:100%; z-index:20; min-width:140px; margin-top:8px; padding:6px; background:#fff; border:1px solid var(--line); border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,.1); }
-  .lang-menu a{ display:block; margin:0; padding:8px 12px; border-radius:8px; color:var(--ink); white-space:nowrap; }
-  .lang-menu a:hover{ background:var(--tint); text-decoration:none; }
-  .lang-menu a[aria-current]{ font-weight:700; }
-  
   .hero{ text-align:center; padding:56px 0 24px; }
   .hero h1{ font-size:clamp(1.8rem,4.5vw,2.8rem); line-height:1.2; margin:0 0 .5em; letter-spacing:-.02em; }
   .lede{ color:var(--soft); max-width:62ch; margin:0 auto 1.2em; font-size:1.08rem; }
@@ -77,7 +47,7 @@
     display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px;
     border-radius:50%; background:var(--accent); color:#fff; font-weight:700; margin-bottom:10px;
   }
-    .tag{
+  .tag{
     align-self:flex-start; margin-top:auto; font-size:.75rem; background:var(--tint); color:var(--accent-deep);
     border:1px solid var(--line); border-radius:999px; padding:3px 12px;
   }
@@ -111,15 +81,8 @@
   <div class="wrap">
     <span class="brand">Profile Hub Dossier</span>
     <nav>
-           <a href="terms.html">Terms</a>
+      <a href="terms.html">Terms</a>
       <a href="privacy-web.html">Privacy</a>
-      <details class="lang">
-        <summary>Language</summary>
-        <div class="lang-menu">
-          <a href="./" hreflang="en" lang="en" data-lang="en" aria-current="true">English</a>
-          <a href="es/" hreflang="es" lang="es" data-lang="es">Español</a>
-        </div>
-      </details>
     </nav>
   </div>
 </header>
@@ -282,17 +245,5 @@
   </div>
 </footer>
 
-<script>
-// remember the language picked in the dropdown (same key as the manual)
-(function () {
-  var links = document.querySelectorAll(".lang-menu a[data-lang]");
-  for (var i = 0; i < links.length; i++) {
-    links[i].addEventListener("click", function () {
-      try { localStorage.setItem("phd_lang", this.getAttribute("data-lang")); } catch (e) {}
-    });
-  }
-})();
-</script>
-  
 </body>
 </html>
