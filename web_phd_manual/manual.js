@@ -91,32 +91,6 @@
 
   navrow.appendChild(navButton(T.nav.features, "#" + T.nav.features.target));
 
-  // language dropdown, built from the list in config.js
-  var langbox = document.getElementById("langbox");
-  var langs = window.MANUAL_LANGS || [];
-  if (langbox && langs.length > 1) {
-    var langLab = el("label", "langsel");
-    langLab.appendChild(icon("language"));
-    var sel = document.createElement("select");
-    sel.setAttribute("aria-label", (T.ui && T.ui.language) || "Language");
-    langs.forEach(function (l) {
-      var o = el("option", null, l.label);
-      o.value = l.code;
-      if (l.code === T.lang) o.selected = true;
-      sel.appendChild(o);
-    });
-    sel.addEventListener("change", function () {
-      try { localStorage.setItem(window.MANUAL_LANG_KEY || "phd_lang", sel.value); } catch (e) {}
-      // drop ?lang= and the #section, otherwise the address would override the new choice
-      var u = new URL(location.href);
-      u.searchParams.delete("lang");
-      u.hash = "";
-      location.href = u.toString();
-    });
-    langLab.appendChild(sel);
-    langbox.appendChild(langLab);
-  }
-
   // ── Screenshot popup (one dialog, reused by every icon) ─────
   var lastButton = null;
 
