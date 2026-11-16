@@ -6,6 +6,25 @@
 <title>Profile Hub Dossier (PHD) | Private records for cosmetics, spending and education costs</title>
 <meta name="description" content="Profile Hub Dossier (PHD) for the web: track cosmetics, Moneyflow spending and education costs in your browser, with your records kept in a file you own. Launching soon.">
 <link rel="canonical" href="https://profilehubdossier.github.io/web_phd_stripe/">
+<link rel="alternate" hreflang="en" href="https://profilehubdossier.github.io/web_phd_stripe/">
+<link rel="alternate" hreflang="es" href="https://profilehubdossier.github.io/web_phd_stripe/es/">
+<link rel="alternate" hreflang="x-default" href="https://profilehubdossier.github.io/web_phd_stripe/">
+<script>
+// First visit: a Spanish browser goes to es/. A saved choice (phd_lang, same key as the manual) wins.
+(function () {
+  var pick = "";
+  try { pick = localStorage.getItem("phd_lang") || ""; } catch (e) {}
+  if (pick !== "es" && pick !== "en") {
+    pick = "";
+    var list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ""];
+    for (var i = 0; i < list.length; i++) {
+      var c = String(list[i]).toLowerCase().split("-")[0];
+      if (c === "es" || c === "en") { pick = c; break; }
+    }
+  }
+  if (pick === "es") location.replace("es/" + location.hash);
+})();
+</script>
 <style>
   :root{
     --bg:#faf8fd; --card:#ffffff; --ink:#1f1b2e; --soft:#5b5670;
