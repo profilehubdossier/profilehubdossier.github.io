@@ -88,6 +88,8 @@ h1 { margin: 0 0 0.3em; font-size: clamp(1.9rem, 5vw, 2.6rem); line-height: 1.15
 .langsel:hover { border-color: var(--accent); }
 .langsel .ms { font-size: 20px; color: var(--accent-text); }
 .langsel select { max-width: 140px; padding: 6px 4px; border: 0; background: transparent; color: inherit; font: inherit; font-size: 0.9rem; text-overflow: ellipsis; cursor: pointer; }
+.langsel select { max-width: 140px; padding: 6px 4px; border: 0; background: transparent; color: inherit; font: inherit; font-size: 0.9rem; text-overflow: ellipsis; cursor: pointer; }
+.langsel select option { background: var(--card); color: var(--ink); } /* new: list readable in dark mode */
 
 /* ── The 3 buttons, stuck to the top while scrolling ──────── */
 .navbar {
