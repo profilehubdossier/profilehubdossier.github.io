@@ -3,7 +3,7 @@
 
 :root {
   color-scheme: light dark;
-  --bg: #FDFBFE;          /* pageBackground */
+  --bg: #FDFBFE;         /* pageBackground */
   --card: #FFFFFF;        /* surface */
   --ink: #1C1B1F;         /* textPrimary */
   --soft: #6B6772;        /* secondary text */
@@ -34,7 +34,7 @@
   }
 }
 
-* { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
 
@@ -82,6 +82,13 @@ body.modal { overflow: hidden; }
 h1 { margin: 0 0 0.3em; font-size: clamp(1.9rem, 5vw, 2.6rem); line-height: 1.15; letter-spacing: -0.02em; }
 .lede { margin: 0 auto; max-width: 48ch; color: var(--soft); }
 
+/* new: language dropdown, top right above the brand */
+.langbox { display: flex; justify-content: flex-end; margin: -12px 0 8px; }
+.langsel { display: inline-flex; align-items: center; gap: 6px; padding: 4px 6px 4px 10px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--ink); }
+.langsel:hover { border-color: var(--accent); }
+.langsel .ms { font-size: 20px; color: var(--accent-text); }
+.langsel select { max-width: 140px; padding: 6px 4px; border: 0; background: transparent; color: inherit; font: inherit; font-size: 0.9rem; text-overflow: ellipsis; cursor: pointer; }
+
 /* ── The 3 buttons, stuck to the top while scrolling ──────── */
 .navbar {
   position: sticky;
@@ -115,6 +122,7 @@ h1 { margin: 0 0 0.3em; font-size: clamp(1.9rem, 5vw, 2.6rem); line-height: 1.15
   text-decoration: none;
 }
 .nbtn .ms { font-size: 20px; color: var(--accent-text); }
+.nbtn > span:last-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } /* new: one line, then ... */
 .nbtn:hover { border-color: var(--accent); }
 .nbtn.is-placeholder { opacity: 0.6; cursor: default; }
 .nbtn.is-placeholder:hover { border-color: var(--line); }
@@ -262,7 +270,7 @@ h3.sub { margin: 28px 0 10px; font-size: 1.05rem; color: var(--accent-text); }
 }
 .icon-btn:hover .icon-tile { border-color: var(--accent); }
 .icon-btn:active .icon-tile { transform: scale(0.96); }
-.icon-lab { font-size: 0.85rem; line-height: 1.25; text-align: center; }
+.icon-lab { font-size: 0.85rem; line-height: 1.25; text-align: center; overflow-wrap: break-word; hyphens: auto; } /* wraps long Spanish words */
 
 /* a small icon button inside a sentence. The negative margin keeps the line height from growing. */
 .inline-icon {
@@ -284,16 +292,16 @@ h3.sub { margin: 28px 0 10px; font-size: 1.05rem; color: var(--accent-text); }
 .inline-icon:hover { border-color: var(--accent); }
 .inline-icon:active { transform: scale(0.94); }
 .inline-link {
-display: inline;
-padding: 0;
-border: 0;
-background: none;
-font: inherit;
-font-weight: 700;
-color: var(--accent-text);
-text-decoration: underline;
-text-underline-offset: 3px;
-cursor: pointer;
+  display: inline;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-weight: 700;
+  color: var(--accent-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
 }
 .inline-link:hover { color: var(--accent); }
 
