@@ -3,7 +3,7 @@
 
 :root {
   color-scheme: light dark;
-  --bg: #FDFBFE;         /* pageBackground */
+  --bg: #FDFBFE;          /* pageBackground */
   --card: #FFFFFF;        /* surface */
   --ink: #1C1B1F;         /* textPrimary */
   --soft: #6B6772;        /* secondary text */
@@ -22,7 +22,7 @@
   :root {
     --bg: #1C1B1F;        /* darkPageBackground */
     --card: #3A3940;      /* darkCardSurface */
-    --ink: #E6E1E5;      /* darkTextPrimary */
+    --ink: #E6E1E5;       /* darkTextPrimary */
     --soft: #AEAAAF;      /* darkTextSecondary */
     --line: #4A4850;      /* darkBorder */
     --tint: #2C2B30;      /* darkSurface */
@@ -81,15 +81,6 @@ body.modal { overflow: hidden; }
 .brand { margin: 0 0 6px; font-weight: 800; font-size: 0.95rem; color: var(--accent-text); }
 h1 { margin: 0 0 0.3em; font-size: clamp(1.9rem, 5vw, 2.6rem); line-height: 1.15; letter-spacing: -0.02em; }
 .lede { margin: 0 auto; max-width: 48ch; color: var(--soft); }
-
-/* new: language dropdown, top right above the brand */
-.langbox { display: flex; justify-content: flex-end; margin: -12px 0 8px; }
-.langsel { display: inline-flex; align-items: center; gap: 6px; padding: 4px 6px 4px 10px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--ink); }
-.langsel:hover { border-color: var(--accent); }
-.langsel .ms { font-size: 20px; color: var(--accent-text); }
-.langsel select { max-width: 140px; padding: 6px 4px; border: 0; background: transparent; color: inherit; font: inherit; font-size: 0.9rem; text-overflow: ellipsis; cursor: pointer; }
-.langsel select { max-width: 140px; padding: 6px 4px; border: 0; background: transparent; color: inherit; font: inherit; font-size: 0.9rem; text-overflow: ellipsis; cursor: pointer; }
-.langsel select option { background: var(--card); color: var(--ink); } /* new: list readable in dark mode */
 
 /* ── The 3 buttons, stuck to the top while scrolling ──────── */
 .navbar {
@@ -272,7 +263,7 @@ h3.sub { margin: 28px 0 10px; font-size: 1.05rem; color: var(--accent-text); }
 }
 .icon-btn:hover .icon-tile { border-color: var(--accent); }
 .icon-btn:active .icon-tile { transform: scale(0.96); }
-.icon-lab { font-size: 0.85rem; line-height: 1.25; text-align: center; overflow-wrap: break-word; hyphens: auto; } /* wraps long Spanish words */
+.icon-lab { font-size: 0.85rem; line-height: 1.25; text-align: center; overflow-wrap: break-word; hyphens: auto; }
 
 /* a small icon button inside a sentence. The negative margin keeps the line height from growing. */
 .inline-icon {
