@@ -1,6 +1,4 @@
 // en.js: ALL the manual text lives here, none is typed inside the page layout.
-// For Spanish later: copy this file to es.js, translate the text (not the keys, ids, icons or image names),
-// and load es.js instead of en.js in index.html.
 //
 // Block types used below:
 //    sub (small heading), p (paragraph), steps (numbered), list (bullets), note (tinted box),
@@ -39,7 +37,6 @@ window.MANUAL_TEXT = {
 
   ui: {
     iconHint: "Tap an icon to see where it is in the app.",
-    language: "Language",   // new line (es.js later: "Idioma")
     close: "Close",
     tapOutside: "Tap outside the picture to close it.",
     screenshotSoon: "Screenshot coming soon",
