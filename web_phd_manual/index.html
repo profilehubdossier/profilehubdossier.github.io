@@ -10,14 +10,13 @@
 <!-- Icons: Google Material Symbols, same names as the app. If an icon ever shows as plain text, its name is wrong in this list (names must stay in A-Z order). -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=badge,bookmark_manager,calendar_clock,close,create_new_folder,database_search,expand_more,folder_code,gpp_maybe,home,info,language,list_alt,lock,logout,manage_accounts,modeling,money_bag,person,person_add,queue_play_next,quick_reference_all,school,self_care,settings_alert,theater_comedy,tune,widgets&display=block">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=badge,bookmark_manager,calendar_clock,close,create_new_folder,database_search,expand_more,folder_code,gpp_maybe,home,info,list_alt,lock,logout,manage_accounts,modeling,money_bag,person,person_add,queue_play_next,quick_reference_all,school,self_care,settings_alert,theater_comedy,tune,widgets&display=block">
 <link rel="stylesheet" href="manual.css">
 </head>
 <body>
 
 <header class="top">
   <div class="wrap">
-    <div class="langbox" id="langbox"></div>   <!-- new: language dropdown goes here -->
     <p class="brand" id="brand"></p>
     <h1 id="title"></h1>
     <p class="lede" id="lede"></p>
@@ -36,8 +35,7 @@
   <div class="wrap" id="foot"></div>
 </footer>
 
-<!-- config.js = language list. lang.js picks the language, loads en.js or es.js, then manual.js. -->
-<script src="config.js"></script>
-<script src="lang.js"></script>
+<script src="en.js"></script>
+<script src="manual.js"></script>
 </body>
 </html>
