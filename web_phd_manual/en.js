@@ -168,7 +168,7 @@ window.MANUAL_TEXT = {
               text: "Your appointments. It downloads when you add an appointment. Open it to add the events to your calendar, then delete it."
             },
             {
-              name: "Aisha_Jackson_20261114_221727_wedding.pdf",
+              name: "Aisha_Jackson_20261114_221727_invoice.pdf",
               text: "Your wedding invoice (Business plan). After you tap Confirm on the preview, it is saved on your device first, then it downloads when you tap X. The name is the contact name, then the date and time it was made, then wedding."
             },
             {
@@ -322,7 +322,7 @@ window.MANUAL_TEXT = {
                 },
                 {
                   label: "Appointment (Business plan):",
-                  text: "Pick one date on the calendar to log the record. This is NOT the appointment date. Fill in the appointment info, then tap the Date Time box and pick the real appointment date and time from the popup calendar. Tap Save. Want a wedding invoice? Tap the Invoice icon in the bottom sheet, pick the artist from the popup, check the preview, then tap Confirm. When you are done, tap X to download. If you changed records, added an appointment and made an invoice, three files download (see Your files in the General section)."
+                  text: "Pick one date on the calendar to log the record. This is NOT the appointment date. Fill in the appointment info, then tap the Date Time box and pick the real appointment date and time from the popup calendar. Tap Save. Want an invoice? Tap the Invoice icon in the bottom sheet, pick the artist from the popup, check the preview, then tap Confirm. When you are done, tap X to download. If you changed records, added an appointment and made an invoice, three files download (see Your files in the General section)."
                 },
                 {
                   label: "Appt Report (Business plan):",
