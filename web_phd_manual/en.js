@@ -169,7 +169,7 @@ window.MANUAL_TEXT = {
             },
             {
               name: "Aisha_Jackson_20261114_221727_invoice.pdf",
-              text: "Your wedding invoice (Business plan). After you tap Confirm on the preview, it is saved on your device first, then it downloads when you tap X. The name is the contact name, then the date and time it was made, then wedding."
+              text: "Your invoice (Business plan). After you tap Confirm on the preview, it is saved on your device first, then it downloads when you tap X. The name is the contact name, then the date and time it was made, then invoice."
             },
             {
               name: "20261010_170833.phdcos",
