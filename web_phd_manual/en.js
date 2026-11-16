@@ -39,6 +39,7 @@ window.MANUAL_TEXT = {
 
   ui: {
     iconHint: "Tap an icon to see where it is in the app.",
+    language: "Language",   // new line (es.js later: "Idioma")
     close: "Close",
     tapOutside: "Tap outside the picture to close it.",
     screenshotSoon: "Screenshot coming soon",
@@ -587,7 +588,7 @@ window.MANUAL_TEXT = {
             }
           ]
         },
-               {
+        {
           type: "accordion",
           icon: "theater_comedy",
           title: "Admin > Manage subscription",
