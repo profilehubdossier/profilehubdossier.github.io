@@ -30,9 +30,9 @@
 
   /* ---------- hero: 3 buttons + canvas ---------- */
   .hero{ padding:28px 0 8px; }
-  .quick{ display:flex; gap:12px; justify-content:center; margin:0 0 18px; }
+  .quick{ display:flex; gap:16px; justify-content:center; margin:0 0 18px; }
   .qbtn{
-    flex:1 1 0; max-width:210px; text-align:center; white-space:nowrap;
+    flex:1 1 0; text-align:center; white-space:nowrap;
     padding:12px 10px; border-radius:10px; border:1px solid var(--accent);
     background:#fff; color:var(--accent-deep); font-weight:700; font-size:.98rem; text-decoration:none;
   }
@@ -52,22 +52,22 @@
   .slide.pic img{ display:block; width:100%; height:auto; -webkit-user-drag:none; }
   .slide.text{
     display:flex; align-items:center; background:var(--tint);
-    padding:28px 40px 56px;
+    padding:36px 56px 64px;
   }
-  .slide.text .inner{ width:100%; display:grid; grid-template-columns:1fr 1fr; gap:28px 44px; align-items:center; }
-  .slide.text h2{ font-size:2rem; line-height:1.2; margin:0 0 .5em; }
-  .slide.text p{ margin:0 0 .9em; font-size:1.1rem; }
-  .slide.text ul{ list-style:none; margin:0; padding:0; display:grid; gap:12px; }
+  .slide.text .inner{ width:100%; display:grid; grid-template-columns:1fr 1fr; gap:28px 64px; align-items:center; }
+  .slide.text h2{ font-size:2.3rem; line-height:1.2; margin:0 0 .5em; }
+  .slide.text p{ margin:0 0 .9em; font-size:1.2rem; }
+  .slide.text ul{ list-style:none; margin:0; padding:0; display:grid; gap:18px; }
   .slide.text li{
-    position:relative; background:#fff; border:1px solid var(--line); border-radius:12px;
-    padding:14px 16px 14px 48px; font-size:1rem;
+    position:relative; background:#fff; border:1px solid var(--line); border-radius:14px;
+    padding:20px 20px 20px 58px; font-size:1.1rem;
   }
   .slide.text li::before{
-    content:"\2713"; position:absolute; left:16px; top:16px; width:22px; height:22px; border-radius:50%;
-    background:var(--accent); color:#fff; font-size:.8rem; font-weight:700;
+    content:"\2713"; position:absolute; left:20px; top:22px; width:24px; height:24px; border-radius:50%;
+    background:var(--accent); color:#fff; font-size:.85rem; font-weight:700;
     display:flex; align-items:center; justify-content:center;
   }
-  .slide.text .small{ font-size:.92rem; color:var(--soft); margin:0; }
+  .slide.text .small{ font-size:1rem; color:var(--soft); margin:0; }
 
   .bar{
     position:absolute; left:50%; bottom:10px; transform:translateX(-50%);
@@ -125,6 +125,10 @@
     .slide.text .inner{ grid-template-columns:1fr; gap:18px; }
     .slide.text h2{ font-size:1.5rem; }
     .slide.text p{ font-size:1rem; }
+    .slide.text ul{ gap:12px; }
+    .slide.text li{ padding:14px 16px 14px 48px; font-size:1rem; border-radius:12px; }
+    .slide.text li::before{ left:16px; top:16px; width:22px; height:22px; font-size:.8rem; }
+    .slide.text .small{ font-size:.92rem; }
   }
   @media (prefers-reduced-motion:reduce){
     html{ scroll-behavior:auto; }
@@ -171,7 +175,7 @@
               <div>
                 <h2>Your data stays yours.</h2>
                 <p>Your records live in a file on your own device, and PHD does not keep a copy on its servers. We keep only your email, to sign you in and manage your subscription. Card payments go straight to Stripe.</p>
-                <p class="small"><a href="privacy-web.html">Read the full Privacy page</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe Privacy</a></p>
+                <p class="small">Read more: <a href="privacy-web.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe Privacy</a></p>
               </div>
               <ul>
                 <li>We do not sell, rent, or trade your data.</li>
