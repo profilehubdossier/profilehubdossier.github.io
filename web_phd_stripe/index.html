@@ -51,14 +51,22 @@
   .slide.pic{ display:flex; align-items:center; background:#fff; }
   .slide.pic img{ display:block; width:100%; height:auto; -webkit-user-drag:none; }
   .slide.text{
-    display:flex; align-items:center; justify-content:center; background:var(--tint);
-    padding:36px 28px 64px;
+    display:flex; align-items:center; background:var(--tint);
+    padding:28px 40px 56px;
   }
-  .slide.text .inner{ max-width:640px; width:100%; }
-  .slide.text h2{ margin:0 0 .5em; }
-  .slide.text p{ margin:0 0 .8em; }
-  .slide.text ul{ margin:0 0 1em; padding-left:22px; }
-  .slide.text li{ margin-bottom:.35em; }
+  .slide.text .inner{ width:100%; display:grid; grid-template-columns:1fr 1fr; gap:28px 44px; align-items:center; }
+  .slide.text h2{ font-size:2rem; line-height:1.2; margin:0 0 .5em; }
+  .slide.text p{ margin:0 0 .9em; font-size:1.1rem; }
+  .slide.text ul{ list-style:none; margin:0; padding:0; display:grid; gap:12px; }
+  .slide.text li{
+    position:relative; background:#fff; border:1px solid var(--line); border-radius:12px;
+    padding:14px 16px 14px 48px; font-size:1rem;
+  }
+  .slide.text li::before{
+    content:"\2713"; position:absolute; left:16px; top:16px; width:22px; height:22px; border-radius:50%;
+    background:var(--accent); color:#fff; font-size:.8rem; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+  }
   .slide.text .small{ font-size:.92rem; color:var(--soft); margin:0; }
 
   .bar{
@@ -112,6 +120,12 @@
     .qbtn{ padding:11px 6px; font-size:.88rem; }
     .slide.text{ padding:26px 18px 60px; }
   }
+  @media (max-width:760px){
+    .slide.text{ padding:26px 18px 60px; }
+    .slide.text .inner{ grid-template-columns:1fr; gap:18px; }
+    .slide.text h2{ font-size:1.5rem; }
+    .slide.text p{ font-size:1rem; }
+  }
   @media (prefers-reduced-motion:reduce){
     html{ scroll-behavior:auto; }
     .track{ transition:none; }
@@ -154,15 +168,17 @@
 
           <div class="slide text" data-ms="18000">
             <div class="inner">
-              <h2>Your data stays yours.</h2>
-              <p>Your records live in a file on your own device, and PHD does not keep a copy on its servers. We keep only your email, to sign you in and manage your subscription. Card payments go straight to Stripe.</p>
+              <div>
+                <h2>Your data stays yours.</h2>
+                <p>Your records live in a file on your own device, and PHD does not keep a copy on its servers. We keep only your email, to sign you in and manage your subscription. Card payments go straight to Stripe.</p>
+                <p class="small"><a href="privacy-web.html">Read the full Privacy page</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe Privacy</a></p>
+              </div>
               <ul>
                 <li>We do not sell, rent, or trade your data.</li>
                 <li>We do not show ads.</li>
                 <li>No advertising or analytics trackers in the web app.</li>
                 <li>We do not access your camera, microphone, or location.</li>
               </ul>
-              <p class="small"><a href="privacy-web.html">Read the full Privacy page</a> &middot; <a href="terms.html">Terms</a></p>
             </div>
           </div>
 
