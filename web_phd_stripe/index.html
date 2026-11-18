@@ -30,12 +30,13 @@
 
   /* ---------- hero: 3 buttons + canvas ---------- */
   .hero{ padding:28px 0 8px; }
-  .quick{ display:flex; gap:16px; justify-content:center; margin:0 0 18px; }
+  .quick{ display:flex; gap:16px; justify-content:center; align-items:center; margin:0 0 18px; }
   .qbtn{
-    flex:1 1 0; text-align:center; white-space:nowrap;
+    flex:0 0 auto; width:310px; text-align:center; white-space:nowrap;
     padding:12px 10px; border-radius:10px; border:1px solid var(--accent);
     background:#fff; color:var(--accent-deep); font-weight:700; font-size:.98rem; text-decoration:none;
   }
+  .qbtn.sm{ width:155px; padding:9px 10px; font-size:.92rem; }
   .qbtn:hover{ background:var(--tint); }
   .qbtn.primary{ background:var(--accent); color:#fff; }
   .qbtn.primary:hover{ background:var(--accent-deep); }
@@ -43,6 +44,11 @@
   .canvas{
     position:relative; overflow:hidden; border:1px solid var(--line); border-radius:16px; background:#fff;
     touch-action:pan-y; user-select:none; -webkit-user-select:none; cursor:grab;
+    container-type:inline-size;
+  }
+  @media (min-width:761px){
+    .canvas{ aspect-ratio:1934 / 1080; }
+    .track{ position:absolute; inset:0; }
   }
   .canvas.dragging{ cursor:grabbing; }
   .track{ display:flex; align-items:stretch; transition:transform .45s ease; will-change:transform; }
@@ -52,23 +58,22 @@
   .slide.pic img{ display:block; width:100%; height:auto; -webkit-user-drag:none; }
   .slide.text{
     display:flex; align-items:center; background:var(--tint);
-    padding:36px 56px 64px;
+    padding:3.5cqw 5.5cqw 5.5cqw;
   }
-  .slide.text .inner{ width:100%; display:grid; grid-template-columns:1fr 1fr; gap:28px 64px; align-items:center; }
-  .slide.text h2{ font-size:2.3rem; line-height:1.2; margin:0 0 .5em; }
-  .slide.text p{ margin:0 0 .9em; font-size:1.2rem; }
-  .slide.text ul{ list-style:none; margin:0; padding:0; display:grid; gap:18px; }
+  .slide.text .inner{ width:100%; display:grid; grid-template-columns:1fr 1fr; gap:2.5cqw 5cqw; align-items:center; }
+  .slide.text h2{ font-size:3.5cqw; line-height:1.2; margin:0 0 .5em; }
+  .slide.text p{ margin:0 0 .9em; font-size:1.84cqw; }
+  .slide.text ul{ list-style:none; margin:0; padding:0; display:grid; gap:1.5cqw; }
   .slide.text li{
-    position:relative; background:#fff; border:1px solid var(--line); border-radius:14px;
-    padding:20px 20px 20px 58px; font-size:1.1rem;
+    position:relative; background:#fff; border:1px solid var(--line); border-radius:1.4cqw;
+    padding:1.7cqw 1.7cqw 1.7cqw 5cqw; font-size:1.67cqw;
   }
   .slide.text li::before{
-    content:"\2713"; position:absolute; left:20px; top:22px; width:24px; height:24px; border-radius:50%;
-    background:var(--accent); color:#fff; font-size:.85rem; font-weight:700;
+    content:"\2713"; position:absolute; left:1.7cqw; top:1.9cqw; width:2.3cqw; height:2.3cqw; border-radius:50%;
+    background:var(--accent); color:#fff; font-size:1.3cqw; font-weight:700;
     display:flex; align-items:center; justify-content:center;
   }
-  .slide.text .small{ font-size:1rem; color:var(--soft); margin:0; }
-  .slide.text .small svg{ width:1.05em; height:1.05em; vertical-align:-.15em; margin-right:.45em; fill:currentColor; }
+  .slide.text .small{ font-size:1.67cqw; color:var(--soft); margin:0; }
 
   .bar{
     position:absolute; left:50%; bottom:10px; transform:translateX(-50%);
@@ -118,7 +123,8 @@
     nav a{ margin-left:12px; }
     .hero{ padding-top:20px; }
     .quick{ gap:8px; }
-    .qbtn{ padding:11px 6px; font-size:.88rem; }
+    .qbtn{ width:auto; flex:1 1 0; padding:11px 6px; font-size:.88rem; }
+    .qbtn.sm{ flex:.8 1 0; padding:9px 4px; }
     .slide.text{ padding:26px 18px 60px; }
   }
   @media (max-width:760px){
@@ -156,10 +162,10 @@
       <h1 class="sr-only">Organize cosmetics, spending and education costs for you and the people you care about.</h1>
 
       <div class="quick">
-        <a class="qbtn" href="../web_phd_manual/">User Manual</a>
+        <a class="qbtn sm" href="../web_phd_manual/">User Manual</a>
         <!-- TODO: replace # with the email login page URL when the web app is live -->
         <a class="qbtn primary" href="#">Open App</a>
-        <a class="qbtn" href="#faq">Q&amp;A</a>
+        <a class="qbtn sm" href="#faq">Q&amp;A</a>
       </div>
 
       <!-- data-ms = how long this slide stays before it moves to the next one -->
@@ -192,12 +198,12 @@
               <div>
                 <h2>A modular app that grows with you.</h2>
                 <p>PHD is built from profiles: Cosmetic, Moneyflow and Education today, with more to come. Each profile handles one part of your life, so staying organized feels easy and calm.</p>
-                <p class="small"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>Also on iPhone: <a href="https://apps.apple.com/app/profile-hub-dossier/id6761083776" target="_blank" rel="noopener">Profile Hub Dossier on the App Store</a></p>
+                <p class="small">Also available on <a href="https://apps.apple.com/app/profile-hub-dossier/id6761083776" target="_blank" rel="noopener">Apple</a></p>
               </div>
               <ul>
                 <li>Not just for you. Keep records for yourself, your loved ones, family, friends and clients.</li>
                 <li>Use it in your browser on almost any phone, tablet or computer.</li>
-                <li>Business plan, $9.99 per month: appointments and wedding invoices for the Cosmetic profile, extras the iPhone app does not have.</li>
+                <li>The Cosmetic Business plan adds appointments and business invoices, extras you won’t find in the iPhone app.</li>
               </ul>
             </div>
           </div>
@@ -253,6 +259,7 @@
     </div>
   </section>
 
+  <!--
   <section>
     <div class="wrap">
       <h2>A look inside</h2>
@@ -272,6 +279,7 @@
       </div>
     </div>
   </section>
+  -->
 
   <section id="plans">
     <div class="wrap">
@@ -291,7 +299,7 @@
           <div class="price">$9.99 <small>USD per month</small></div>
           <ul>
             <li>For cosmetic professionals</li>
-            <li>Everything in Base, plus appointments, appointment reports and wedding invoices for the Cosmetic profile</li>
+            <li>Everything in Base, plus appointments, appointment reports and business invoices for the Cosmetic profile</li>
             <li>Cosmetic Style Transfer: export and import</li>
           </ul>
         </div>
@@ -300,19 +308,6 @@
         The free trial lasts 14 days and needs a card. You are not charged during the trial; the first charge happens when it ends. Plans renew monthly until you cancel. You can cancel any time, and your plan stays active until the end of the month you already paid for. No refund for a month already paid. When a trial or subscription ends, you can still open your file and use the Summary view.
         Prices are in US dollars and are subject to change; the price shown at checkout is the price you pay. Taxes may apply, and your bank or card company may charge currency conversion fees. Payments are processed by Stripe.
       </p>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <h2>Your data</h2>
-      <div class="card">
-        <ul>
-          <li>Your records stay in a file on your own device. PHD does not store your file on its servers.</li>
-          <li>We keep your email address and subscription status to sign you in and manage your plan. Card details go to Stripe and never reach PHD.</li>
-          <li>Read the full <a href="privacy-web.html">Privacy page</a>.</li>
-        </ul>
-      </div>
     </div>
   </section>
 
