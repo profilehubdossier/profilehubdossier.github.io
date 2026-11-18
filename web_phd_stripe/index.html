@@ -30,7 +30,7 @@
 
   /* ---------- hero: 3 buttons + canvas ---------- */
   .hero{ padding:28px 0 8px; }
-  .quick{ display:flex; gap:16px; justify-content:center; align-items:center; margin:0 0 18px; }
+  .quick{ display:flex; justify-content:space-between; align-items:center; gap:12px; margin:0 0 18px; }
   .qbtn{
     flex:0 0 auto; width:310px; text-align:center; white-space:nowrap;
     padding:12px 10px; border-radius:10px; border:1px solid var(--accent);
@@ -47,7 +47,7 @@
     container-type:inline-size;
   }
   @media (min-width:761px){
-    .canvas{ aspect-ratio:1934 / 1080; }
+    .canvas{ aspect-ratio:1934 / 990; }
     .track{ position:absolute; inset:0; }
   }
   .canvas.dragging{ cursor:grabbing; }
@@ -58,22 +58,22 @@
   .slide.pic img{ display:block; width:100%; height:auto; -webkit-user-drag:none; }
   .slide.text{
     display:flex; align-items:center; background:var(--tint);
-    padding:3.5cqw 5.5cqw 5.5cqw;
+    padding:3.2cqw 5.5cqw 5.5cqw;
   }
   .slide.text .inner{ width:100%; display:grid; grid-template-columns:1fr 1fr; gap:2.5cqw 5cqw; align-items:center; }
-  .slide.text h2{ font-size:3.5cqw; line-height:1.2; margin:0 0 .5em; }
-  .slide.text p{ margin:0 0 .9em; font-size:1.84cqw; }
+  .slide.text h2{ font-size:3.85cqw; line-height:1.2; margin:0 0 .5em; }
+  .slide.text p{ margin:0 0 .9em; font-size:2.02cqw; }
   .slide.text ul{ list-style:none; margin:0; padding:0; display:grid; gap:1.5cqw; }
   .slide.text li{
     position:relative; background:#fff; border:1px solid var(--line); border-radius:1.4cqw;
-    padding:1.7cqw 1.7cqw 1.7cqw 5cqw; font-size:1.67cqw;
+    padding:1.8cqw 1.8cqw 1.8cqw 5.2cqw; font-size:1.84cqw;
   }
   .slide.text li::before{
-    content:"\2713"; position:absolute; left:1.7cqw; top:1.9cqw; width:2.3cqw; height:2.3cqw; border-radius:50%;
-    background:var(--accent); color:#fff; font-size:1.3cqw; font-weight:700;
+    content:"\2713"; position:absolute; left:1.8cqw; top:2cqw; width:2.4cqw; height:2.4cqw; border-radius:50%;
+    background:var(--accent); color:#fff; font-size:1.4cqw; font-weight:700;
     display:flex; align-items:center; justify-content:center;
   }
-  .slide.text .small{ font-size:1.67cqw; color:var(--soft); margin:0; }
+  .slide.text .small{ font-size:1.84cqw; color:var(--soft); margin:0; }
 
   .bar{
     position:absolute; left:50%; bottom:10px; transform:translateX(-50%);
@@ -122,10 +122,12 @@
   @media (max-width:600px){
     nav a{ margin-left:12px; }
     .hero{ padding-top:20px; }
+    .slide.text{ padding:26px 18px 60px; }
+  }
+  @media (max-width:700px){
     .quick{ gap:8px; }
     .qbtn{ width:auto; flex:1 1 0; padding:11px 6px; font-size:.88rem; }
     .qbtn.sm{ flex:.8 1 0; padding:9px 4px; }
-    .slide.text{ padding:26px 18px 60px; }
   }
   @media (max-width:760px){
     .slide.text{ padding:26px 18px 60px; }
@@ -173,7 +175,7 @@
         <div class="track" id="track">
 
           <div class="slide pic" data-ms="3000">
-            <img src="images/Beauty_Enthusiasts_app_theme.webp" width="1934" height="1080" draggable="false"
+            <img src="images/Beauty_Enthusiasts_app_theme.webp" width="1934" height="990" draggable="false"
                  alt="Profile Hub Dossier: visual analysis with pie charts and reports, local-first privacy, items sheet inventory, and a modular app with profile options.">
           </div>
 
