@@ -179,6 +179,53 @@
     else dlg.setAttribute("open", "");
   }
 
+  // ── Warning popup for the Advanced use row ──────────────────
+  var warn = el("dialog", "shot warn");
+  warn.setAttribute("aria-labelledby", "warn-title");
+  var warnBox = el("div", "shot-box");
+  var warnTitle = el("h2", "shot-title", T.ui.advWarnTitle);
+  warnTitle.id = "warn-title";
+  var warnText = el("p", "warn-text", T.ui.advWarnText);
+  var warnBtns = el("div", "warn-btns");
+  var warnCancel = el("button", "warn-btn", T.ui.advCancel);
+  warnCancel.type = "button";
+  var warnOk = el("button", "warn-btn warn-ok", T.ui.advConfirm);
+  warnOk.type = "button";
+  warnBtns.appendChild(warnCancel);
+  warnBtns.appendChild(warnOk);
+  warnBox.appendChild(warnTitle);
+  warnBox.appendChild(warnText);
+  warnBox.appendChild(warnBtns);
+  warn.appendChild(warnBox);
+  document.body.appendChild(warn);
+  var warnDone = null;
+
+  function closeWarn() {
+    if (typeof warn.close === "function") warn.close();
+    else warn.removeAttribute("open");
+    document.body.classList.remove("modal");
+  }
+
+  function askWarn(onOk) {
+    warnDone = onOk;
+    document.body.classList.add("modal");
+    if (typeof warn.showModal === "function") warn.showModal();
+    else warn.setAttribute("open", "");
+  }
+
+  warnCancel.addEventListener("click", function () { warnDone = null; closeWarn(); });
+  warnOk.addEventListener("click", function () {
+    var go = warnDone;
+    warnDone = null;
+    closeWarn();
+    if (go) go();
+  });
+
+  // tap on the dark area = Cancel
+  warn.addEventListener("click", function (e) { if (e.target === warn) { warnDone = null; closeWarn(); } });
+  // Esc key
+  warn.addEventListener("close", function () { warnDone = null; document.body.classList.remove("modal"); });
+
   // ── Block builders ──────────────────────────────────────────
   function renderBlocks(blocks, parent) {
     blocks.forEach(function (b) {
@@ -217,7 +264,11 @@
 
       case "list": {
         var ul = el("ul", "list");
-        b.items.forEach(function (t) { ul.appendChild(el("li", null, t)); });
+        b.items.forEach(function (t) {
+          var li = el("li");
+          li.appendChild(richText(t));
+          ul.appendChild(li);
+        });
         return ul;
       }
 
@@ -322,6 +373,14 @@
     if (b.tag) s.appendChild(el("span", "tag", b.tag));
     s.appendChild(icon("expand_more", "chev"));
     d.appendChild(s);
+
+    if (b.gate) {
+      s.addEventListener("click", function (e) {
+        if (d.open) return; // closing needs no warning
+        e.preventDefault();
+        askWarn(function () { d.open = true; });
+      });
+    }
 
     var body = el("div", "acc-body");
     renderBlocks(b.blocks || [], body);
