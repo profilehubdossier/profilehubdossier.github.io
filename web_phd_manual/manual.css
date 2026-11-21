@@ -408,6 +408,13 @@ dialog.shot::backdrop { background: rgba(10, 8, 16, 0.6); }
 }
 .shot-cap { margin: 14px 0 6px; text-align: left; }
 .shot-hint { margin: 0; color: var(--soft); font-size: 0.82rem; }
+.warn .shot-title { margin: 0 0 12px; }
+.warn-text { margin: 0 0 18px; text-wrap: pretty; }
+.warn-btns { display: flex; gap: 10px; }
+.warn-btn { flex: 1; padding: 11px 12px; border: 1px solid var(--line); border-radius: 14px; background: var(--tint); color: var(--ink); font: inherit; font-weight: 600; cursor: pointer; }
+.warn-btn:hover { border-color: var(--accent); }
+.warn-ok { background: var(--accent); border-color: var(--accent); color: #fff; }
+.warn-ok:hover { opacity: 0.9; }
 
 /* phones: smaller popup, since the caption under the pic carries the words */
 @media (max-width: 600px) {
