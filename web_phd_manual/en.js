@@ -42,6 +42,10 @@ window.MANUAL_TEXT = {
     screenshotSoon: "Screenshot coming soon",
     homeSoon: "The app link will be added soon.",
     guideSoon: "This guide is coming soon."
+    advWarnTitle: "Advanced use",
+    advWarnText: "This section is for experienced users with excellent computer skills who are comfortable managing files on different devices. If your files get mixed up, we will do our best to help, but we cannot guarantee we can recover your data. Please continue at your own risk.", // new
+    advCancel: "Cancel",
+    advConfirm: "I understand"
   },
 
   footer: {
@@ -190,39 +194,25 @@ window.MANUAL_TEXT = {
           text: "We work hard to protect your privacy. Your records live in a file on your own device, not on our servers. That is why there are a few extra steps: download your file, keep your newest file, and delete the ics files after you add them to your calendar."
         },
 
+         {
+      type: "accordion",
+      icon: "tune",
+      title: "Advanced use",
+      sub: "Moving files and using more than one device",
+      gate: true, // new: shows the warning popup before it opens
+      blocks: [
         {
-          type: "accordion",
-          icon: "tune",
-          title: "Advanced use",
-          sub: "Moving files and using more than one device",
-          blocks: [
-            { type: "sub", text: "Where your files go" },
-            {
-              type: "list",
-              items: [
-                "Phones, tablets, Safari and Firefox: files go to your downloads folder, and the app asks you to confirm each file.",
-                "Chrome or Edge on a computer: the database file is saved where you choose the first time, and later saves replace that file. Calendar files ask where to save each time."
-              ]
-            },
-            { type: "sub", text: "Your newest file and more than one device" },
-            {
-              type: "list",
-              items: [
-                "Next time you sign in, open your newest database file. Check the date and time in the name.",
-                "There is no sync between devices. Move your newest file to the other device before you start, or you may overwrite newer work.",
-                "The app compares your file with your last save and warns you if a newer one may exist."
-              ]
-            },
-            { type: "sub", text: "Keep things tidy" },
-            {
-              type: "list",
-              items: [
-                "Copy your file to a safe folder before you replace it, so you always have a backup.",
-                "Delete old calendar files after you add the events to your calendar, so you don't add them twice."
-              ]
-            }
+          type: "list",
+          items: [
+            "You can copy your main database file to another device. But there must always be only **ONE** newest main database file.",
+            "Before you use any device, check the date and time in the file name (for example 20261010_170833) and the modified date in your folder. Open the newest one.",
+            "After you make changes on the second device, copy the file back to the original device before you use the original device again.",
+            "Never use two devices at the same time, and never open an older copy. Changes in the newer file will be lost, and two files cannot be combined.",
+            "If your files get mixed up, we will do our best to help, but we cannot guarantee we can recover your data. Your data lives only on your own devices, not on our servers."
           ]
         }
+      ]
+    }
       ]
     },
 
