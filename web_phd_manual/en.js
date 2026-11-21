@@ -41,7 +41,7 @@ window.MANUAL_TEXT = {
     tapOutside: "Tap outside the picture to close it.",
     screenshotSoon: "Screenshot coming soon",
     homeSoon: "The app link will be added soon.",
-    guideSoon: "This guide is coming soon."
+    guideSoon: "This guide is coming soon.",
     advWarnTitle: "Advanced use",
     advWarnText: "This section is for experienced users with excellent computer skills who are comfortable managing files on different devices. If your files get mixed up, we will do our best to help, but we cannot guarantee we can recover your data. Please continue at your own risk.", // new
     advCancel: "Cancel",
