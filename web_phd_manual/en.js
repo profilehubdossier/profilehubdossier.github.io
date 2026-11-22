@@ -150,7 +150,8 @@ window.MANUAL_TEXT = {
             }
           ]
         },
-        { type: "p", text: "Cancel closes the message and you stay in the app." },
+                { type: "p", text: "Cancel closes the message and you stay in the app." },
+        { type: "p", text: "Please save your changes before you reload the browser page. In some cases, reloading the page shows the file choose page again, and unsaved changes are lost." },
 
         { type: "sub", text: "Your files" },
         {
@@ -589,6 +590,34 @@ window.MANUAL_TEXT = {
                 "You are taken to a Stripe page. This can take a moment, depending on your connection, so please wait.",
                 "Pick Apple Pay or Google Pay if your device offers it, or {link:cardPay}."
               ]
+            }
+          ]
+        },
+        {
+          // new: optional password for the main database file
+          type: "accordion",
+          icon: "lock",
+          title: "File password",
+          sub: "Protect your main database file (optional)",
+          blocks: [
+            { type: "sub", text: "Set a password" },
+            {
+              type: "steps",
+              items: [
+                "Tap Start with a new file, or upload an older file that has no password. A popup asks if you want to set a password.",
+                "Type your password in both boxes, then tap Set password. Tap Skip if you do not want one. Tick Don't ask me again on this device to stop the popup.",
+                "Tap X and save as usual. Your database file is saved with the password."
+              ]
+            },
+            { type: "sub", text: "Open a protected file" },
+            {
+              type: "p",
+              text: "When you upload a file that has a password, the app asks for it first. Type it, then tap Unlock."
+            },
+            {
+              type: "note",
+              icon: "lock",
+              text: "The password only protects your main database file. Your calendar (.ics) and invoice (.pdf) files are not protected. You cannot change or remove the password in this version, so choose one you will remember. We cannot recover a forgotten password, and the file cannot be opened without it."
             }
           ]
         }
