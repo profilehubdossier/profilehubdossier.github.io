@@ -67,7 +67,8 @@ window.MANUAL_TEXT = {
           items: [
             "Enter your email. We send you a sign-in link, so there is no password to remember.",
             "Pick your plan and complete checkout on the next page.",
-            "Tap Start with a new file if you are new to PHD. Then you land on the home page.",
+            "Tap Start with a new file if you are new to PHD.",
+            "A popup asks if you want a password for your database file. Type it in both boxes and tap Set password, or tap Skip. Then you land on the home page.", // new
             "Before anything else, add a contact (tap the person setting icon, then add contact or import). Import only accepts contact files, such as .vcf files."
           ]
         },
@@ -126,6 +127,7 @@ window.MANUAL_TEXT = {
           type: "steps",
           items: [
             "Sign in if needed, then tap Choose file and pick your newest file.",
+            "If your file has a password, type it and tap Unlock. If it has none, a popup asks if you want to set one: tap Set password, or tap Skip. Tick Don't ask me again on this device to stop the popup.", // new
             "Tap New, then pick one of these actions based on what you want to do: Add, Edit, Summary, Manage, Appointment or Report. Appointment and Report are for the Business plan only.",
             "Pick a profile, such as Cosmetic, Education or Moneyflow.",
             "Pick a contact.",
@@ -185,7 +187,10 @@ window.MANUAL_TEXT = {
           type: "list",
           items: [
             "A message that asks you to choose disappears by itself after 3 to 5 seconds.",
-            "The calendar at the top of the home page sets the date range for Edit, Summary and Manage."
+            "The calendar at the top of the home page sets the date range for Edit, Summary and Manage.",
+            "A file password only protects your main database file. Your calendar (.ics) and invoice (.pdf) files are not protected.", // new
+            "You cannot change or remove the password in this version, so choose one you will remember.", // new
+            "We cannot recover a forgotten password, and the file cannot be opened without it." // new
           ]
         },
 
@@ -590,34 +595,6 @@ window.MANUAL_TEXT = {
                 "You are taken to a Stripe page. This can take a moment, depending on your connection, so please wait.",
                 "Pick Apple Pay or Google Pay if your device offers it, or {link:cardPay}."
               ]
-            }
-          ]
-        },
-        {
-          // new: optional password for the main database file
-          type: "accordion",
-          icon: "lock",
-          title: "File password",
-          sub: "Protect your main database file (optional)",
-          blocks: [
-            { type: "sub", text: "Set a password" },
-            {
-              type: "steps",
-              items: [
-                "Tap Start with a new file, or upload an older file that has no password. A popup asks if you want to set a password.",
-                "Type your password in both boxes, then tap Set password. Tap Skip if you do not want one. Tick Don't ask me again on this device to stop the popup.",
-                "Tap X and save as usual. Your database file is saved with the password."
-              ]
-            },
-            { type: "sub", text: "Open a protected file" },
-            {
-              type: "p",
-              text: "When you upload a file that has a password, the app asks for it first. Type it, then tap Unlock."
-            },
-            {
-              type: "note",
-              icon: "lock",
-              text: "The password only protects your main database file. Your calendar (.ics) and invoice (.pdf) files are not protected. You cannot change or remove the password in this version, so choose one you will remember. We cannot recover a forgotten password, and the file cannot be opened without it."
             }
           ]
         }
